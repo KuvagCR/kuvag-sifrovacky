@@ -1,6 +1,6 @@
 const SUPABASE_URL="https://wpmodnqcrsmiokgqyiby.supabase.co";
 const SUPABASE_KEY="sb_publishable_rfGxGRufJFkGVB8WWQ3bjQ_CgYZrG7s";
-async function db(path,method="POST",body){try{let r=await fetch(SUPABASE_URL+"/rest/v1/"+path,{method,headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=representation"},body:body?JSON.stringify(body):undefined});if(!r.ok)throw new Error(await r.text());return await r.json()}catch(e){console.error("Supabase:",e);return null}}
+async function db(path,method="POST",body){try{let r=await fetch(SUPABASE_URL+"/rest/v1/"+path,{method,headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=representation"},body:body?JSON.stringify(body):undefined});if(!r.ok)throw new Error(await r.text());return await r.json()}catch(e){console.error("Supabase:",e);return null}}
 async function createSession(){let rows=await db("game_sessions","POST",{game_id:1,player_name:state.name,player_type:"test",started_at:new Date(state.start).toISOString(),current_station:1,hints_used:0,wrong_attempts:0,total_points:300,is_finished:false});if(rows&&rows[0])state.sessionId=rows[0].id}
 async function saveFinish(){if(!state.sessionId)return;await db("game_sessions?id=eq."+state.sessionId,"PATCH",{finished_at:new Date().toISOString(),current_station:stations.length,hints_used:state.hints,wrong_attempts:state.wrong,total_points:state.score,is_finished:true})}
 const HERO="https://slevomat.sgcdn.cz/images/t/2000/17/37/17379260-8bf505.webp";
