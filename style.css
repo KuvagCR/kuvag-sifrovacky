@@ -43,30 +43,15 @@ body{background-image:none!important;}
 }
 .card > *{position:relative;z-index:1;}
 
-/* Official KUVAG-style header mark */
-.brand{display:flex;align-items:center;gap:18px}.kuvag-logo{display:inline-flex;flex-direction:column;line-height:.8}.kuvag-word{font-weight:900;font-style:italic;letter-spacing:-.07em;color:#8a8d8f;font-size:34px}.kuvag-logo i{display:block;height:5px;background:#f28a00;margin-top:7px;width:100%}.game-label{font-size:14px!important;letter-spacing:.14em!important;font-weight:850;color:#676b6e!important}@media(max-width:420px){.brand{gap:12px}.kuvag-word{font-size:29px}.game-label{font-size:11px!important}}
 
-/* Exact supplied KUVAG logo */
-.brand-logo{display:block;width:150px;height:auto;object-fit:contain}.brand{display:flex;align-items:center;gap:16px}.game-label{font-size:14px!important;letter-spacing:.14em!important;font-weight:850;color:#676b6e!important}@media(max-width:420px){.brand-logo{width:120px}.brand{gap:10px}.game-label{font-size:10px!important}}
-
-/* Clean header after removing broken raster logo */
-.brand{display:flex;align-items:center;gap:18px;white-space:nowrap}.brand-wordmark{font-family:Arial,sans-serif;font-size:32px;font-weight:900;font-style:italic;letter-spacing:-2px;color:#8c8e91;line-height:1}.game-label{display:inline-flex;align-items:center;gap:7px;font-size:14px!important;letter-spacing:.14em!important;font-weight:850;color:#676b6e!important}.game-label i{display:inline-block;width:10px;height:10px;background:#ef6446;transform:skew(-15deg)}@media(max-width:420px){.brand{gap:10px}.brand-wordmark{font-size:27px}.game-label{font-size:10px!important}.game-label i{width:8px;height:8px}}
-
-/* Header hard reset */
-header .brand img,header .brand-logo,header .kuvag-logo{display:none!important}
-header .brand{display:flex!important;align-items:center!important;gap:14px!important;height:auto!important;overflow:visible!important}
-header .brand-wordmark{display:inline-block!important;background:none!important;width:auto!important;height:auto!important;overflow:visible!important;font-family:Arial,Helvetica,sans-serif!important;font-size:32px!important;font-weight:900!important;font-style:italic!important;letter-spacing:-2.5px!important;line-height:1!important;color:#2b3034!important}
-header .game-label{display:inline-flex!important;align-items:center!important;gap:7px!important;background:none!important;width:auto!important;height:auto!important;overflow:visible!important;color:#6b6f72!important;font-size:13px!important;letter-spacing:.14em!important;line-height:1!important}
-@media(max-width:420px){header .brand{gap:9px!important}header .brand-wordmark{font-size:25px!important}header .game-label{font-size:9px!important}}
-
-/* Final KUVAG header treatment */
-header .brand-wordmark{position:relative!important;display:inline-flex!important;align-items:flex-end!important;padding-bottom:7px!important;color:#8d8f92!important;font-family:Arial,Helvetica,sans-serif!important;font-style:italic!important;font-weight:900!important;font-size:31px!important;letter-spacing:-4px!important;line-height:.82!important}
-header .brand-wordmark b{position:absolute;left:0;right:0;bottom:0;height:4px;background:#f28a00}
-header .brand-wordmark span{display:inline-block}.brand-wordmark .u{transform:skew(-8deg)}.brand-wordmark .v{transform:skew(-10deg)}
-header .game-label i{display:inline-block!important;width:9px!important;height:9px!important;background:#ef6446!important;transform:skew(-15deg)!important}
-@media(max-width:420px){header .brand-wordmark{font-size:25px!important;padding-bottom:6px!important;letter-spacing:-3px!important}header .brand-wordmark b{height:3px}}
-
-/* Final cleanup: remove stale duplicate KUVAG pseudo-content and duplicate orange mark */
-.card .eyebrow{font-size:0!important}.card .eyebrow::after{content:"ŠIFROVACÍ HRA";font-size:12px;letter-spacing:.15em;font-weight:900;color:var(--orange)}
-header .game-label i{display:none!important}
-header .game-label::after{content:"";display:inline-block;width:9px;height:9px;background:#ef6446;transform:skew(-15deg);margin-left:2px}
+/* Header — official uploaded KUVAG logo */
+.brand:after{display:none!important}
+header .brand{display:flex;align-items:center;gap:16px;white-space:nowrap}
+header .real-kuvag-logo{display:block;width:145px;height:auto;object-fit:contain}
+header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#676b6e;margin-left:0}
+.card .eyebrow{color:var(--orange);text-transform:uppercase;font-size:12px;font-weight:950;letter-spacing:.14em}
+@media(max-width:420px){
+  header .brand{gap:10px}
+  header .real-kuvag-logo{width:118px}
+  header .game-label{font-size:9px}
+}
