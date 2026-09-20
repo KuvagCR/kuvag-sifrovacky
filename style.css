@@ -58,3 +58,10 @@ header .brand{display:flex!important;align-items:center!important;gap:14px!impor
 header .brand-wordmark{display:inline-block!important;background:none!important;width:auto!important;height:auto!important;overflow:visible!important;font-family:Arial,Helvetica,sans-serif!important;font-size:32px!important;font-weight:900!important;font-style:italic!important;letter-spacing:-2.5px!important;line-height:1!important;color:#2b3034!important}
 header .game-label{display:inline-flex!important;align-items:center!important;gap:7px!important;background:none!important;width:auto!important;height:auto!important;overflow:visible!important;color:#6b6f72!important;font-size:13px!important;letter-spacing:.14em!important;line-height:1!important}
 @media(max-width:420px){header .brand{gap:9px!important}header .brand-wordmark{font-size:25px!important}header .game-label{font-size:9px!important}}
+
+/* Final KUVAG header treatment */
+header .brand-wordmark{position:relative!important;display:inline-flex!important;align-items:flex-end!important;padding-bottom:7px!important;color:#8d8f92!important;font-family:Arial,Helvetica,sans-serif!important;font-style:italic!important;font-weight:900!important;font-size:31px!important;letter-spacing:-4px!important;line-height:.82!important}
+header .brand-wordmark b{position:absolute;left:0;right:0;bottom:0;height:4px;background:#f28a00}
+header .brand-wordmark span{display:inline-block}.brand-wordmark .u{transform:skew(-8deg)}.brand-wordmark .v{transform:skew(-10deg)}
+header .game-label i{display:inline-block!important;width:9px!important;height:9px!important;background:#ef6446!important;transform:skew(-15deg)!important}
+@media(max-width:420px){header .brand-wordmark{font-size:25px!important;padding-bottom:6px!important;letter-spacing:-3px!important}header .brand-wordmark b{height:3px}}
