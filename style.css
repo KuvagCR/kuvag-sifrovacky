@@ -45,3 +45,6 @@ body{background-image:none!important;}
 
 /* Official KUVAG-style header mark */
 .brand{display:flex;align-items:center;gap:18px}.kuvag-logo{display:inline-flex;flex-direction:column;line-height:.8}.kuvag-word{font-weight:900;font-style:italic;letter-spacing:-.07em;color:#8a8d8f;font-size:34px}.kuvag-logo i{display:block;height:5px;background:#f28a00;margin-top:7px;width:100%}.game-label{font-size:14px!important;letter-spacing:.14em!important;font-weight:850;color:#676b6e!important}@media(max-width:420px){.brand{gap:12px}.kuvag-word{font-size:29px}.game-label{font-size:11px!important}}
+
+/* Exact supplied KUVAG logo */
+.brand-logo{display:block;width:150px;height:auto;object-fit:contain}.brand{display:flex;align-items:center;gap:16px}.game-label{font-size:14px!important;letter-spacing:.14em!important;font-weight:850;color:#676b6e!important}@media(max-width:420px){.brand-logo{width:120px}.brand{gap:10px}.game-label{font-size:10px!important}}
