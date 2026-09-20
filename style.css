@@ -65,3 +65,8 @@ header .brand-wordmark b{position:absolute;left:0;right:0;bottom:0;height:4px;ba
 header .brand-wordmark span{display:inline-block}.brand-wordmark .u{transform:skew(-8deg)}.brand-wordmark .v{transform:skew(-10deg)}
 header .game-label i{display:inline-block!important;width:9px!important;height:9px!important;background:#ef6446!important;transform:skew(-15deg)!important}
 @media(max-width:420px){header .brand-wordmark{font-size:25px!important;padding-bottom:6px!important;letter-spacing:-3px!important}header .brand-wordmark b{height:3px}}
+
+/* Final cleanup: remove stale duplicate KUVAG pseudo-content and duplicate orange mark */
+.card .eyebrow{font-size:0!important}.card .eyebrow::after{content:"ŠIFROVACÍ HRA";font-size:12px;letter-spacing:.15em;font-weight:900;color:var(--orange)}
+header .game-label i{display:none!important}
+header .game-label::after{content:"";display:inline-block;width:9px;height:9px;background:#ef6446;transform:skew(-15deg);margin-left:2px}
