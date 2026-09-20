@@ -55,3 +55,6 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
   header .real-kuvag-logo{width:118px}
   header .game-label{font-size:9px}
 }
+
+/* Remove decorative church watermark */
+.card::before{display:none!important;background-image:none!important;}
