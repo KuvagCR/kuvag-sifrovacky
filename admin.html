@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KUVAG Šifrovačky – Administrace</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header><div><b>KUVAG</b><span>ŠIFROVAČKY</span></div><button id="logout" hidden>Odhlásit</button></header>
+<main>
+<section id="login" class="panel">
+<div class="tag">ADMINISTRACE</div><h1>Přihlášení</h1><p>Přístup k výsledkům her.</p>
+<form id="loginForm"><label>E-mail<input id="email" type="email" required autocomplete="username"></label><label>Heslo<input id="password" type="password" required autocomplete="current-password"></label><button>PŘIHLÁSIT →</button></form><div id="loginMsg"></div>
+</section>
+<section id="dashboard" hidden>
+<div class="top"><div><div class="tag">KUVAG • ADMIN</div><h1>Výsledky hráčů</h1></div><button id="refresh">Obnovit</button></div>
+<div class="summary"><div><strong id="players">0</strong><span>rozehraných</span></div><div><strong id="finished">0</strong><span>dokončeno</span></div><div><strong id="avg">—</strong><span>průměr bodů</span></div></div>
+<div class="tableWrap"><table><thead><tr><th>Hráč</th><th>Start</th><th>Čas</th><th>Body</th><th>Nápovědy</th><th>Chyby</th><th>Stav</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div id="dataMsg"></div>
+</section>
+</main><script src="admin.js"></script></body></html>
