@@ -11,3 +11,10 @@
 
 /* Hero: show the source photo without zoom/cropping */
 .hero-photo{background-size:contain!important;background-repeat:no-repeat!important;background-position:center center!important;background-color:#202833!important}
+
+/* Hero panorama: fill the full width */
+.hero-photo{
+  background-size:100% 100%, cover!important;
+  background-position:center center, center center!important;
+  background-repeat:no-repeat!important;
+}
