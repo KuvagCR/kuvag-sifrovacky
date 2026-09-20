@@ -18,3 +18,14 @@
   background-position:center center, center center!important;
   background-repeat:no-repeat!important;
 }
+
+/* Historical Nepomuk map atmosphere */
+body{
+  background-image:
+    linear-gradient(rgba(242,242,239,.88),rgba(242,242,239,.88)),
+    url("https://mapaonline.cz/img/full/Spezialkarte_4251_Nepomuk_und_Horazdowitz.jpg")!important;
+  background-size:auto, cover!important;
+  background-position:center, center top!important;
+  background-attachment:fixed!important;
+  background-repeat:no-repeat!important;
+}
