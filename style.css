@@ -8,3 +8,6 @@
 .employee-code{margin:10px 0}.employee-code[hidden]{display:none}.employee-code .msg{margin-top:8px}
 
 .hero-photo{background-position:center 35%}
+
+/* Hero: show the source photo without zoom/cropping */
+.hero-photo{background-size:contain!important;background-repeat:no-repeat!important;background-position:center center!important;background-color:#202833!important}
