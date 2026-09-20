@@ -13,9 +13,9 @@
 <form id="loginForm"><label>E-mail<input id="email" type="email" required autocomplete="username"></label><label>Heslo<input id="password" type="password" required autocomplete="current-password"></label><button>PŘIHLÁSIT →</button></form><div id="loginMsg"></div>
 </section>
 <section id="dashboard" hidden>
-<div class="top"><div><div class="tag">KUVAG • ADMIN</div><h1>Výsledky hráčů</h1><label class="gameFilter">Hra<select id="gameSelect"><option value="">Načítám hry…</option></select></label></div><button id="refresh">Obnovit</button></div>
+<div class="top"><div><div class="tag">KUVAG • ADMIN</div><h1>Výsledky hráčů</h1><div class="filters"><label class="gameFilter">Hra<select id="gameSelect"><option value="">Načítám hry…</option></select></label><label class="gameFilter">Hráči<select id="typeSelect"><option value="all">Všichni</option><option value="kuvag">Zaměstnanci KUVAG</option><option value="public">Veřejnost</option><option value="test">Testovací</option></select></label></div></div><button id="refresh">Obnovit</button></div>
 <div class="summary"><div><strong id="players">0</strong><span>celkem</span></div><div><strong id="finished">0</strong><span>dokončeno</span></div><div><strong id="avg">—</strong><span>průměr bodů</span></div></div>
-<div class="tableWrap"><table><thead><tr><th>Hráč</th><th>Start</th><th>Čas</th><th>Body</th><th>Nápovědy</th><th>Chyby</th><th>Stav</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="tableWrap"><table><thead><tr><th>Hráč</th><th>Typ</th><th>Start</th><th>Čas</th><th>Body</th><th>Nápovědy</th><th>Chyby</th><th>Stav</th></tr></thead><tbody id="rows"></tbody></table></div>
 <div id="dataMsg"></div>
 </section>
 </main><script src="admin.js"></script></body></html>
