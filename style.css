@@ -48,3 +48,6 @@ body{background-image:none!important;}
 
 /* Exact supplied KUVAG logo */
 .brand-logo{display:block;width:150px;height:auto;object-fit:contain}.brand{display:flex;align-items:center;gap:16px}.game-label{font-size:14px!important;letter-spacing:.14em!important;font-weight:850;color:#676b6e!important}@media(max-width:420px){.brand-logo{width:120px}.brand{gap:10px}.game-label{font-size:10px!important}}
+
+/* Clean header after removing broken raster logo */
+.brand{display:flex;align-items:center;gap:18px;white-space:nowrap}.brand-wordmark{font-family:Arial,sans-serif;font-size:32px;font-weight:900;font-style:italic;letter-spacing:-2px;color:#8c8e91;line-height:1}.game-label{display:inline-flex;align-items:center;gap:7px;font-size:14px!important;letter-spacing:.14em!important;font-weight:850;color:#676b6e!important}.game-label i{display:inline-block;width:10px;height:10px;background:#ef6446;transform:skew(-15deg)}@media(max-width:420px){.brand{gap:10px}.brand-wordmark{font-size:27px}.game-label{font-size:10px!important}.game-label i{width:8px;height:8px}}
