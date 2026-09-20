@@ -19,13 +19,15 @@
   background-repeat:no-repeat!important;
 }
 
-/* Historical Nepomuk map atmosphere */
+/* Historical map only inside the game card */
 body{
+  background-image:none!important;
+}
+.card{
   background-image:
-    linear-gradient(rgba(242,242,239,.88),rgba(242,242,239,.88)),
-    url("https://mapaonline.cz/img/full/Spezialkarte_4251_Nepomuk_und_Horazdowitz.jpg")!important;
-  background-size:auto, cover!important;
-  background-position:center, center top!important;
-  background-attachment:fixed!important;
-  background-repeat:no-repeat!important;
+    linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),
+    url("https://mapaonline.cz/img/full/Spezialkarte_4251_Nepomuk_und_Horazdowitz.jpg");
+  background-size:auto, cover;
+  background-position:center, center top;
+  background-repeat:no-repeat;
 }
