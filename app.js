@@ -1,6 +1,7 @@
 const SUPABASE_URL="https://wpmodnqcrsmiokgqyiby.supabase.co";
 const SUPABASE_KEY="sb_publishable_rfGxGRufJFkGVB8WWQ3bjQ_CgYZrG7s";
 async function db(path,method="POST",body){try{let r=await fetch(SUPABASE_URL+"/rest/v1/"+path,{method,headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},body:body?JSON.stringify(body):undefined});if(!r.ok)throw new Error(await r.text());return await r.json()}catch(e){console.error("Supabase:",e);return null}}
+async function loadGameInfo(){try{let r=await fetch(SUPABASE_URL+"/rest/v1/games?id=eq.1&select=title,description,intro_text,finish_text,estimated_minutes,is_active",{headers:{"apikey":SUPABASE_KEY}});if(!r.ok)throw new Error(await r.text());let d=await r.json();if(d&&d[0])gameInfo=Object.assign(gameInfo,d[0]);return true}catch(e){console.error("Načtení hry:",e);return false}}
 async function loadGameStations(){try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/get_game_stations",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_game_id:1})});if(!r.ok)throw new Error(await r.text());let data=await r.json();if(!Array.isArray(data)||!data.length)throw new Error("Žádná stanoviště");stations=data.map(s=>({id:s.id,title:s.title||"Stanoviště",image:s.image_url||HERO,story:s.story_text||"",task:s.task_text||"",success:s.success_text||"",hints:[s.hint_1,s.hint_2].filter(Boolean)}));return true}catch(e){console.error("Načtení stanovišť:",e);return false}}
 async function checkStationAnswer(stationId,answer){try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/check_station_answer",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_station_id:stationId,p_answer:answer})});if(!r.ok)throw new Error(await r.text());return {ok:true,correct:await r.json()===true}}catch(e){console.error("Kontrola odpovědi:",e);return {ok:false,correct:false}}}
 async function verifyEmployeeCode(code){try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/verify_employee_code",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_code:code})});if(!r.ok)return false;return await r.json()===true}catch(e){return false}}
@@ -8,7 +9,7 @@ async function createSession(){state.sessionToken=crypto.randomUUID();let rows=a
 async function saveFinish(){if(!state.sessionToken)return;await db("rpc/finish_game_session","POST",{p_session_token:state.sessionToken,p_finished_at:new Date().toISOString(),p_hints_used:state.hints,p_wrong_attempts:state.wrong,p_total_points:state.score})}
 const HERO="https://www.jenprocestovatele.cz/wp-content/uploads/fly-images/15977/nepomuk-mesto-1036x608-c.jpg";
 const SQUARE="https://i0.wp.com/myczechwalks.com/wp-content/uploads/2024/08/nepomuk-e1724778605497.jpeg?fit=1200%2C772&ssl=1";
-let stations=[];
+let stations=[];let gameInfo={title:"Tajemství Nepomuku",description:"",intro_text:"",finish_text:"",estimated_minutes:null};
 let state={name:"",playerType:"public",i:0,score:300,hints:0,wrong:0,start:null,timer:null,hintIndex:0};
 const app=document.querySelector("#app"),timer=document.querySelector("#timer");
 function norm(s){return s.trim().toLocaleUpperCase("cs-CZ").normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
