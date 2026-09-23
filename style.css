@@ -59,4 +59,4 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 /* Remove decorative church watermark */
 .card::before{display:none!important;background-image:none!important;}
 
-.ranking{margin:22px 0;padding:20px;border-radius:18px;background:#f2f2f2;text-align:center}.ranking .eyebrow{margin-bottom:7px}.rank-number{font-size:34px;font-weight:900;color:#ef6446;line-height:1.1;margin-bottom:5px}
+.ranking{margin:22px 0;padding:20px;border-radius:18px;background:#f2f2f2;text-align:center;color:#4b5054}.ranking .eyebrow{margin-bottom:7px}.ranking>div:last-child{color:#4b5054;font-weight:700}.rank-number{font-size:34px;font-weight:900;color:#ef6446;line-height:1.1;margin-bottom:5px}
