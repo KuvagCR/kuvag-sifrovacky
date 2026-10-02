@@ -65,6 +65,6 @@ function syncMapButton(){
   btn.hidden=!state.start;
 }
 function escHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-document.querySelector("#cityMapButton")?.addEventListener("click",openCityMap);
+document.querySelector("#cityMapButton")?.addEventListener("click",openCityMap);document.querySelector("#navigationButton")?.addEventListener("click",openNavigation);
 syncMapButton();
 welcome();
