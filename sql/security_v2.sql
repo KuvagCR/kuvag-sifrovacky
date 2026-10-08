@@ -87,7 +87,7 @@ END;$;
 GRANT EXECUTE ON FUNCTION public.get_game_state_v2(uuid) TO anon,authenticated;
 -- Block direct table writes from client roles (RLS policies should also be reviewed).
 REVOKE INSERT,UPDATE,DELETE ON public.station_progress FROM PUBLIC,anon,authenticated;
-REVOKE UPDATE ON public.game_sessions FROM PUBLIC,anon,authenticated;
+-- NOTE: game_sessions direct UPDATE permissions must be audited against admin workflows before revocation.
 REVOKE ALL ON FUNCTION public.save_station_progress(uuid,bigint,integer,integer) FROM PUBLIC,anon,authenticated;
 REVOKE ALL ON FUNCTION public.save_station_detail(uuid,bigint,integer,integer,timestamptz,timestamptz,jsonb,jsonb) FROM PUBLIC,anon,authenticated;
 REVOKE ALL ON FUNCTION public.check_station_answer(uuid,bigint,text) FROM PUBLIC,anon,authenticated;
