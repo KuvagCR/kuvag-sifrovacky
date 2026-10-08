@@ -100,3 +100,16 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .feedback-stars label:focus-within{outline:2px solid #ef6447;outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:420px){.feedback-stars{gap:5px}.feedback-stars label{border-radius:9px}}
+
+/* Kompaktní a čitelný závěrečný formulář */
+.card.finish .finish-feedback,.card.finish .finish-photos{margin:14px 0;padding:16px;border-radius:15px;background:#fff;color:#292e32;text-align:left;min-height:0;height:auto}
+.card.finish .finish-feedback h2,.card.finish .finish-photos h2{display:block!important;color:#292e32!important;font-size:20px!important;line-height:1.3!important;margin:0 0 6px!important;letter-spacing:0!important;opacity:1!important;visibility:visible!important}
+.card.finish .finish-feedback p,.card.finish .finish-photos p{display:block!important;color:#51565a!important;font-size:14px!important;line-height:1.45!important;margin:4px 0 12px!important;opacity:1!important;visibility:visible!important}
+.card.finish .finish-feedback label,.card.finish .finish-photos label{color:#343a40!important;font-size:14px!important;line-height:1.4!important;opacity:1!important;visibility:visible!important}
+.card.finish .finish-feedback textarea{margin:5px 0 9px;min-height:76px}
+.card.finish .feedback-stars{margin:10px 0 14px;gap:6px}
+.card.finish .feedback-stars label{width:auto;max-width:64px;aspect-ratio:1;border:1px solid #ddd;padding:0}
+.card.finish .feedback-stars label span[aria-hidden]{font-size:34px!important;color:#e5a000!important;visibility:visible!important;opacity:1!important}
+.card.finish .finish-photos input[type=file]{margin:8px 0;padding:10px;font-size:14px}
+.card.finish .photo-consent{margin:8px 0!important}
+.card.finish .finish-feedback button,.card.finish .finish-photos button{margin-top:8px}
