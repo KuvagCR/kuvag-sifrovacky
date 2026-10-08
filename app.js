@@ -64,4 +64,4 @@ function syncMapButton(){
 function escHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 document.querySelector("#cityMapButton")?.addEventListener("click",openCityMap);document.querySelector("#navigationButton")?.addEventListener("click",openNavigation);
 syncMapButton();
-restoreProgress().then(ok=>{if(!ok)welcome()}).catch(e=>{console.error("Obnovení hry:",e);welcome()});
+welcome();restoreProgress().then(ok=>{if(!ok&&state.start)console.warn("Obnovení rozehrané hry se nepodařilo.")}).catch(e=>{console.error("Obnovení hry:",e)});
