@@ -64,6 +64,9 @@ UPDATE public.game_sessions SET finished_at=now(),current_station=total,is_finis
  FROM public.station_progress WHERE session_id=ses.id AND answer_verified)
 WHERE id=ses.id;
 END;$$;
+-- Block direct table writes from client roles (RLS policies should also be reviewed).
+REVOKE INSERT,UPDATE,DELETE ON public.station_progress FROM PUBLIC,anon,authenticated;
+REVOKE UPDATE ON public.game_sessions FROM PUBLIC,anon,authenticated;
 REVOKE ALL ON FUNCTION public.save_station_progress(uuid,bigint,integer,integer) FROM PUBLIC,anon,authenticated;
 REVOKE ALL ON FUNCTION public.save_station_detail(uuid,bigint,integer,integer,timestamptz,timestamptz,jsonb,jsonb) FROM PUBLIC,anon,authenticated;
 REVOKE ALL ON FUNCTION public.check_station_answer(uuid,bigint,text) FROM PUBLIC,anon,authenticated;
