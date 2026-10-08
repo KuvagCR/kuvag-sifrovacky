@@ -64,6 +64,27 @@ UPDATE public.game_sessions SET finished_at=now(),current_station=total,is_finis
  FROM public.station_progress WHERE session_id=ses.id AND answer_verified)
 WHERE id=ses.id;
 END;$$;
+CREATE OR REPLACE FUNCTION public.get_game_state_v2(p_session_token uuid)
+RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'public' AS $
+DECLARE ses public.game_sessions%ROWTYPE; next_id bigint; next_order integer; progress jsonb; total_score integer;
+BEGIN
+ SELECT * INTO ses FROM public.game_sessions WHERE session_token=p_session_token;
+ IF NOT FOUND THEN RETURN NULL; END IF;
+ SELECT s.id,s.station_order INTO next_id,next_order FROM public.stations s
+ WHERE s.game_id=ses.game_id AND NOT EXISTS
+ (SELECT 1 FROM public.station_progress sp WHERE sp.session_id=ses.id AND sp.station_id=s.id AND sp.answer_verified)
+ ORDER BY s.station_order,s.id LIMIT 1;
+ SELECT coalesce(jsonb_agg(jsonb_build_object('stationId',sp.station_id,'hints',sp.hints_used,'wrong',sp.wrong_attempts,
+ 'navigationUsed',sp.navigation_used,'completed',sp.answer_verified)),'[]'::jsonb)
+ INTO progress FROM public.station_progress sp JOIN public.stations s ON s.id=sp.station_id
+ WHERE sp.session_id=ses.id AND s.game_id=ses.game_id;
+ SELECT coalesce(sum(greatest(0,100-CASE WHEN sp.hints_used=0 THEN 0 WHEN sp.hints_used=1 THEN 10 ELSE 30 END
+ -greatest(sp.wrong_attempts,0)*5-CASE WHEN sp.navigation_used THEN 30 ELSE 0 END)),0)
+ INTO total_score FROM public.station_progress sp WHERE sp.session_id=ses.id AND sp.answer_verified;
+ RETURN jsonb_build_object('gameId',ses.game_id,'isFinished',ses.is_finished,'startedAt',ses.started_at,
+ 'nextStationId',next_id,'nextStationOrder',next_order,'progress',progress,'earnedPoints',total_score);
+END;$;
+GRANT EXECUTE ON FUNCTION public.get_game_state_v2(uuid) TO anon,authenticated;
 -- Block direct table writes from client roles (RLS policies should also be reviewed).
 REVOKE INSERT,UPDATE,DELETE ON public.station_progress FROM PUBLIC,anon,authenticated;
 REVOKE UPDATE ON public.game_sessions FROM PUBLIC,anon,authenticated;
