@@ -82,3 +82,11 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .photo-consent{display:flex;align-items:flex-start;gap:8px;font-size:.9rem;margin:14px 0}
 .photo-consent input{flex-shrink:0;margin-top:3px}
 @media(max-width:480px){.finish-photos{padding:14px}.photo-preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+.finish-feedback{margin:24px 0;padding:20px;border:1px solid #e4e4e4;border-radius:14px;background:#fff;text-align:left}
+.finish-feedback h2{font-size:1.25rem;margin:0 0 10px}
+.finish-feedback label{display:block;margin:12px 0 6px}
+.finish-feedback textarea{width:100%;box-sizing:border-box;resize:vertical;min-height:90px;border:1px solid #ccc;border-radius:10px;padding:12px;font:inherit}
+.feedback-stars{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.feedback-stars label{display:inline-flex;align-items:center;gap:4px;padding:8px;border:1px solid #ddd;border-radius:8px;margin:0;cursor:pointer}
+@media(max-width:480px){.finish-feedback{padding:14px}}
