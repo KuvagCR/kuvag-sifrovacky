@@ -72,3 +72,13 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .station-tools{display:flex;justify-content:flex-end;margin:-8px 0 10px}.map-in-card{width:auto;margin:0;padding:9px 12px;border:1px solid #d9dcdd;background:#f3f4f4;color:var(--charcoal);box-shadow:none;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.04em}.map-in-card:hover{background:#e9ebeb}
 
 .navigation-station{margin-top:10px;border:1px solid #d9dcdd;background:#fff}.navigation-station span{font-size:11px;opacity:.7;margin-left:6px}
+
+/* Fotografie na konci hry */
+.finish-photos{margin:24px 0;padding:20px;border:1px solid #e4e4e4;border-radius:14px;text-align:left;background:#fff}
+.finish-photos h2{font-size:1.25rem;margin:0 0 10px}
+.finish-photos input[type=file]{display:block;width:100%;max-width:100%;margin:14px 0;padding:12px;border:1px dashed #a9a9a9;border-radius:10px}
+.photo-preview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
+.photo-preview{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
+.photo-consent{display:flex;align-items:flex-start;gap:8px;font-size:.9rem;margin:14px 0}
+.photo-consent input{flex-shrink:0;margin-top:3px}
+@media(max-width:480px){.finish-photos{padding:14px}.photo-preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
