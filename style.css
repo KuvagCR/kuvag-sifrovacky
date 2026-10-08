@@ -113,3 +113,8 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .card.finish .finish-photos input[type=file]{margin:8px 0;padding:10px;font-size:14px}
 .card.finish .photo-consent{margin:8px 0!important}
 .card.finish .finish-feedback button,.card.finish .finish-photos button{margin-top:8px}
+
+/* Oprava rozbitého řádku souhlasu u nahrávání fotografií */
+.card.finish .finish-photos .photo-consent{display:flex!important;flex-direction:row!important;align-items:flex-start!important;justify-content:flex-start!important;gap:10px!important;width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important;margin:12px 0!important;padding:0!important;overflow:visible!important;text-align:left!important;white-space:normal!important}
+.card.finish .finish-photos .photo-consent input[type=checkbox]{position:static!important;display:block!important;flex:0 0 18px!important;width:18px!important;height:18px!important;min-width:18px!important;margin:2px 0 0!important;padding:0!important;appearance:auto!important}
+.card.finish .finish-photos .photo-consent span{display:block!important;flex:1 1 auto!important;min-width:0!important;width:auto!important;max-width:100%!important;overflow-wrap:break-word!important;word-break:normal!important;white-space:normal!important;line-height:1.45!important;text-align:left!important}
