@@ -32,7 +32,7 @@ async function installNepomukScenario(){
  if(Number(editingGameId)!==1){alert("Tento scénář je určen pouze pro hru ID 1.");return;}
  const year=prompt("Zadejte ověřený letopočet na podstavci sochy Jana Křtitele. Pokud jej zatím neznáte, zvolte Zrušit; nic se nezmění.");
  if(year===null)return;
- if(!/^\\d{4}$/.test(year.trim())){alert("Je nutné zadat ověřený čtyřmístný letopočet.");return;}
+ if(!/^[0-9]{4}$/.test(year.trim())){alert("Je nutné zadat ověřený čtyřmístný letopočet.");return;}
  const existing=await req("/rest/v1/stations?select=*&game_id=eq.1&order=station_order.asc");
  if(!confirm("Nahrát nový příběh a všech 9 zastavení do hry ID 1? "+existing.length+" stávajících zastavení bude upraveno nebo nahrazeno. Hru doporučujeme ponechat v testovacím režimu."))return;
  const backup={game:gamesCache.find(g=>Number(g.id)===1),stations:existing,exported_at:new Date().toISOString()};
