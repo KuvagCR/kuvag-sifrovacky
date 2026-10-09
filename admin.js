@@ -44,8 +44,8 @@ async function installNepomukScenario(){
   /* Existing station IDs are preserved where possible so player progress links stay stable. */
   for(let i=0;i<data.length;i++){
    const old=existing[i];const payload={...data[i]};delete payload.game_id;
-   if(old)await req("/rest/v1/stations?id=eq."+encodeURIComponent(old.id),{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify(payload)});
-   else await req("/rest/v1/stations",{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify(data[i])});
+   try{if(old)await req("/rest/v1/stations?id=eq."+encodeURIComponent(old.id),{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify(payload)});
+   else await req("/rest/v1/stations",{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify(data[i])});}catch(err){throw new Error("Stanoviště "+(i+1)+" („"+data[i].title+"“): "+err.message)}
   }
   if(existing.length>data.length)alert("Pozor: "+(existing.length-data.length)+" původních stanovišť navíc zůstalo zachováno. Před spuštěním hry je zkontrolujte.");
   await req("/rest/v1/games?id=eq.1",{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify({title:"Tajemství Nepomuku – Kámen, který neměl existovat",description:"Historická detektivní šifrovačka po stopách místních pověstí.",intro_text:"Po velké povodni se v Zeleném dole objevil kámen s podivnými otisky. Dva pamětníci v něm poznali dávnou památku svatého Vojtěcha. Jenže v zapomenutém dopise někdo tvrdí, že nález skrývá ještě jiné tajemství. Projděte Nepomuk, rozluštěte devět stop a odhalte, co se pisatel snažil zachránit.",finish_text:"Odhalili jste tajemství Nepomuku. Není jím zlato ani poklad pod zemí, ale paměť města – příběhy, které se předávají z generace na generaci. Děkujeme, že jste se stali jejich součástí."})});
