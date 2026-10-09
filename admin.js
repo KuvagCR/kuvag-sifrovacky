@@ -37,7 +37,7 @@ async function installNepomukScenario(){
  if(!confirm("Nahrát nový příběh a všech 9 zastavení do hry ID 1? "+existing.length+" stávajících zastavení bude upraveno nebo nahrazeno. Hru doporučujeme ponechat v testovacím režimu."))return;
  const backup={game:gamesCache.find(g=>Number(g.id)===1),stations:existing,exported_at:new Date().toISOString()};
  const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
- const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="nepomuk-zaloha-pred-pribehem.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),10000);
+ const a=document.createElement("a");a.href=globalThis.URL.createObjectURL(blob);a.download="nepomuk-zaloha-pred-pribehem.json";a.click();setTimeout(()=>globalThis.URL.revokeObjectURL(a.href),10000);
  const btn=document.querySelector("#installNepomukStory");if(btn)btn.disabled=true;
  try{
   const data=NEPOMUK_SCENARIO.map(s=>({...s,game_id:1,correct_answer:s.correct_answer==="__OVERIT_LETOPOCET__"?year.trim():s.correct_answer}));
