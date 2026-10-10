@@ -118,3 +118,14 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .card.finish .finish-photos .photo-consent{display:flex!important;flex-direction:row!important;align-items:flex-start!important;justify-content:flex-start!important;gap:10px!important;width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important;margin:12px 0!important;padding:0!important;overflow:visible!important;text-align:left!important;white-space:normal!important}
 .card.finish .finish-photos .photo-consent input[type=checkbox]{position:static!important;display:block!important;flex:0 0 18px!important;width:18px!important;height:18px!important;min-width:18px!important;margin:2px 0 0!important;padding:0!important;appearance:auto!important}
 .card.finish .finish-photos .photo-consent span{display:block!important;flex:1 1 auto!important;min-width:0!important;width:auto!important;max-width:100%!important;overflow-wrap:break-word!important;word-break:normal!important;white-space:normal!important;line-height:1.45!important;text-align:left!important}
+
+/* Přehledná Polybiova tabulka pro druhé stanoviště */
+.polybius-task p{margin:0 0 16px;line-height:1.6}
+.polybius-wrap{overflow-x:auto;margin:14px 0 18px}
+.polybius-table{width:100%;max-width:410px;margin:auto;border-collapse:separate;border-spacing:4px;table-layout:fixed;text-align:center}
+.polybius-table th,.polybius-table td{padding:10px 3px;border-radius:7px;font-size:clamp(15px,3.5vw,21px);line-height:1.2}
+.polybius-table th{background:#e7ddd0;color:#493c31;font-weight:800}
+.polybius-table td{background:#fff;border:1px solid #d7d0c6;font-weight:700;color:#252525}
+.polybius-code{padding:13px 9px;margin:14px 0 20px;text-align:center;background:#fff;border:2px dashed #ef6446;border-radius:12px}
+.polybius-code span{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;margin-bottom:8px}
+.polybius-code strong{font-size:clamp(15px,3.6vw,22px);line-height:1.7;overflow-wrap:anywhere}
