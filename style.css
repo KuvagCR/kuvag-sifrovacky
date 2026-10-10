@@ -152,3 +152,9 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .polybius-task .polybius-code strong{letter-spacing:.03em;color:#46372b}
 .puzzle-note{padding:12px;border-radius:10px;background:#e6eee8;color:#345746;font-size:13px;font-weight:700;line-height:1.5}
 @media(max-width:390px){.puzzle-heading{padding:16px 12px}.puzzle-step{padding-left:10px;padding-right:10px;gap:9px}.puzzle-step-number{width:31px;height:31px}.polybius-task .polybius-table td,.polybius-task .polybius-table th{padding:8px 2px}}
+
+/* Historická zajímavost po prvním úkolu */
+.voitech-fact{margin:22px 0 10px;padding:19px 20px;border-radius:14px;background:#f5f0e6;border-left:4px solid #bc8d52;color:#333;text-align:left}
+.voitech-fact-title{font-weight:850;font-size:14px;letter-spacing:.055em;color:#705332;margin-bottom:10px}
+.voitech-fact p{font-size:15px;line-height:1.65;margin:0 0 10px}
+.voitech-fact p:last-child{margin-bottom:0}
