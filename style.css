@@ -167,3 +167,8 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .manuscript.small-letter{padding:20px 18px}
 .manuscript.small-letter .manuscript-text{font-size:clamp(15px,3.7vw,19px)}
 .story-text .letter.manuscript{margin:18px 0}
+
+.final-legend{margin:22px 0;padding:22px 20px;background:#f5ecdb;border:1px solid #d9bf91;border-radius:14px;text-align:left;color:#473824}
+.final-legend-heading{font-size:13px;font-weight:800;letter-spacing:.09em;color:#86613a;margin-bottom:14px}
+.final-legend p{font:16px/1.7 Georgia,serif;margin:0 0 12px}
+.final-legend .final-legend-disclaimer{font:12px/1.5 Arial,sans-serif;color:#776a59;margin-bottom:0}
