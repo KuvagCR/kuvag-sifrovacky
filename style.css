@@ -220,3 +220,26 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
   box-shadow:none;
 }
 @media(max-width:390px){.first-station-code{padding:24px 10px;font-size:clamp(19px,5.2vw,26px);letter-spacing:.015em}}
+
+/* Přirozeně zestárlý list – bez kreslených válců a rámečku */
+.letter.manuscript,.letter.manuscript.small-letter{
+  position:relative;isolation:isolate;overflow:hidden;
+  margin:20px 2px 25px;padding:32px 25px 36px;
+  border:0;border-radius:0;
+  clip-path:polygon(1% 0%,8% 1%,16% 0%,25% 1%,34% 0%,44% 1%,55% 0%,67% 1%,79% 0%,90% 1%,99% 0%,100% 7%,99% 17%,100% 27%,99% 38%,100% 51%,99% 65%,100% 76%,99% 88%,100% 99%,91% 100%,80% 99%,70% 100%,58% 99%,45% 100%,33% 99%,21% 100%,11% 99%,0% 100%,1% 88%,0% 76%,1% 63%,0% 50%,1% 37%,0% 24%,1% 12%);
+  background:
+    radial-gradient(ellipse at 0% 20%,rgba(91,47,21,.28),transparent 23%),
+    radial-gradient(ellipse at 100% 82%,rgba(103,52,23,.31),transparent 27%),
+    radial-gradient(ellipse at 45% 0%,rgba(121,68,30,.21),transparent 20%),
+    radial-gradient(ellipse at 55% 100%,rgba(106,52,21,.25),transparent 21%),
+    radial-gradient(circle at 21% 42%,rgba(137,89,44,.09),transparent 25%),
+    radial-gradient(circle at 78% 31%,rgba(125,77,33,.10),transparent 21%),
+    repeating-linear-gradient(8deg,transparent 0 9px,rgba(101,64,31,.015) 10px 11px),
+    linear-gradient(112deg,#d6b17b 0%,#f1d9a8 13%,#f5e5bf 48%,#ecd09a 85%,#c99d62 100%);
+  box-shadow:none;color:#402c1a;
+}
+.letter.manuscript::before,.letter.manuscript::after{content:none;display:none}
+.letter.manuscript .manuscript-label{position:relative;font-size:10px;color:#7c5730;letter-spacing:.08em}
+.letter.manuscript .manuscript-text{position:relative;color:#3c291a;font-size:clamp(17px,4vw,21px);font-style:italic;line-height:1.75;text-align:left}
+.letter-context{margin:17px 0;color:#474747;font-size:16px;line-height:1.65}
+@media(max-width:420px){.letter.manuscript,.letter.manuscript.small-letter{padding:30px 19px 34px;margin-left:0;margin-right:0}}
