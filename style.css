@@ -129,3 +129,26 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .polybius-code{padding:13px 9px;margin:14px 0 20px;text-align:center;background:#fff;border:2px dashed #ef6446;border-radius:12px}
 .polybius-code span{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;margin-bottom:8px}
 .polybius-code strong{font-size:clamp(15px,3.6vw,22px);line-height:1.7;overflow-wrap:anywhere}
+
+/* Grafická karta hádanky u sochy */
+.polybius-task{padding:0!important;background:transparent!important;border:0!important;overflow:hidden}
+.puzzle-heading{display:flex;align-items:center;gap:14px;padding:20px 17px;background:linear-gradient(135deg,#293c3c,#43554c);color:#fff;border-radius:18px 18px 0 0}
+.puzzle-heading-icon{display:grid;place-items:center;flex-shrink:0;width:52px;height:52px;border:1px solid #d8b77b;border-radius:50%;font-size:30px;color:#e7c88c}
+.puzzle-kicker{display:block;font-size:10px;letter-spacing:.13em;color:#e6c68b;font-weight:800}
+.puzzle-heading h3{font-size:clamp(20px,5vw,28px);margin:4px 0;color:#fff;line-height:1.2}
+.puzzle-heading p{margin:0;color:#e5e5dc;font-size:13px}
+.puzzle-step{display:flex;gap:12px;padding:20px 15px 0;background:#f7f3eb;border-left:1px solid #e4d8c8;border-right:1px solid #e4d8c8}
+.puzzle-step-last{padding-bottom:22px;border-bottom:1px solid #e4d8c8;border-radius:0 0 18px 18px}
+.puzzle-step-number{flex-shrink:0;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#dd694a;color:#fff;font-size:14px;font-weight:900}
+.puzzle-step-body{min-width:0;flex:1;padding-bottom:18px;border-bottom:1px dashed #d7c9b6}
+.puzzle-step-last .puzzle-step-body{border:0;padding-bottom:0}
+.puzzle-step-body h4{margin:2px 0 8px;color:#273b38;font-size:19px;line-height:1.3}
+.puzzle-step-body p{margin:0 0 14px;font-size:15px;line-height:1.6;color:#41433f}
+.puzzle-table-label{text-align:center;color:#745c3e;font-size:11px;letter-spacing:.13em;font-weight:900;margin-top:10px}
+.polybius-task .polybius-table{border-spacing:3px}
+.polybius-task .polybius-table th{background:#d7c6a7;color:#3c342a}
+.polybius-task .polybius-table td{background:#fffdf8;border:1px solid #e2d7c8;box-shadow:0 2px 0 #e9dfd0}
+.polybius-task .polybius-code{background:#fff9ed;border:1px solid #d2b987;box-shadow:0 3px 0 #eadfc8}
+.polybius-task .polybius-code strong{letter-spacing:.03em;color:#46372b}
+.puzzle-note{padding:12px;border-radius:10px;background:#e6eee8;color:#345746;font-size:13px;font-weight:700;line-height:1.5}
+@media(max-width:390px){.puzzle-heading{padding:16px 12px}.puzzle-step{padding-left:10px;padding-right:10px;gap:9px}.puzzle-step-number{width:31px;height:31px}.polybius-task .polybius-table td,.polybius-task .polybius-table th{padding:8px 2px}}
