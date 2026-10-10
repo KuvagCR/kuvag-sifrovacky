@@ -200,3 +200,23 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
 .letter.manuscript .manuscript-text{font-family:Georgia,"Times New Roman",serif;font-style:italic;color:#432c1a;line-height:1.75}
 .letter.manuscript.small-letter{padding:36px 20px 40px}
 @media(max-width:420px){.letter.manuscript{margin-left:0;margin-right:0;padding-left:17px;padding-right:17px}.letter.manuscript.small-letter{padding-left:16px;padding-right:16px}}
+
+/* Číselná šifra – zvýrazněná karta podle vzoru */
+.first-station-code{
+  display:block;
+  margin:22px 0 26px;
+  padding:29px 16px;
+  border:3px dashed #ef674d;
+  border-radius:20px;
+  background:#fff;
+  color:#292d31;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(22px,5.4vw,34px);
+  font-weight:850;
+  letter-spacing:.055em;
+  line-height:1.5;
+  text-align:center;
+  overflow-wrap:anywhere;
+  box-shadow:none;
+}
+@media(max-width:390px){.first-station-code{padding:24px 10px;font-size:clamp(19px,5.2vw,26px);letter-spacing:.015em}}
