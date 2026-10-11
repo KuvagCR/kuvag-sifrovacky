@@ -617,3 +617,6 @@ label.leaderboard-consent input[type="checkbox"]{
 /* Každý z pěti akrostichových veršů na jediném řádku i na mobilu. */
 .acrostic-lines{padding:10px 8px!important;overflow-x:auto;max-width:100%;box-sizing:border-box}
 .acrostic-lines p{white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;font-size:clamp(10px,2.75vw,15px)!important;line-height:1.5!important;letter-spacing:-.025em!important;padding:12px 6px!important;margin:8px 0!important}
+
+/* Sifrovaci valec nalezato: sedm prstencu vedle sebe. */
+.chapel-cylinder{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;width:100%;box-sizing:border-box;padding:9px 4px;margin:16px 0;background:#4a3523;border:2px solid #a17b45;border-radius:10px;overflow:hidden}.chapel-ring{display:flex;flex-direction:column;align-items:stretch;gap:3px;min-width:0}.chapel-glyph{display:flex;align-items:center;justify-content:center;height:34px;min-width:0;background:#d3bb8e;color:#3b291b;font-family:Georgia,serif;font-weight:800;font-size:clamp(10px,2.4vw,17px);white-space:nowrap;border-radius:3px}.chapel-glyph-center{background:#fff2c9;outline:2px solid #e7aa44;z-index:1}.chapel-turn{min-height:32px!important;padding:3px 0!important;margin:0!important;width:100%;font-size:12px!important;background:#8e693b!important;color:white!important}
