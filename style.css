@@ -1,245 +1,487 @@
-:root{--orange:#ef6446;--charcoal:#292e32;--dark:#171b1e;--grey:#697076;--paper:#f5f5f3}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(145deg,#e7e8e8,#f7f7f5);color:var(--charcoal);min-height:100vh}.shell{max-width:520px;margin:auto;padding:18px 14px 45px}header{display:flex;justify-content:space-between;align-items:center;padding:10px 6px 18px}.brand{font-size:22px;font-weight:950;letter-spacing:.06em;color:var(--charcoal)}.brand:after{content:"";display:inline-block;width:7px;height:7px;background:var(--orange);margin-left:3px;transform:skew(-18deg)}.brand span{font-size:10px;font-weight:800;letter-spacing:.16em;margin-left:9px;color:var(--grey)}.timer{font-variant-numeric:tabular-nums;font-weight:900;background:#fff;padding:8px 11px;border-radius:10px;box-shadow:0 4px 15px #0001}.card{position:relative;overflow:hidden;background:linear-gradient(160deg,#fff 0 66%,#f0f0ee 66%);border-radius:28px;padding:32px 25px;box-shadow:0 16px 45px #0002;min-height:600px;border:1px solid #fff}.card:after{content:"";position:absolute;width:220px;height:32px;background:var(--orange);opacity:.92;right:-85px;bottom:62px;transform:rotate(-55deg);z-index:0}.card>*{position:relative;z-index:1}.eyebrow{color:var(--orange);text-transform:uppercase;font-size:12px;font-weight:950;letter-spacing:.14em}h1{font-size:43px;line-height:.98;margin:14px 0 18px;letter-spacing:-.04em;text-transform:uppercase}h1 .orange{color:var(--orange)}h2{font-size:31px;margin:12px 0 8px;letter-spacing:-.025em}p{line-height:1.55;color:#555}.progress{height:7px;background:#d9dcdd;border-radius:10px;overflow:hidden;margin:18px 0 28px}.progress i{display:block;height:100%;background:var(--orange)}.task{background:#f0f1f1;border-left:5px solid var(--orange);padding:18px;border-radius:12px;margin:22px 0;line-height:1.55}input{width:100%;font:inherit;padding:16px 17px;border:1px solid #c9cdcf;border-radius:13px;margin:8px 0;background:#fff;outline:none}input:focus{border-color:var(--orange);box-shadow:0 0 0 3px #ef644620}button{width:100%;border:0;border-radius:13px;padding:16px;font:inherit;font-weight:900;cursor:pointer;margin-top:11px;background:var(--orange);color:#fff;box-shadow:0 8px 18px #ef644630;letter-spacing:.02em}button:hover{filter:brightness(.97)}.secondary{background:#eceeed;color:var(--charcoal);box-shadow:none}.stats{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:22px 0}.stat{background:#292e32;color:#fff;padding:15px;border-radius:13px;text-align:center}.stat strong{display:block;font-size:24px;color:#fff}.msg{min-height:26px;font-weight:800;margin-top:11px}.ok{color:#26844c}.bad{color:#b43c32}.hint{background:#fff0ea;border:1px solid #ef644633;padding:14px;border-radius:11px;margin-top:12px}.lock{font-size:58px}.small{font-size:13px;color:#777}.intro-lines{margin:28px 0}.intro-lines div{padding:8px 0;font-weight:750}.intro-lines b{color:var(--orange);display:inline-block;width:28px}.finish{background:linear-gradient(155deg,#252a2e,#111416);color:#fff}.finish h1,.finish p{color:#fff}.finish:after{opacity:.55}@media(max-width:380px){h1{font-size:37px}.card{padding:27px 20px}}.hero-photo{height:235px;margin:18px -25px 20px;background-size:cover;background-position:center;position:relative}.hero-photo span{position:absolute;left:24px;bottom:18px;color:#fff;font-size:25px;font-weight:850;line-height:1.05;text-shadow:0 2px 12px #000}.station-photo{display:block;width:100%;height:220px;object-fit:cover;border-radius:16px;margin:18px 0 8px;box-shadow:0 8px 22px #0002}.story-mark{font-size:58px;color:var(--orange);margin:34px 0 16px}.story-text{font-size:18px;line-height:1.7;margin-bottom:30px}.letter{margin:22px 0;padding:20px 18px;background:#f2ede5;border-left:4px solid var(--orange);font-family:Georgia,serif;font-style:italic;line-height:1.65;box-shadow:0 5px 18px #0000000d}.small-letter{font-size:15px;margin-top:24px}.story-text strong{color:var(--charcoal)}.cipher{background:#262b2f;color:#fff;border-radius:15px;padding:15px;margin:17px 0}.cipher-title{font-size:11px;letter-spacing:.14em;font-weight:900;color:var(--orange);margin-bottom:10px}.cipher-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.cipher-grid span{background:#fff1;border-radius:7px;text-align:center;padding:6px 2px}.cipher-grid b,.cipher-grid small{display:block}.cipher-grid b{font-size:13px}.cipher-grid small{font-size:9px;color:#bbb}.field-badge{display:inline-block;margin:14px 0 2px;padding:8px 11px;background:#ef644618;color:var(--orange);border:1px solid #ef644655;border-radius:20px;font-size:11px;font-weight:950;letter-spacing:.08em}
-.player-type{margin:16px 0 6px;padding:14px 16px;border:1px solid #ddd;border-radius:12px;text-align:left;background:#fafafa}.player-type-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:#777}.player-type label{display:block;margin:8px 0;font-weight:700}.player-type input{width:auto;margin-right:8px;accent-color:#ef6446}
 
-.player-type{margin:16px 0 6px;padding:14px 16px;border:1px solid #ddd;border-radius:12px;text-align:left;background:#fafafa}.player-type-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:#777}.player-type label{display:block;margin:8px 0;font-weight:700}.player-type input{width:auto;margin-right:8px;accent-color:#ef6446}
+async function saveStationDetail(stationId) {
+  if (!state.sessionToken) return false;
 
-.completion-badge{margin:22px 0;padding:13px 16px;border:1px solid #ef6446;border-radius:999px;color:#ef6446;font-size:12px;font-weight:900;letter-spacing:1.3px;text-align:center}.finish .letter{margin-top:20px}
+  const finishedAt = new Date().toISOString();
 
-.employee-code{margin:10px 0}.employee-code[hidden]{display:none}.employee-code .msg{margin-top:8px}
+  try {
+    const response = await fetch(
+      SUPABASE_URL + "/rest/v1/rpc/save_station_detail",
+      {
+        method: "POST",
+        headers: {
+          apikey: SUPABASE_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          p_session_token: state.sessionToken,
+          p_station_id: stationId,
+          p_hints_used: state.stationHints,
+          p_wrong_attempts: state.stationWrong,
+          p_started_at: state.stationStartedAt,
+          p_finished_at: finishedAt,
+          p_answer_history: state.stationAnswerHistory || [],
+          p_hints_history: state.stationHintsHistory || []
+        })
+      }
+    );
 
-.hero-photo{background-position:center 35%}
+    if (!response.ok) {
+      console.error(
+        "Detail stanoviště:",
+        response.status,
+        await response.text()
+      );
+      return false;
+    }
 
-/* Hero: show the source photo without zoom/cropping */
-.hero-photo{background-size:contain!important;background-repeat:no-repeat!important;background-position:center center!important;background-color:#202833!important}
-
-/* Hero panorama: fill the full width */
-.hero-photo{
-  background-size:100% 100%, cover!important;
-  background-position:center center, center center!important;
-  background-repeat:no-repeat!important;
+    return true;
+  } catch (error) {
+    console.error("Detail stanoviště:", error);
+    return false;
+  }
 }
 
-/* Subtle architectural church outline inside the game card */
-body{background-image:none!important;}
-.card{
-  background-color:#fff;
-  background-image:none!important;
-  position:relative;
-  overflow:hidden;
-}
-.card::before{
-  content:"";
-  position:absolute;
-  right:-28px;
-  bottom:12px;
-  width:330px;
-  height:470px;
-  opacity:.07;
-  pointer-events:none;
-  background-repeat:no-repeat;
-  background-position:right bottom;
-  background-size:contain;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 380 520'%3E%3Cpath fill='%235f6468' d='M70 490V260h50V185l25-48 25 48v75h18v-42l22-38 22 38v42h18v-75l25-48 25 48v75h50v230h-92V355c0-31-46-31-46 0v135H70zm22-230h56v-58l-28-37-28 37v58zm140 0h56v-58l-28-37-28 37v58zM177 260h26v-28l-13-24-13 24v28z'/%3E%3C/svg%3E");
-}
-.card > *{position:relative;z-index:1;}
-
-
-/* Header — official uploaded KUVAG logo */
-.brand:after{display:none!important}
-header .brand{display:flex;align-items:center;gap:16px;white-space:nowrap}
-header .real-kuvag-logo{display:block;width:145px;height:auto;object-fit:contain}
-header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#676b6e;margin-left:0}
-.card .eyebrow{color:var(--orange);text-transform:uppercase;font-size:12px;font-weight:950;letter-spacing:.14em}
-@media(max-width:420px){
-  header .brand{gap:10px}
-  header .real-kuvag-logo{width:118px}
-  header .game-label{font-size:9px}
+function safeGameText(value) {
+  return escHtml(value || "").replace(/\n/g, "<br>");
 }
 
-/* Remove decorative church watermark */
-.card::before{display:none!important;background-image:none!important;}
-
-.ranking{margin:22px 0;padding:20px;border-radius:18px;background:#f2f2f2;text-align:center;color:#4b5054}.ranking .eyebrow{margin-bottom:7px}.ranking>div:last-child{color:#4b5054;font-weight:700}.rank-number{font-size:34px;font-weight:900;color:#ef6446;line-height:1.1;margin-bottom:5px}
-
-.leaderboard-consent{display:flex;gap:9px;align-items:flex-start;margin:14px 0;font-size:13px;color:#555;text-align:left}.leaderboard-consent input{width:auto;margin-top:2px}.leaderboard-box{margin:20px 0;border:1px solid #e4e4e4;border-radius:18px;overflow:hidden;background:#fff}.leaderboard-title{padding:15px 16px;font-weight:900;color:#333;background:#f4f4f4;text-align:left}.leaderboard-table{width:100%}.leaderboard-row{display:grid;grid-template-columns:34px minmax(0,1fr) 55px 55px;gap:7px;padding:10px 12px;border-top:1px solid #eee;align-items:center;font-size:13px;color:#3f4448;text-align:left}.leaderboard-row span:nth-child(3),.leaderboard-row span:nth-child(4){text-align:right;font-variant-numeric:tabular-nums}.leaderboard-head{font-size:11px;font-weight:800;text-transform:uppercase;color:#777;background:#fafafa}.leaderboard-empty{padding:18px;color:#666;font-size:13px}
-
-.unavailable-card{min-height:0!important}.unavailable-content{padding:18px 4px 30px;text-align:center}.unavailable-content .eyebrow{margin-bottom:22px}.unavailable-icon{font-size:42px;margin:10px 0 14px}.unavailable-content h1{font-size:34px;line-height:1.08;margin:0 0 18px}.unavailable-content p{max-width:380px;margin:0 auto 14px;line-height:1.55}.unavailable-content .small{margin-top:22px;color:#777}
-
-
-/* Free orientation map during gameplay */
-.header-actions{display:flex;align-items:center;gap:8px}.map-button{width:auto;margin:0;padding:9px 11px;border-radius:10px;background:#fff;color:var(--charcoal);box-shadow:0 4px 15px #0001;font-size:12px;letter-spacing:.03em}.map-button[hidden]{display:none}.map-modal{position:fixed;inset:0;z-index:1000;background:rgba(20,24,27,.72);display:flex;align-items:center;justify-content:center;padding:16px}.map-sheet{width:min(680px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:22px;padding:18px;box-shadow:0 18px 60px #0005}.map-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.map-head h2{margin:4px 0 0}.map-close{width:44px;height:44px;margin:0;padding:0;border-radius:50%;font-size:27px;line-height:1;background:#eceeed;color:var(--charcoal);box-shadow:none}.map-note{margin:10px 0 14px;font-size:14px}.city-map{display:block;width:100%;height:520px;border:0;border-radius:14px;background:#eee}.map-credit{font-size:11px;color:#777;margin-top:8px;text-align:right}.map-credit a{color:inherit}.map-open{overflow:hidden}@media(max-width:520px){header{gap:8px}.header-actions{gap:6px}.map-button{padding:8px;font-size:11px}.timer{padding:8px}.city-map{height:62vh}.map-sheet{padding:14px}.map-modal{padding:8px}}
-
-.station-tools{display:flex;justify-content:flex-end;margin:-8px 0 10px}.map-in-card{width:auto;margin:0;padding:9px 12px;border:1px solid #d9dcdd;background:#f3f4f4;color:var(--charcoal);box-shadow:none;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.04em}.map-in-card:hover{background:#e9ebeb}
-
-.navigation-station{margin-top:10px;border:1px solid #d9dcdd;background:#fff}.navigation-station span{font-size:11px;opacity:.7;margin-left:6px}
-
-/* Fotografie na konci hry */
-.finish-photos{margin:24px 0;padding:20px;border:1px solid #e4e4e4;border-radius:14px;text-align:left;background:#fff}
-.finish-photos h2{font-size:1.25rem;margin:0 0 10px}
-.finish-photos input[type=file]{display:block;width:100%;max-width:100%;margin:14px 0;padding:12px;border:1px dashed #a9a9a9;border-radius:10px}
-.photo-preview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
-.photo-preview{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
-.photo-consent{display:flex;align-items:flex-start;gap:8px;font-size:.9rem;margin:14px 0}
-.photo-consent input{flex-shrink:0;margin-top:3px}
-@media(max-width:480px){.finish-photos{padding:14px}.photo-preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-
-.finish-feedback{margin:24px 0;padding:20px;border:1px solid #e4e4e4;border-radius:14px;background:#fff;text-align:left}
-.finish-feedback h2{font-size:1.25rem;margin:0 0 10px}
-.finish-feedback label{display:block;margin:12px 0 6px}
-.finish-feedback textarea{width:100%;box-sizing:border-box;resize:vertical;min-height:90px;border:1px solid #ccc;border-radius:10px;padding:12px;font:inherit}
-.feedback-stars{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.feedback-stars label{display:inline-flex;align-items:center;gap:4px;padding:8px;border:1px solid #ddd;border-radius:8px;margin:0;cursor:pointer}
-@media(max-width:480px){.finish-feedback{padding:14px}}
-
-/* Přehledné interaktivní hvězdičky na konci hry */
-.feedback-stars{display:flex;justify-content:center;gap:8px;margin:20px 0 26px;flex-wrap:nowrap}
-.feedback-stars label{position:relative;display:flex;align-items:center;justify-content:center;flex:1;min-width:0;max-width:70px;aspect-ratio:1;padding:0;margin:0;border:1px solid #e1e1e1;border-radius:12px;cursor:pointer;background:#fff;transition:background .15s,border-color .15s}
-.feedback-stars label input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;margin:0}
-.feedback-stars label span[aria-hidden]{font-size:clamp(28px,7vw,42px);line-height:1;color:#f2a900;pointer-events:none}
-.feedback-stars label.selected{background:#fff8e7;border-color:#f2b840}
-.feedback-stars label:focus-within{outline:2px solid #ef6447;outline-offset:3px}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:420px){.feedback-stars{gap:5px}.feedback-stars label{border-radius:9px}}
-
-/* Kompaktní a čitelný závěrečný formulář */
-.card.finish .finish-feedback,.card.finish .finish-photos{margin:14px 0;padding:16px;border-radius:15px;background:#fff;color:#292e32;text-align:left;min-height:0;height:auto}
-.card.finish .finish-feedback h2,.card.finish .finish-photos h2{display:block!important;color:#292e32!important;font-size:20px!important;line-height:1.3!important;margin:0 0 6px!important;letter-spacing:0!important;opacity:1!important;visibility:visible!important}
-.card.finish .finish-feedback p,.card.finish .finish-photos p{display:block!important;color:#51565a!important;font-size:14px!important;line-height:1.45!important;margin:4px 0 12px!important;opacity:1!important;visibility:visible!important}
-.card.finish .finish-feedback label,.card.finish .finish-photos label{color:#343a40!important;font-size:14px!important;line-height:1.4!important;opacity:1!important;visibility:visible!important}
-.card.finish .finish-feedback textarea{margin:5px 0 9px;min-height:76px}
-.card.finish .feedback-stars{margin:10px 0 14px;gap:6px}
-.card.finish .feedback-stars label{width:auto;max-width:64px;aspect-ratio:1;border:1px solid #ddd;padding:0}
-.card.finish .feedback-stars label span[aria-hidden]{font-size:34px!important;color:#e5a000!important;visibility:visible!important;opacity:1!important}
-.card.finish .finish-photos input[type=file]{margin:8px 0;padding:10px;font-size:14px}
-.card.finish .photo-consent{margin:8px 0!important}
-.card.finish .finish-feedback button,.card.finish .finish-photos button{margin-top:8px}
-
-/* Oprava rozbitého řádku souhlasu u nahrávání fotografií */
-.card.finish .finish-photos .photo-consent{display:flex!important;flex-direction:row!important;align-items:flex-start!important;justify-content:flex-start!important;gap:10px!important;width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important;margin:12px 0!important;padding:0!important;overflow:visible!important;text-align:left!important;white-space:normal!important}
-.card.finish .finish-photos .photo-consent input[type=checkbox]{position:static!important;display:block!important;flex:0 0 18px!important;width:18px!important;height:18px!important;min-width:18px!important;margin:2px 0 0!important;padding:0!important;appearance:auto!important}
-.card.finish .finish-photos .photo-consent span{display:block!important;flex:1 1 auto!important;min-width:0!important;width:auto!important;max-width:100%!important;overflow-wrap:break-word!important;word-break:normal!important;white-space:normal!important;line-height:1.45!important;text-align:left!important}
-
-/* Přehledná Polybiova tabulka pro druhé stanoviště */
-.polybius-task p{margin:0 0 16px;line-height:1.6}
-.polybius-wrap{overflow-x:auto;margin:14px 0 18px}
-.polybius-table{width:100%;max-width:410px;margin:auto;border-collapse:separate;border-spacing:4px;table-layout:fixed;text-align:center}
-.polybius-table th,.polybius-table td{padding:10px 3px;border-radius:7px;font-size:clamp(15px,3.5vw,21px);line-height:1.2}
-.polybius-table th{background:#e7ddd0;color:#493c31;font-weight:800}
-.polybius-table td{background:#fff;border:1px solid #d7d0c6;font-weight:700;color:#252525}
-.polybius-code{padding:13px 9px;margin:14px 0 20px;text-align:center;background:#fff;border:2px dashed #ef6446;border-radius:12px}
-.polybius-code span{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;margin-bottom:8px}
-.polybius-code strong{font-size:clamp(15px,3.6vw,22px);line-height:1.7;overflow-wrap:anywhere}
-
-/* Grafická karta hádanky u sochy */
-.polybius-task{padding:0!important;background:transparent!important;border:0!important;overflow:hidden}
-.puzzle-heading{display:flex;align-items:center;gap:14px;padding:20px 17px;background:linear-gradient(135deg,#293c3c,#43554c);color:#fff;border-radius:18px 18px 0 0}
-.puzzle-heading-icon{display:grid;place-items:center;flex-shrink:0;width:52px;height:52px;border:1px solid #d8b77b;border-radius:50%;font-size:30px;color:#e7c88c}
-.puzzle-kicker{display:block;font-size:10px;letter-spacing:.13em;color:#e6c68b;font-weight:800}
-.puzzle-heading h3{font-size:clamp(20px,5vw,28px);margin:4px 0;color:#fff;line-height:1.2}
-.puzzle-heading p{margin:0;color:#e5e5dc;font-size:13px}
-.puzzle-step{display:flex;gap:12px;padding:20px 15px 0;background:#f7f3eb;border-left:1px solid #e4d8c8;border-right:1px solid #e4d8c8}
-.puzzle-step-last{padding-bottom:22px;border-bottom:1px solid #e4d8c8;border-radius:0 0 18px 18px}
-.puzzle-step-number{flex-shrink:0;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#dd694a;color:#fff;font-size:14px;font-weight:900}
-.puzzle-step-body{min-width:0;flex:1;padding-bottom:18px;border-bottom:1px dashed #d7c9b6}
-.puzzle-step-last .puzzle-step-body{border:0;padding-bottom:0}
-.puzzle-step-body h4{margin:2px 0 8px;color:#273b38;font-size:19px;line-height:1.3}
-.puzzle-step-body p{margin:0 0 14px;font-size:15px;line-height:1.6;color:#41433f}
-.puzzle-table-label{text-align:center;color:#745c3e;font-size:11px;letter-spacing:.13em;font-weight:900;margin-top:10px}
-.polybius-task .polybius-table{border-spacing:3px}
-.polybius-task .polybius-table th{background:#d7c6a7;color:#3c342a}
-.polybius-task .polybius-table td{background:#fffdf8;border:1px solid #e2d7c8;box-shadow:0 2px 0 #e9dfd0}
-.polybius-task .polybius-code{background:#fff9ed;border:1px solid #d2b987;box-shadow:0 3px 0 #eadfc8}
-.polybius-task .polybius-code strong{letter-spacing:.03em;color:#46372b}
-.puzzle-note{padding:12px;border-radius:10px;background:#e6eee8;color:#345746;font-size:13px;font-weight:700;line-height:1.5}
-@media(max-width:390px){.puzzle-heading{padding:16px 12px}.puzzle-step{padding-left:10px;padding-right:10px;gap:9px}.puzzle-step-number{width:31px;height:31px}.polybius-task .polybius-table td,.polybius-task .polybius-table th{padding:8px 2px}}
-
-/* Historická zajímavost po prvním úkolu */
-.voitech-fact{margin:22px 0 10px;padding:19px 20px;border-radius:14px;background:#f5f0e6;border-left:4px solid #bc8d52;color:#333;text-align:left}
-.voitech-fact-title{font-weight:850;font-size:14px;letter-spacing:.055em;color:#705332;margin-bottom:10px}
-.voitech-fact p{font-size:15px;line-height:1.65;margin:0 0 10px}
-.voitech-fact p:last-child{margin-bottom:0}
-
-/* Rukopis: všechny úryvky nalezeného dopisu */
-.letter.manuscript{position:relative;overflow:hidden;background:radial-gradient(ellipse at 15% 10%,rgba(255,252,232,.8),transparent 65%),linear-gradient(120deg,#eee0bf 0%,#f7edd3 48%,#e8d4ac 100%);border:1px solid #c9aa77;border-left:5px solid #9d7948;border-radius:5px 14px 10px 5px;box-shadow:inset 0 0 24px rgba(120,83,40,.09),0 6px 18px rgba(58,40,19,.10);padding:24px 20px;margin:18px 0;color:#493620}
-.letter.manuscript:before{content:"";position:absolute;inset:8px;border:1px solid rgba(128,91,47,.22);pointer-events:none}
-.manuscript-label{font:700 10px/1.4 Arial,sans-serif;letter-spacing:.14em;color:#8d663c;margin-bottom:14px;text-align:center}
-.manuscript-text{position:relative;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(16px,3.8vw,20px);line-height:1.8;white-space:pre-line;overflow-wrap:anywhere}
-.manuscript.small-letter{padding:20px 18px}
-.manuscript.small-letter .manuscript-text{font-size:clamp(15px,3.7vw,19px)}
-.story-text .letter.manuscript{margin:18px 0}
-
-.final-legend{margin:22px 0;padding:22px 20px;background:#f5ecdb;border:1px solid #d9bf91;border-radius:14px;text-align:left;color:#473824}
-.final-legend-heading{font-size:13px;font-weight:800;letter-spacing:.09em;color:#86613a;margin-bottom:14px}
-.final-legend p{font:16px/1.7 Georgia,serif;margin:0 0 12px}
-.final-legend .final-legend-disclaimer{font:12px/1.5 Arial,sans-serif;color:#776a59;margin-bottom:0}
-
-/* Svitek starého dopisu – kreslený CSS, bez cizího vodoznaku */
-.letter.manuscript{
-  isolation:isolate;position:relative;overflow:visible;
-  margin:38px 5px 42px;padding:38px 24px 42px;
-  border:0;border-radius:12px 9px 15px 11px;
-  color:#49301b;
-  background:
-    radial-gradient(ellipse at 0% 52%,rgba(118,55,20,.37),transparent 17%),
-    radial-gradient(ellipse at 100% 45%,rgba(124,62,20,.30),transparent 17%),
-    radial-gradient(ellipse at 48% 58%,rgba(255,247,205,.7),transparent 75%),
-    repeating-linear-gradient(172deg,transparent 0 15px,rgba(130,85,38,.025) 16px 18px),
-    linear-gradient(90deg,#b5783d 0%,#e9c48a 4%,#f3d9a7 15%,#f7e5b9 50%,#ebca92 88%,#ad703a 100%);
-  box-shadow:inset 0 0 21px 4px rgba(111,56,23,.34),0 12px 22px rgba(58,35,13,.20);
+/* NORMALIZACE ODPOVĚDI – ODSTRANĚNÍ DIAKRITIKY */
+function normalizeStationAnswer(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase()
+    .replace(/\s+/g, "")
+    .trim();
 }
-.letter.manuscript::before,.letter.manuscript::after{
-  content:"";position:absolute;z-index:2;left:-5px;right:-5px;height:28px;
-  border-radius:45% 55% 43% 50% / 38% 38% 65% 62%;
-  background:linear-gradient(180deg,#6e391d 0%,#ae6d34 16%,#dfad6c 39%,#f2d19a 60%,#b5793d 82%,#69391e 100%);
-  box-shadow:0 3px 7px rgba(57,28,13,.25),inset 0 2px 4px rgba(255,239,185,.28);
-  pointer-events:none;
-}
-.letter.manuscript::before{top:-15px;transform:rotate(-.6deg)}
-.letter.manuscript::after{bottom:-15px;transform:rotate(.5deg)}
-.letter.manuscript .manuscript-label{color:#80542b;font-size:10px;letter-spacing:.11em}
-.letter.manuscript .manuscript-text{font-family:Georgia,"Times New Roman",serif;font-style:italic;color:#432c1a;line-height:1.75}
-.letter.manuscript.small-letter{padding:36px 20px 40px}
-@media(max-width:420px){.letter.manuscript{margin-left:0;margin-right:0;padding-left:17px;padding-right:17px}.letter.manuscript.small-letter{padding-left:16px;padding-right:16px}}
 
-/* Číselná šifra – zvýrazněná karta podle vzoru */
-.first-station-code{
-  display:block;
-  margin:22px 0 26px;
-  padding:29px 16px;
-  border:3px dashed #ef674d;
-  border-radius:20px;
-  background:#fff;
-  color:#292d31;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:clamp(22px,5.4vw,34px);
-  font-weight:850;
-  letter-spacing:.055em;
-  line-height:1.5;
-  text-align:center;
-  overflow-wrap:anywhere;
-  box-shadow:none;
-}
-@media(max-width:390px){.first-station-code{padding:24px 10px;font-size:clamp(19px,5.2vw,26px);letter-spacing:.015em}}
+/* STYLY GRAFICKÉ MORSEOVKY */
+(function addMorseStyles() {
+  if (document.getElementById("morse-puzzle-styles")) return;
 
-/* Přirozeně zestárlý list – bez kreslených válců a rámečku */
-.letter.manuscript,.letter.manuscript.small-letter{
-  position:relative;isolation:isolate;overflow:hidden;
-  margin:20px 2px 25px;padding:32px 25px 36px;
-  border:0;border-radius:0;
-  clip-path:polygon(1% 0%,8% 1%,16% 0%,25% 1%,34% 0%,44% 1%,55% 0%,67% 1%,79% 0%,90% 1%,99% 0%,100% 7%,99% 17%,100% 27%,99% 38%,100% 51%,99% 65%,100% 76%,99% 88%,100% 99%,91% 100%,80% 99%,70% 100%,58% 99%,45% 100%,33% 99%,21% 100%,11% 99%,0% 100%,1% 88%,0% 76%,1% 63%,0% 50%,1% 37%,0% 24%,1% 12%);
-  background:
-    radial-gradient(ellipse at 0% 20%,rgba(91,47,21,.28),transparent 23%),
-    radial-gradient(ellipse at 100% 82%,rgba(103,52,23,.31),transparent 27%),
-    radial-gradient(ellipse at 45% 0%,rgba(121,68,30,.21),transparent 20%),
-    radial-gradient(ellipse at 55% 100%,rgba(106,52,21,.25),transparent 21%),
-    radial-gradient(circle at 21% 42%,rgba(137,89,44,.09),transparent 25%),
-    radial-gradient(circle at 78% 31%,rgba(125,77,33,.10),transparent 21%),
-    repeating-linear-gradient(8deg,transparent 0 9px,rgba(101,64,31,.015) 10px 11px),
-    linear-gradient(112deg,#d6b17b 0%,#f1d9a8 13%,#f5e5bf 48%,#ecd09a 85%,#c99d62 100%);
-  box-shadow:none;color:#402c1a;
-}
-.letter.manuscript::before,.letter.manuscript::after{content:none;display:none}
-.letter.manuscript .manuscript-label{position:relative;font-size:10px;color:#7c5730;letter-spacing:.08em}
-.letter.manuscript .manuscript-text{position:relative;color:#3c291a;font-size:clamp(17px,4vw,21px);font-style:italic;line-height:1.75;text-align:left}
-.letter-context{margin:17px 0;color:#474747;font-size:16px;line-height:1.65}
-@media(max-width:420px){.letter.manuscript,.letter.manuscript.small-letter{padding:30px 19px 34px;margin-left:0;margin-right:0}}
+  const style = document.createElement("style");
+  style.id = "morse-puzzle-styles";
+
+  style.textContent = `
+    .morse-puzzle {
+      margin: 22px 0;
+      padding: 22px 16px;
+      color: #30291f;
+      background: linear-gradient(145deg, #f7f0df, #e7d9bd);
+      border: 1px solid #c7b28b;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(50, 38, 20, 0.12);
+      text-align: center;
+    }
+
+    .morse-heading {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .morse-intro,
+    .morse-instruction {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .morse-cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .morse-card {
+      box-sizing: border-box;
+      min-width: 0;
+      min-height: 88px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #fffaf0;
+      border: 1px solid #bda77c;
+      border-radius: 12px;
+      box-shadow: 0 4px 0 #cbb995;
+    }
+
+    .morse-number {
+      align-self: flex-start;
+      padding-left: 10px;
+      color: #81745e;
+      font-size: 12px;
+    }
+
+    .morse-code {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      max-width: 100%;
+      padding: 0 4px;
+      color: #332a1e;
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    .morse-dot {
+      font-weight: 900;
+    }
+
+    .morse-dash {
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .morse-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+
+    .morse-legend b {
+      font-size: 18px;
+    }
+
+    @media (max-width: 420px) {
+      .morse-puzzle {
+        padding: 18px 12px;
+      }
+
+      .morse-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .morse-code {
+        font-size: 22px;
+      }
+    }
+  `;
+
+  document.head.appendChild(style);
+})();
+
+/* ZOBRAZENÍ STANOVIŠTĚ */
+station = function () {
+  app.className = "card";
+
+  state.hintIndex = 0;
+  state.stationHints = 0;
+  state.stationWrong = 0;
+  state.stationStartedAt = new Date().toISOString();
+  state.stationAnswerHistory = [];
+  state.stationHintsHistory = [];
+
+  const s = stations[state.i];
+  const image = s.image || HERO;
+
+  // Index 4 odpovídá pátému stanovišti.
+  const isMorseStation = state.i === 4;
+
+  let morseHtml = "";
+
+  if (isMorseStation) {
+    const morseLetters = [
+      { number: 1, code: "..." },  // S
+      { number: 2, code: ".-.." }, // L
+      { number: 3, code: "." },    // E
+      { number: 4, code: ".--." }, // P
+      { number: 5, code: "." },    // E
+      { number: 6, code: ".---" }, // J
+      { number: 7, code: "." }     // E
+    ];
+
+    morseHtml =
+      '<div class="morse-puzzle">' +
+        '<div class="morse-heading">TAJNÁ ZPRÁVA</div>' +
+
+        '<p class="morse-intro">' +
+          'Kaplička ukrývá zprávu z minulosti. ' +
+          'Rozlušti jednotlivé znaky Morseovy abecedy ' +
+          'a odhal slovo spojené s údajnými otisky světcových nohou.' +
+        '</p>' +
+
+        '<div class="morse-legend">' +
+          '<span><b>●</b> tečka</span>' +
+          '<span><b>━</b> čárka</span>' +
+        '</div>' +
+
+        '<div class="morse-cards">' +
+
+          morseLetters.map(function (letter) {
+            const symbols = letter.code
+              .split("")
+              .map(function (symbol) {
+                return symbol === "."
+                  ? '<span class="morse-dot">●</span>'
+                  : '<span class="morse-dash">━</span>';
+              })
+              .join(" ");
+
+            return (
+              '<div class="morse-card">' +
+                '<span class="morse-number">ZNAK ' +
+                  letter.number +
+                '</span>' +
+                '<span class="morse-code">' +
+                  symbols +
+                '</span>' +
+              '</div>'
+            );
+          }).join("") +
+
+        '</div>' +
+
+        '<p class="morse-instruction">' +
+          'Přečti znaky od 1 do 7. Každý znak představuje ' +
+          'jedno písmeno. Zadej celé výsledné slovo níže.' +
+        '</p>' +
+      '</div>';
+  }
+
+  app.innerHTML =
+    '<div class="eyebrow">Stanoviště ' +
+      (state.i + 1) + ' / ' + stations.length +
+    '</div>' +
+
+    '<div class="progress">' +
+      '<i style="width:' +
+        ((state.i + 1) / stations.length * 100) +
+      '%"></i>' +
+    '</div>' +
+
+    '<h2>' + safeGameText(s.title) + '</h2>' +
+
+    '<img class="station-photo" src="' +
+      escHtml(image) +
+      '" alt="Fotografie stanoviště">' +
+
+    (
+      s.type === "cipher"
+        ? '<div class="cipher">' +
+            '<div class="cipher-title">ŠIFROVACÍ TABULKA</div>' +
+            '<div class="cipher-grid">' +
+              Array.from({ length: 26 }, function (_, i) {
+                return (
+                  '<span><b>' +
+                    String.fromCharCode(65 + i) +
+                  '</b><small>' +
+                    (i + 1) +
+                  '</small></span>'
+                );
+              }).join("") +
+            '</div>' +
+          '</div>'
+
+        : s.type === "field"
+          ? '<div class="field-badge">⌖ ÚKOL V TERÉNU</div>'
+          : ''
+    ) +
+
+    (
+      s.story
+        ? '<div class="letter small-letter">' +
+            safeGameText(s.story) +
+          '</div>'
+        : ''
+    ) +
+
+    (
+      isMorseStation
+        ? morseHtml
+        : '<div class="task">' +
+            safeGameText(s.task) +
+          '</div>'
+    ) +
+
+    '<input id="answer" ' +
+      'placeholder="Tvoje odpověď…" ' +
+      'autocomplete="off">' +
+
+    '<button id="check">ZKONTROLOVAT →</button>' +
+
+    '<button id="hint" class="secondary">💡 NÁPOVĚDA</button>' +
+
+    '<div id="hintbox"></div>' +
+
+    '<button id="stationNavigation" ' +
+      'class="secondary navigation-station" ' +
+      'type="button">' +
+      '🧭 NAVIGOVAT K MÍSTU <span>−30 BODŮ</span>' +
+    '</button>' +
+
+    '<div id="msg" class="msg"></div>';
+
+  const img = document.querySelector(".station-photo");
+
+  if (img) {
+    img.onerror = function () {
+      img.onerror = null;
+      img.src = HERO;
+    };
+  }
+
+  document.querySelector("#check").onclick = check;
+
+  document.querySelector("#answer").onkeydown = function (event) {
+    if (event.key === "Enter") {
+      check();
+    }
+  };
+
+  document.querySelector("#hint").onclick = hint;
+
+  document.querySelector("#stationNavigation").onclick =
+    openNavigation;
+
+  const mapBtn = document.querySelector("#cityMapButton");
+
+  if (mapBtn) {
+    mapBtn.hidden = false;
+    mapBtn.style.display = "inline-block";
+  }
+};
+
+/* NÁPOVĚDA */
+hint = function () {
+  const s = stations[state.i];
+  const box = document.querySelector("#hintbox");
+
+  if (state.hintIndex >= s.hints.length) {
+    box.innerHTML =
+      '<div class="hint">Další nápověda už není.</div>';
+    return;
+  }
+
+  const hintNumber = state.hintIndex + 1;
+  const hintText = s.hints[state.hintIndex];
+
+  state.hints++;
+  state.stationHints++;
+
+  state.score = Math.max(
+    0,
+    state.score - (state.hintIndex ? 20 : 10)
+  );
+
+  state.stationHintsHistory.push({
+    hint: hintNumber,
+    text: hintText,
+    used_at: new Date().toISOString()
+  });
+
+  state.hintIndex++;
+
+  box.innerHTML =
+    '<div class="hint">💡 ' +
+    safeGameText(hintText) +
+    '</div>';
+};
+
+/* KONTROLA ODPOVĚDI */
+check = async function () {
+  const input = document.querySelector("#answer");
+  const val = input.value;
+  const s = stations[state.i];
+  const msg = document.querySelector("#msg");
+  const btn = document.querySelector("#check");
+
+  if (!val.trim() || btn.disabled) return;
+
+  btn.disabled = true;
+  btn.textContent = "KONTROLUJI…";
+
+  let result;
+
+  try {
+    result = await checkStationAnswer(s.id, val);
+  } catch (error) {
+    console.error("Kontrola odpovědi:", error);
+    result = { ok: false };
+  }
+
+  if (!result || !result.ok) {
+    btn.disabled = false;
+    btn.textContent = "ZKONTROLOVAT →";
+
+    msg.className = "msg bad";
+    msg.textContent =
+      "Odpověď se nepodařilo ověřit. " +
+      "Zkontroluj připojení a zkus to znovu.";
+
+    return;
+  }
+
+  /*
+   * Pokud Supabase označí odpověď jako chybnou,
+   * u pátého stanoviště se ještě ověří lokálně.
+   * To umožní zadat ŠLÉPĚJE i SLEPEJE.
+   */
+  const localMorseAnswer =
+    state.i === 4 &&
+    normalizeStationAnswer(val) === "SLEPEJE";
+
+  const isCorrect = !!result.correct || localMorseAnswer;
+
+  state.stationAnswerHistory.push({
+    answer: val.trim(),
+    correct: isCorrect,
+    answered_at: new Date().toISOString()
+  });
+
+  if (isCorrect) {
+    msg.className = "msg ok";
+    msg.textContent =
+      "✓ Správně! Získáváš přístup k další stopě.";
+
+    let saved = false;
+
+    try {
+      saved = await saveStationDetail(s.id);
+    } catch (error) {
+      console.error("Uložení výsledku:", error);
+    }
+
+    if (!saved) {
+      btn.disabled = false;
+      btn.textContent = "ZKONTROLOVAT →";
+
+      msg.className = "msg bad";
+      msg.textContent =
+        "Odpověď je správně, ale výsledek se nepodařilo uložit. " +
+        "Zkontroluj připojení a zkus to znovu.";
+
+      state.stationAnswerHistory.pop();
+      return;
+    }
+
+    setTimeout(function () {
+      reveal();
+    }, 750);
+
+  } else {
+    state.wrong++;
+    state.stationWrong++;
+
+    state.score = Math.max(0, state.score - 5);
+
+    btn.disabled = false;
+    btn.textContent = "ZKONTROLOVAT →";
+
+    msg.className = "msg bad";
+    msg.textContent =
+      "To není správný klíč. Zkus to znovu.";
+
+    input.select();
+  }
+};
