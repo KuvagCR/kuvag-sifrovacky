@@ -382,3 +382,190 @@ label.leaderboard-consent input[type="checkbox"]{
 .letter.manuscript .manuscript-text{
   transform:rotate(-.25deg);
 }
+
+
+/* Unified historical-mystery visual system for in-game pages only.
+   The welcome/landing screen is intentionally left untouched. */
+:root{
+  --mystery-ink:#30271d;
+  --mystery-ink-soft:#514334;
+  --mystery-paper:#f0e2c4;
+  --mystery-paper-light:#fbf3df;
+  --mystery-brass:#a47a3e;
+  --mystery-rust:#8b382b;
+}
+/* Keep the entry page as-is; theme actual story/station/reveal screens. */
+.card:has(.station-photo),
+.card:has(.manuscript),
+.card.finish{
+  color:var(--mystery-ink);
+  border:1px solid #c9b181;
+  border-radius:15px;
+  background:
+    radial-gradient(ellipse at 12% 8%,rgba(255,255,255,.66),transparent 38%),
+    radial-gradient(ellipse at 92% 87%,rgba(137,94,42,.10),transparent 35%),
+    linear-gradient(145deg,#f9f0dc 0%,#eee0bf 52%,#f7edda 100%) !important;
+  box-shadow:0 16px 36px rgba(49,36,20,.20),inset 0 0 0 5px rgba(164,122,62,.08);
+}
+.card:has(.station-photo)::after,
+.card:has(.manuscript)::after,
+.card.finish::after{display:none!important}
+.card:has(.station-photo) h1,
+.card:has(.station-photo) h2,
+.card:has(.manuscript) h1,
+.card:has(.manuscript) h2,
+.card.finish h1{
+  color:var(--mystery-ink);
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:700;
+  letter-spacing:.015em;
+  text-transform:none;
+}
+.card:has(.station-photo) .eyebrow,
+.card:has(.manuscript) .eyebrow,
+.card.finish .eyebrow{
+  color:var(--mystery-rust);
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:.17em;
+}
+.card:has(.station-photo) p,
+.card:has(.manuscript) p{color:var(--mystery-ink-soft)}
+.card:has(.station-photo) .progress{
+  height:5px;
+  background:#d4c5a6;
+  border:1px solid rgba(123,87,42,.15);
+}
+.card:has(.station-photo) .progress i{background:linear-gradient(90deg,#7b3028,#b38a4c)}
+.card:has(.station-photo) .station-photo{
+  border:1px solid #b99a65;
+  border-radius:5px;
+  filter:sepia(.12) contrast(1.02);
+  box-shadow:0 5px 12px rgba(45,32,18,.2);
+}
+/* Manuscript, cipher table and number clues share parchment-and-ink tones. */
+.card:has(.station-photo) .letter.manuscript,
+.card:has(.manuscript) .letter.manuscript{
+  border:1px solid #b58c50;
+  background-color:#e6cd97;
+  background-image:
+    radial-gradient(ellipse at 2% 4%,rgba(89,51,20,.24),transparent 22%),
+    radial-gradient(ellipse at 97% 95%,rgba(89,51,20,.23),transparent 23%),
+    repeating-linear-gradient(2deg,rgba(103,71,34,.025) 0,rgba(103,71,34,.025) 1px,transparent 1px,transparent 4px),
+    linear-gradient(135deg,#f4e5bf,#e8d09b 56%,#d9b77a);
+  box-shadow:inset 0 0 23px rgba(93,57,22,.18),0 8px 16px rgba(49,36,20,.16);
+}
+.card:has(.station-photo) .cipher{
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(190,151,84,.12),transparent 55%),
+    linear-gradient(145deg,#322b23,#211f1b);
+  border:1px solid #9d7b45;
+  border-radius:7px;
+  box-shadow:inset 0 0 0 3px rgba(191,153,89,.08),0 5px 12px rgba(45,32,18,.15);
+}
+.card:has(.station-photo) .cipher-title{
+  color:#d6b36e;
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:.16em;
+}
+.card:has(.station-photo) .cipher-grid span{
+  background:rgba(242,225,186,.09);
+  border:1px solid rgba(201,167,104,.22);
+  border-radius:4px;
+}
+.card:has(.station-photo) .cipher-grid b{
+  color:#f6e8c9;
+  font-family:Georgia,"Times New Roman",serif;
+}
+.card:has(.station-photo) .cipher-grid small{color:#c6b99e}
+.card:has(.station-photo) .polybius-task .polybius-wrap,
+.card:has(.station-photo) .polybius-task .polybius-code,
+.card:has(.station-photo) .first-station-code{
+  border:1px solid #b18a4d;
+  border-radius:7px;
+  background:
+    radial-gradient(ellipse at 10% 10%,rgba(255,255,255,.35),transparent 36%),
+    repeating-linear-gradient(1deg,rgba(100,68,30,.025) 0,rgba(100,68,30,.025) 1px,transparent 1px,transparent 4px),
+    linear-gradient(135deg,#f5e7c4,#e8d09b 55%,#f5e8c8);
+  color:var(--mystery-ink);
+  box-shadow:inset 0 0 14px rgba(112,76,35,.12),0 4px 0 rgba(99,69,32,.12);
+}
+.card:has(.station-photo) .polybius-task .polybius-table th{color:#78572f}
+.card:has(.station-photo) .polybius-task .polybius-table td{
+  border-color:rgba(133,94,42,.28);
+  border-radius:4px;
+  background:rgba(255,250,235,.72);
+  color:#30271d;
+  box-shadow:0 2px 0 rgba(99,69,32,.12);
+}
+.card:has(.station-photo) .first-station-code .code-number{
+  border-color:rgba(133,94,42,.28);
+  border-radius:5px;
+  background:rgba(255,249,232,.78);
+  color:#30271d;
+  box-shadow:0 2px 0 rgba(99,69,32,.12);
+}
+.card:has(.station-photo) .task,
+.card:has(.station-photo) .hint{
+  color:var(--mystery-ink);
+  background:rgba(255,248,229,.72);
+  border:1px solid #c8ad79;
+  border-left:4px solid var(--mystery-brass);
+  border-radius:5px;
+}
+.card:has(.station-photo) input:not([type="checkbox"]){
+  color:var(--mystery-ink);
+  background:rgba(255,251,239,.9);
+  border:1px solid #bca477;
+  border-radius:5px;
+  box-shadow:inset 0 1px 4px rgba(70,48,22,.06);
+}
+.card:has(.station-photo) input:focus{
+  border-color:var(--mystery-brass);
+  box-shadow:0 0 0 3px rgba(164,122,62,.16);
+}
+.card:has(.station-photo) button,
+.card:has(.manuscript) button{
+  border:1px solid #6d2d24;
+  border-radius:5px;
+  background:linear-gradient(#8f3c2f,#6d2d24);
+  color:#fff4df;
+  box-shadow:0 3px 0 #4d211b,0 5px 12px rgba(49,36,20,.12);
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:.07em;
+  font-size:13px;
+}
+.card:has(.station-photo) button.secondary,
+.card:has(.manuscript) button.secondary{
+  border-color:#b39a6d;
+  background:linear-gradient(#f7edda,#e5d2ac);
+  color:#493722;
+  box-shadow:0 2px 0 #c4ae83;
+}
+.card:has(.station-photo) .field-badge{
+  border-color:#b99a65;
+  background:rgba(164,122,62,.10);
+  color:#79572f;
+  border-radius:4px;
+  font-family:Georgia,"Times New Roman",serif;
+}
+.card:has(.station-photo) .station-tools button{
+  width:auto;
+  padding:9px 11px;
+  font-size:11px;
+}
+.card:has(.station-photo) .station-tools{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.card:has(.station-photo) .station-tools button{margin-top:0}
+.card.finish{
+  color:#f6e8cb;
+  background:linear-gradient(145deg,#302b24,#191815) !important;
+  border-color:#987847;
+}
+.card.finish h1,.card.finish p{color:#f6e8cb}
+@media(max-width:380px){
+  .card:has(.station-photo),.card:has(.manuscript),.card.finish{padding:24px 16px}
+}
