@@ -648,3 +648,36 @@ label.leaderboard-consent input[type="checkbox"]{
   .card:has(.station-photo) .manuscript-text,
   .card:has(.manuscript) .manuscript-text{font-size:14px;line-height:1.62}
 }
+
+
+/* Scroll-like parchment matching the supplied reference: rolled rods, no inset frame */
+.card:has(.station-photo) .letter.manuscript,
+.card:has(.manuscript) .letter.manuscript{
+  position:relative!important; isolation:isolate; overflow:visible!important; box-sizing:border-box;
+  margin:30px 0 34px!important; padding:48px 20px 46px!important;
+  border:1px solid #b18a50!important; border-radius:2px!important;
+  background-color:#ecd6a4!important;
+  background-image:radial-gradient(ellipse at 18% 18%,rgba(255,250,220,.42),transparent 35%),radial-gradient(ellipse at 82% 78%,rgba(130,83,35,.13),transparent 42%),repeating-linear-gradient(0deg,rgba(120,81,37,.035) 0,rgba(120,81,37,.035) 1px,transparent 1px,transparent 5px),linear-gradient(100deg,#e4c58d 0%,#f4e4bd 22%,#ead19b 68%,#dfbd7f 100%)!important;
+  box-shadow:inset 0 0 24px rgba(105,66,27,.13),0 8px 15px rgba(53,38,21,.16)!important;
+}
+.card:has(.station-photo) .letter.manuscript::before,
+.card:has(.manuscript) .letter.manuscript::before{
+  content:"";position:absolute;z-index:3;left:-5px;right:-5px;top:-10px;height:29px;
+  border:1px solid #a77a3c;border-radius:3px 3px 7px 7px;
+  background:linear-gradient(90deg,#b98645 0%,#e6c58b 4%,#f6e3b5 12%,#d6ad6c 48%,#f0d8a2 88%,#b88442 96%,#8e622f 100%);
+  box-shadow:inset 0 3px 4px rgba(255,248,218,.7),inset 0 -5px 7px rgba(105,64,25,.35),0 4px 5px rgba(63,39,17,.27);
+  pointer-events:none;
+}
+.card:has(.station-photo) .letter.manuscript::after,
+.card:has(.manuscript) .letter.manuscript::after{
+  content:"";position:absolute;z-index:3;left:-5px;right:-5px;bottom:-10px;height:29px;
+  border:1px solid #a77a3c;border-radius:7px 7px 3px 3px;
+  background:linear-gradient(90deg,#8e622f 0%,#d2a765 5%,#f0d8a2 13%,#d4aa68 48%,#f3dfad 87%,#c08c47 96%,#94652f 100%);
+  box-shadow:inset 0 4px 6px rgba(255,246,213,.58),inset 0 -3px 4px rgba(103,61,22,.32),0 4px 5px rgba(63,39,17,.22);
+  pointer-events:none;
+}
+.card:has(.station-photo) .manuscript-label,
+.card:has(.manuscript) .manuscript-label{position:relative;z-index:4;margin-bottom:10px;color:#77502a!important;font-size:10px!important;letter-spacing:.12em;text-shadow:0 1px rgba(255,242,207,.55)}
+.card:has(.station-photo) .manuscript-text,
+.card:has(.manuscript) .manuscript-text{position:relative;z-index:4;color:#38291d!important;font-size:clamp(14px,3.6vw,18px)!important;line-height:1.65!important;text-shadow:0 .25px rgba(49,32,18,.25)!important}
+@media(max-width:380px){.card:has(.station-photo) .letter.manuscript,.card:has(.manuscript) .letter.manuscript{padding:43px 15px 42px!important}}
