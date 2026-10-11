@@ -234,3 +234,83 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
   font-size:clamp(10px,2.7vw,15px);
   font-weight:700;
 }
+
+
+/* Přehledný žebříček TOP 15 */
+.leaderboard-box{
+  position:relative;
+  z-index:2;
+  margin:16px 0 18px;
+  padding:16px 14px;
+  border:1px solid #e2e3e2;
+  border-radius:16px;
+  background:rgba(255,255,255,.94);
+  overflow:hidden;
+}
+.leaderboard-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:12px;
+  font-size:17px;
+  font-weight:850;
+}
+.leaderboard-table{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  gap:5px;
+  font-size:13px;
+  font-variant-numeric:tabular-nums;
+}
+.leaderboard-row{
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr) 48px 48px;
+  align-items:center;
+  gap:6px;
+  min-width:0;
+  padding:8px 7px;
+  border-radius:8px;
+  background:#f6f6f4;
+  line-height:1.25;
+}
+.leaderboard-row:nth-child(2){background:#fff1d5}
+.leaderboard-row:nth-child(3){background:#f0f1f1}
+.leaderboard-row:nth-child(4){background:#f5e9df}
+.leaderboard-head{
+  padding:4px 7px 7px;
+  background:transparent!important;
+  color:#697076;
+  font-size:10px;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.leaderboard-row span{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.leaderboard-row span:nth-child(1){
+  color:#697076;
+  font-weight:800;
+}
+.leaderboard-row span:nth-child(3),
+.leaderboard-row span:nth-child(4){
+  text-align:right;
+  font-weight:750;
+}
+.leaderboard-empty{
+  padding:12px;
+  border-radius:10px;
+  background:#f6f6f4;
+  color:#697076;
+  font-size:13px;
+  line-height:1.4;
+}
+@media(max-width:380px){
+  .leaderboard-box{padding:13px 10px}
+  .leaderboard-row{grid-template-columns:23px minmax(0,1fr) 38px 38px;gap:4px;padding:7px 5px}
+  .leaderboard-table{font-size:12px}
+}
