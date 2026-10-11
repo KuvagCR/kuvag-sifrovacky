@@ -573,3 +573,17 @@ label.leaderboard-consent input[type="checkbox"]{
   .card:has(.station-photo) .polybius-task .polybius-code{padding:10px 2px}
   .card:has(.station-photo) .polybius-task .polybius-code strong{font-size:clamp(9px,2.45vw,12px)}
 }
+
+
+/* Improve readability for the Caesar-cipher instructions inside the dark cipher panel. */
+.card:has(.station-photo) .cipher{color:#f8ecd2}
+.card:has(.station-photo) .cipher p,
+.card:has(.station-photo) .cipher .hint,
+.card:has(.station-photo) .cipher .small,
+.card:has(.station-photo) .cipher strong{color:#f2e3c6!important}
+.card:has(.station-photo) .cipher p{font-size:15px;line-height:1.7;font-weight:500;opacity:1}
+.card:has(.station-photo) .cipher .cipher-title{color:#e3bd72!important}
+.card:has(.station-photo) .cipher .hint{
+  background:rgba(255,245,222,.09);border:1px solid rgba(227,189,114,.42);
+  border-left:3px solid #c69b52;border-radius:7px;padding:13px 14px
+}
