@@ -555,3 +555,26 @@ label.leaderboard-consent input[type="checkbox"]{
   .card:has(.station-photo) .manuscript-text,
   .card:has(.manuscript) .manuscript-text{font-size:14px;line-height:1.6}
 }
+
+
+/* Station 2 only: keep Polybius cipher sequence on one line. Station 1 is untouched. */
+.card:has(.station-photo) .polybius-task .polybius-code{
+  width:100%;
+  box-sizing:border-box;
+  padding:15px 10px;
+  overflow-x:auto;
+  white-space:nowrap;
+  text-align:center;
+  scrollbar-width:thin;
+}
+.card:has(.station-photo) .polybius-task .polybius-code strong{
+  display:inline-block;
+  white-space:nowrap;
+  font-size:clamp(13px,3.4vw,22px);
+  letter-spacing:clamp(.01em,.35vw,.09em);
+  word-spacing:0;
+}
+@media(max-width:390px){
+  .card:has(.station-photo) .polybius-task .polybius-code{padding:13px 7px}
+  .card:has(.station-photo) .polybius-task .polybius-code strong{font-size:13px;letter-spacing:0}
+}
