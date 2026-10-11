@@ -79,8 +79,8 @@ station = function () {
         '<div class="morse-heading">TAJNÁ ZPRÁVA</div>' +
         '<p class="morse-intro">' +
           'Někdo zanechal zašifrovanou zprávu. ' +
-          'Rozlušti jednotlivé znaky Morseovy abecedy ' +
-          'a zjisti, jaké slovo ukrývají.' +
+          'Rozlušti jednotlivé znaky Morseovy abecedy v pořadí 1 až 7. ' +
+          'Písmena čti rovnou za sebou, bez mezer.' +
         '</p>' +
         '<div class="morse-legend">' +
           '<span><b>●</b> tečka</span>' +
