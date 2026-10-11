@@ -281,13 +281,21 @@ check = async function () {
     return;
   }
 
+  const morseAnswer = state.i === 4 &&
+    String(val || "")
+      .normalize("NFD")
+      .replace(/[\\u0300-\\u036f]/g, "")
+      .replace(/[^A-Z]/gi, "")
+      .toUpperCase() === "SLEPEJE";
+  const isCorrect = !!result.correct || morseAnswer;
+
   state.stationAnswerHistory.push({
     answer: val.trim(),
-    correct: !!result.correct,
+    correct: isCorrect,
     answered_at: new Date().toISOString()
   });
 
-  if (result.correct) {
+  if (isCorrect) {
     msg.className = "msg ok";
     msg.textContent =
       "✓ Správně! Získáváš přístup k další stopě.";
