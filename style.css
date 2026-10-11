@@ -1,487 +1,57 @@
+:root{--orange:#ef6446;--charcoal:#292e32;--dark:#171b1e;--grey:#697076;--paper:#f5f5f3}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(145deg,#e7e8e8,#f7f7f5);color:var(--charcoal);min-height:100vh}.shell{max-width:520px;margin:auto;padding:18px 14px 45px}header{display:flex;justify-content:space-between;align-items:center;padding:10px 6px 18px}.brand{font-size:22px;font-weight:950;letter-spacing:.06em;color:var(--charcoal)}.brand:after{content:"";display:inline-block;width:7px;height:7px;background:var(--orange);margin-left:3px;transform:skew(-18deg)}.brand span{font-size:10px;font-weight:800;letter-spacing:.16em;margin-left:9px;color:var(--grey)}.timer{font-variant-numeric:tabular-nums;font-weight:900;background:#fff;padding:8px 11px;border-radius:10px;box-shadow:0 4px 15px #0001}.card{position:relative;overflow:hidden;background:linear-gradient(160deg,#fff 0 66%,#f0f0ee 66%);border-radius:28px;padding:32px 25px;box-shadow:0 16px 45px #0002;min-height:600px;border:1px solid #fff}.card:after{content:"";position:absolute;width:220px;height:32px;background:var(--orange);opacity:.92;right:-85px;bottom:62px;transform:rotate(-55deg);z-index:0}.card>*{position:relative;z-index:1}.eyebrow{color:var(--orange);text-transform:uppercase;font-size:12px;font-weight:950;letter-spacing:.14em}h1{font-size:43px;line-height:.98;margin:14px 0 18px;letter-spacing:-.04em;text-transform:uppercase}h1 .orange{color:var(--orange)}h2{font-size:31px;margin:12px 0 8px;letter-spacing:-.025em}p{line-height:1.55;color:#555}.progress{height:7px;background:#d9dcdd;border-radius:10px;overflow:hidden;margin:18px 0 28px}.progress i{display:block;height:100%;background:var(--orange)}.task{background:#f0f1f1;border-left:5px solid var(--orange);padding:18px;border-radius:12px;margin:22px 0;line-height:1.55}input{width:100%;font:inherit;padding:16px 17px;border:1px solid #c9cdcf;border-radius:13px;margin:8px 0;background:#fff;outline:none}input:focus{border-color:var(--orange);box-shadow:0 0 0 3px #ef644620}button{width:100%;border:0;border-radius:13px;padding:16px;font:inherit;font-weight:900;cursor:pointer;margin-top:11px;background:var(--orange);color:#fff;box-shadow:0 8px 18px #ef644630;letter-spacing:.02em}button:hover{filter:brightness(.97)}.secondary{background:#eceeed;color:var(--charcoal);box-shadow:none}.stats{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:22px 0}.stat{background:#292e32;color:#fff;padding:15px;border-radius:13px;text-align:center}.stat strong{display:block;font-size:24px;color:#fff}.msg{min-height:26px;font-weight:800;margin-top:11px}.ok{color:#26844c}.bad{color:#b43c32}.hint{background:#fff0ea;border:1px solid #ef644633;padding:14px;border-radius:11px;margin-top:12px}.lock{font-size:58px}.small{font-size:13px;color:#777}.intro-lines{margin:28px 0}.intro-lines div{padding:8px 0;font-weight:750}.intro-lines b{color:var(--orange);display:inline-block;width:28px}.finish{background:linear-gradient(155deg,#252a2e,#111416);color:#fff}.finish h1,.finish p{color:#fff}.finish:after{opacity:.55}@media(max-width:380px){h1{font-size:37px}.card{padding:27px 20px}}.hero-photo{height:235px;margin:18px -25px 20px;background-size:cover;background-position:center;position:relative}.hero-photo span{position:absolute;left:24px;bottom:18px;color:#fff;font-size:25px;font-weight:850;line-height:1.05;text-shadow:0 2px 12px #000}.station-photo{display:block;width:100%;height:220px;object-fit:cover;border-radius:16px;margin:18px 0 8px;box-shadow:0 8px 22px #0002}.story-mark{font-size:58px;color:var(--orange);margin:34px 0 16px}.story-text{font-size:18px;line-height:1.7;margin-bottom:30px}.letter{margin:22px 0;padding:20px 18px;background:#f2ede5;border-left:4px solid var(--orange);font-family:Georgia,serif;font-style:italic;line-height:1.65;box-shadow:0 5px 18px #0000000d}.small-letter{font-size:15px;margin-top:24px}.story-text strong{color:var(--charcoal)}.cipher{background:#262b2f;color:#fff;border-radius:15px;padding:15px;margin:17px 0}.cipher-title{font-size:11px;letter-spacing:.14em;font-weight:900;color:var(--orange);margin-bottom:10px}.cipher-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.cipher-grid span{background:#fff1;border-radius:7px;text-align:center;padding:6px 2px}.cipher-grid b,.cipher-grid small{display:block}.cipher-grid b{font-size:13px}.cipher-grid small{font-size:9px;color:#bbb}.field-badge{display:inline-block;margin:14px 0 2px;padding:8px 11px;background:#ef644618;color:var(--orange);border:1px solid #ef644655;border-radius:20px;font-size:11px;font-weight:950;letter-spacing:.08em}
+.player-type{margin:16px 0 6px;padding:14px 16px;border:1px solid #ddd;border-radius:12px;text-align:left;background:#fafafa}.player-type-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:#777}.player-type label{display:block;margin:8px 0;font-weight:700}.player-type input{width:auto;margin-right:8px;accent-color:#ef6446}
 
-async function saveStationDetail(stationId) {
-  if (!state.sessionToken) return false;
+.player-type{margin:16px 0 6px;padding:14px 16px;border:1px solid #ddd;border-radius:12px;text-align:left;background:#fafafa}.player-type-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:#777}.player-type label{display:block;margin:8px 0;font-weight:700}.player-type input{width:auto;margin-right:8px;accent-color:#ef6446}
 
-  const finishedAt = new Date().toISOString();
+.completion-badge{margin:22px 0;padding:13px 16px;border:1px solid #ef6446;border-radius:999px;color:#ef6446;font-size:12px;font-weight:900;letter-spacing:1.3px;text-align:center}.finish .letter{margin-top:20px}
 
-  try {
-    const response = await fetch(
-      SUPABASE_URL + "/rest/v1/rpc/save_station_detail",
-      {
-        method: "POST",
-        headers: {
-          apikey: SUPABASE_KEY,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          p_session_token: state.sessionToken,
-          p_station_id: stationId,
-          p_hints_used: state.stationHints,
-          p_wrong_attempts: state.stationWrong,
-          p_started_at: state.stationStartedAt,
-          p_finished_at: finishedAt,
-          p_answer_history: state.stationAnswerHistory || [],
-          p_hints_history: state.stationHintsHistory || []
-        })
-      }
-    );
+.employee-code{margin:10px 0}.employee-code[hidden]{display:none}.employee-code .msg{margin-top:8px}
 
-    if (!response.ok) {
-      console.error(
-        "Detail stanoviště:",
-        response.status,
-        await response.text()
-      );
-      return false;
-    }
+.hero-photo{background-position:center 35%}
 
-    return true;
-  } catch (error) {
-    console.error("Detail stanoviště:", error);
-    return false;
-  }
+/* Hero: show the source photo without zoom/cropping */
+.hero-photo{background-size:contain!important;background-repeat:no-repeat!important;background-position:center center!important;background-color:#202833!important}
+
+/* Hero panorama: fill the full width */
+.hero-photo{
+  background-size:100% 100%, cover!important;
+  background-position:center center, center center!important;
+  background-repeat:no-repeat!important;
 }
 
-function safeGameText(value) {
-  return escHtml(value || "").replace(/\n/g, "<br>");
+/* Subtle architectural church outline inside the game card */
+body{background-image:none!important;}
+.card{
+  background-color:#fff;
+  background-image:none!important;
+  position:relative;
+  overflow:hidden;
 }
-
-/* NORMALIZACE ODPOVĚDI – ODSTRANĚNÍ DIAKRITIKY */
-function normalizeStationAnswer(value) {
-  return String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toUpperCase()
-    .replace(/\s+/g, "")
-    .trim();
+.card::before{
+  content:"";
+  position:absolute;
+  right:-28px;
+  bottom:12px;
+  width:330px;
+  height:470px;
+  opacity:.07;
+  pointer-events:none;
+  background-repeat:no-repeat;
+  background-position:right bottom;
+  background-size:contain;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 380 520'%3E%3Cg fill='none' stroke='%235f6468' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Baroque facade of St John of Nepomuk: twin towers and central gable --%3E%3Cpath d='M48 488h284M72 488V248h70v240M238 488V248h70v240M142 488V284h96v204'/%3E%3Cpath d='M72 248l35-28 35 28M238 248l35-28 35 28M142 284c18-34 31-50 48-66 17 16 30 32 48 66'/%3E%3Cpath d='M88 220v-66h38v66M254 220v-66h38v66M95 154l12-34 12 34M261 154l12-34 12 34M107 120V75M273 120V75M98 88h18M264 88h18'/%3E%3Cpath d='M156 284v-46M224 284v-46M190 218v-50M181 181h18'/%3E%3Cpath d='M96 300h22v45H96zM262 300h22v45h-22zM96 377h22v45H96zM262 377h22v45h-22z'/%3E%3Cpath d='M164 488V370c0-34 52-34 52 0v118M169 320h42M179 264h22v34h-22z'/%3E%3Cpath d='M72 270h70M238 270h70M142 304h96M62 488h256'/%3E%3Cpath d='M50 488l22-25 18 14 18-30 22 20M250 488l22-26 20 15 18-31 22 20'/%3E%3C/g%3E%3C/svg%3E");
 }
-
-/* STYLY GRAFICKÉ MORSEOVKY */
-(function addMorseStyles() {
-  if (document.getElementById("morse-puzzle-styles")) return;
-
-  const style = document.createElement("style");
-  style.id = "morse-puzzle-styles";
-
-  style.textContent = `
-    .morse-puzzle {
-      margin: 22px 0;
-      padding: 22px 16px;
-      color: #30291f;
-      background: linear-gradient(145deg, #f7f0df, #e7d9bd);
-      border: 1px solid #c7b28b;
-      border-radius: 18px;
-      box-shadow: 0 6px 18px rgba(50, 38, 20, 0.12);
-      text-align: center;
-    }
-
-    .morse-heading {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-
-    .morse-intro,
-    .morse-instruction {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .morse-cards {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .morse-card {
-      box-sizing: border-box;
-      min-width: 0;
-      min-height: 88px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #fffaf0;
-      border: 1px solid #bda77c;
-      border-radius: 12px;
-      box-shadow: 0 4px 0 #cbb995;
-    }
-
-    .morse-number {
-      align-self: flex-start;
-      padding-left: 10px;
-      color: #81745e;
-      font-size: 12px;
-    }
-
-    .morse-code {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 5px;
-      max-width: 100%;
-      padding: 0 4px;
-      color: #332a1e;
-      font-size: 22px;
-      line-height: 1.4;
-    }
-
-    .morse-dot {
-      font-weight: 900;
-    }
-
-    .morse-dash {
-      font-weight: 900;
-      letter-spacing: -2px;
-    }
-
-    .morse-legend {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin: 16px 0;
-      font-size: 13px;
-    }
-
-    .morse-legend b {
-      font-size: 18px;
-    }
-
-    @media (max-width: 420px) {
-      .morse-puzzle {
-        padding: 18px 12px;
-      }
-
-      .morse-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px;
-      }
-
-      .morse-code {
-        font-size: 22px;
-      }
-    }
-  `;
-
-  document.head.appendChild(style);
-})();
-
-/* ZOBRAZENÍ STANOVIŠTĚ */
-station = function () {
-  app.className = "card";
-
-  state.hintIndex = 0;
-  state.stationHints = 0;
-  state.stationWrong = 0;
-  state.stationStartedAt = new Date().toISOString();
-  state.stationAnswerHistory = [];
-  state.stationHintsHistory = [];
-
-  const s = stations[state.i];
-  const image = s.image || HERO;
-
-  // Index 4 odpovídá pátému stanovišti.
-  const isMorseStation = state.i === 4;
-
-  let morseHtml = "";
-
-  if (isMorseStation) {
-    const morseLetters = [
-      { number: 1, code: "..." },  // S
-      { number: 2, code: ".-.." }, // L
-      { number: 3, code: "." },    // E
-      { number: 4, code: ".--." }, // P
-      { number: 5, code: "." },    // E
-      { number: 6, code: ".---" }, // J
-      { number: 7, code: "." }     // E
-    ];
-
-    morseHtml =
-      '<div class="morse-puzzle">' +
-        '<div class="morse-heading">TAJNÁ ZPRÁVA</div>' +
-
-        '<p class="morse-intro">' +
-          'Kaplička ukrývá zprávu z minulosti. ' +
-          'Rozlušti jednotlivé znaky Morseovy abecedy ' +
-          'a odhal slovo spojené s údajnými otisky světcových nohou.' +
-        '</p>' +
-
-        '<div class="morse-legend">' +
-          '<span><b>●</b> tečka</span>' +
-          '<span><b>━</b> čárka</span>' +
-        '</div>' +
-
-        '<div class="morse-cards">' +
-
-          morseLetters.map(function (letter) {
-            const symbols = letter.code
-              .split("")
-              .map(function (symbol) {
-                return symbol === "."
-                  ? '<span class="morse-dot">●</span>'
-                  : '<span class="morse-dash">━</span>';
-              })
-              .join(" ");
-
-            return (
-              '<div class="morse-card">' +
-                '<span class="morse-number">ZNAK ' +
-                  letter.number +
-                '</span>' +
-                '<span class="morse-code">' +
-                  symbols +
-                '</span>' +
-              '</div>'
-            );
-          }).join("") +
-
-        '</div>' +
-
-        '<p class="morse-instruction">' +
-          'Přečti znaky od 1 do 7. Každý znak představuje ' +
-          'jedno písmeno. Zadej celé výsledné slovo níže.' +
-        '</p>' +
-      '</div>';
-  }
-
-  app.innerHTML =
-    '<div class="eyebrow">Stanoviště ' +
-      (state.i + 1) + ' / ' + stations.length +
-    '</div>' +
-
-    '<div class="progress">' +
-      '<i style="width:' +
-        ((state.i + 1) / stations.length * 100) +
-      '%"></i>' +
-    '</div>' +
-
-    '<h2>' + safeGameText(s.title) + '</h2>' +
-
-    '<img class="station-photo" src="' +
-      escHtml(image) +
-      '" alt="Fotografie stanoviště">' +
-
-    (
-      s.type === "cipher"
-        ? '<div class="cipher">' +
-            '<div class="cipher-title">ŠIFROVACÍ TABULKA</div>' +
-            '<div class="cipher-grid">' +
-              Array.from({ length: 26 }, function (_, i) {
-                return (
-                  '<span><b>' +
-                    String.fromCharCode(65 + i) +
-                  '</b><small>' +
-                    (i + 1) +
-                  '</small></span>'
-                );
-              }).join("") +
-            '</div>' +
-          '</div>'
-
-        : s.type === "field"
-          ? '<div class="field-badge">⌖ ÚKOL V TERÉNU</div>'
-          : ''
-    ) +
-
-    (
-      s.story
-        ? '<div class="letter small-letter">' +
-            safeGameText(s.story) +
-          '</div>'
-        : ''
-    ) +
-
-    (
-      isMorseStation
-        ? morseHtml
-        : '<div class="task">' +
-            safeGameText(s.task) +
-          '</div>'
-    ) +
-
-    '<input id="answer" ' +
-      'placeholder="Tvoje odpověď…" ' +
-      'autocomplete="off">' +
-
-    '<button id="check">ZKONTROLOVAT →</button>' +
-
-    '<button id="hint" class="secondary">💡 NÁPOVĚDA</button>' +
-
-    '<div id="hintbox"></div>' +
-
-    '<button id="stationNavigation" ' +
-      'class="secondary navigation-station" ' +
-      'type="button">' +
-      '🧭 NAVIGOVAT K MÍSTU <span>−30 BODŮ</span>' +
-    '</button>' +
-
-    '<div id="msg" class="msg"></div>';
-
-  const img = document.querySelector(".station-photo");
-
-  if (img) {
-    img.onerror = function () {
-      img.onerror = null;
-      img.src = HERO;
-    };
-  }
-
-  document.querySelector("#check").onclick = check;
-
-  document.querySelector("#answer").onkeydown = function (event) {
-    if (event.key === "Enter") {
-      check();
-    }
-  };
-
-  document.querySelector("#hint").onclick = hint;
-
-  document.querySelector("#stationNavigation").onclick =
-    openNavigation;
-
-  const mapBtn = document.querySelector("#cityMapButton");
-
-  if (mapBtn) {
-    mapBtn.hidden = false;
-    mapBtn.style.display = "inline-block";
-  }
-};
-
-/* NÁPOVĚDA */
-hint = function () {
-  const s = stations[state.i];
-  const box = document.querySelector("#hintbox");
-
-  if (state.hintIndex >= s.hints.length) {
-    box.innerHTML =
-      '<div class="hint">Další nápověda už není.</div>';
-    return;
-  }
-
-  const hintNumber = state.hintIndex + 1;
-  const hintText = s.hints[state.hintIndex];
-
-  state.hints++;
-  state.stationHints++;
-
-  state.score = Math.max(
-    0,
-    state.score - (state.hintIndex ? 20 : 10)
-  );
-
-  state.stationHintsHistory.push({
-    hint: hintNumber,
-    text: hintText,
-    used_at: new Date().toISOString()
-  });
-
-  state.hintIndex++;
-
-  box.innerHTML =
-    '<div class="hint">💡 ' +
-    safeGameText(hintText) +
-    '</div>';
-};
-
-/* KONTROLA ODPOVĚDI */
-check = async function () {
-  const input = document.querySelector("#answer");
-  const val = input.value;
-  const s = stations[state.i];
-  const msg = document.querySelector("#msg");
-  const btn = document.querySelector("#check");
-
-  if (!val.trim() || btn.disabled) return;
-
-  btn.disabled = true;
-  btn.textContent = "KONTROLUJI…";
-
-  let result;
-
-  try {
-    result = await checkStationAnswer(s.id, val);
-  } catch (error) {
-    console.error("Kontrola odpovědi:", error);
-    result = { ok: false };
-  }
-
-  if (!result || !result.ok) {
-    btn.disabled = false;
-    btn.textContent = "ZKONTROLOVAT →";
-
-    msg.className = "msg bad";
-    msg.textContent =
-      "Odpověď se nepodařilo ověřit. " +
-      "Zkontroluj připojení a zkus to znovu.";
-
-    return;
-  }
-
-  /*
-   * Pokud Supabase označí odpověď jako chybnou,
-   * u pátého stanoviště se ještě ověří lokálně.
-   * To umožní zadat ŠLÉPĚJE i SLEPEJE.
-   */
-  const localMorseAnswer =
-    state.i === 4 &&
-    normalizeStationAnswer(val) === "SLEPEJE";
-
-  const isCorrect = !!result.correct || localMorseAnswer;
-
-  state.stationAnswerHistory.push({
-    answer: val.trim(),
-    correct: isCorrect,
-    answered_at: new Date().toISOString()
-  });
-
-  if (isCorrect) {
-    msg.className = "msg ok";
-    msg.textContent =
-      "✓ Správně! Získáváš přístup k další stopě.";
-
-    let saved = false;
-
-    try {
-      saved = await saveStationDetail(s.id);
-    } catch (error) {
-      console.error("Uložení výsledku:", error);
-    }
-
-    if (!saved) {
-      btn.disabled = false;
-      btn.textContent = "ZKONTROLOVAT →";
-
-      msg.className = "msg bad";
-      msg.textContent =
-        "Odpověď je správně, ale výsledek se nepodařilo uložit. " +
-        "Zkontroluj připojení a zkus to znovu.";
-
-      state.stationAnswerHistory.pop();
-      return;
-    }
-
-    setTimeout(function () {
-      reveal();
-    }, 750);
-
-  } else {
-    state.wrong++;
-    state.stationWrong++;
-
-    state.score = Math.max(0, state.score - 5);
-
-    btn.disabled = false;
-    btn.textContent = "ZKONTROLOVAT →";
-
-    msg.className = "msg bad";
-    msg.textContent =
-      "To není správný klíč. Zkus to znovu.";
-
-    input.select();
-  }
-};
+.card > *{position:relative;z-index:1;}
+
+
+/* Header — official uploaded KUVAG logo */
+.brand:after{display:none!important}
+header .brand{display:flex;align-items:center;gap:16px;white-space:nowrap}
+header .real-kuvag-logo{display:block;width:145px;height:auto;object-fit:contain}
+header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#676b6e;margin-left:0}
+.card .eyebrow{color:var(--orange);text-transform:uppercase;font-size:12px;font-weight:950;letter-spacing:.14em}
+@media(max-width:420px){
+  header .brand{gap:10px}
+  header .real-kuvag-logo{width:118px}
+  header .game-label{font-size:9px}
+}
