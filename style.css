@@ -587,3 +587,29 @@ label.leaderboard-consent input[type="checkbox"]{
   background:rgba(255,245,222,.09);border:1px solid rgba(227,189,114,.42);
   border-left:3px solid #c69b52;border-radius:7px;padding:13px 14px
 }
+
+
+/* High-contrast Caesar-cipher help text: explicitly override inherited dark text. */
+.card:has(.station-photo) .cipher p,
+.card:has(.station-photo) .cipher p *,
+.card:has(.station-photo) .cipher .hint,
+.card:has(.station-photo) .cipher .hint *,
+.card:has(.station-photo) .cipher .small,
+.card:has(.station-photo) .cipher strong{
+  color:#fff3d8!important;
+  opacity:1!important;
+  -webkit-text-fill-color:#fff3d8!important;
+}
+.card:has(.station-photo) .cipher p{
+  background:rgba(255,243,216,.08)!important;
+  padding:12px 13px!important;
+  border-radius:6px!important;
+  font-size:16px!important;
+  line-height:1.7!important;
+  font-weight:500!important;
+  text-shadow:0 1px 1px rgba(0,0,0,.55)!important;
+}
+.card:has(.station-photo) .cipher .cipher-title{
+  color:#f0cb7a!important;
+  -webkit-text-fill-color:#f0cb7a!important;
+}
