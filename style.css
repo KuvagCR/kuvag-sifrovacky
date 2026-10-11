@@ -134,3 +134,60 @@ header .game-label{font-size:13px;font-weight:850;letter-spacing:.14em;color:#67
   .letter.manuscript{padding:32px 17px 33px}
   .manuscript-label{font-size:9px}
 }
+
+
+/* První šifra: písmena a číselný klíč jako ručně psané značky na starém papíře */
+.polybius-task .polybius-wrap{
+  margin:14px 0 18px;
+  padding:12px;
+  border:1px solid #c6a878;
+  border-radius:12px;
+  background:
+    radial-gradient(ellipse at 8% 15%,rgba(132,85,37,.13),transparent 30%),
+    radial-gradient(ellipse at 90% 85%,rgba(132,85,37,.12),transparent 32%),
+    linear-gradient(135deg,#f4e8c9,#e8d4a7 55%,#f2e3bd);
+  box-shadow:inset 0 0 16px rgba(112,76,35,.12),0 4px 0 rgba(137,101,56,.12);
+}
+.polybius-task .polybius-table{
+  width:100%;
+  border-spacing:5px;
+  border-collapse:separate;
+  color:#493522;
+  font-family:"Segoe Print","Bradley Hand","Segoe Script","Comic Sans MS",cursive;
+}
+.polybius-task .polybius-table th{
+  color:#87643a;
+  font-family:Georgia,serif;
+  font-size:13px;
+  font-weight:700;
+  background:rgba(255,249,229,.52);
+  border-radius:7px;
+  padding:7px 3px;
+}
+.polybius-task .polybius-table td{
+  height:43px;
+  border:1px solid rgba(148,112,64,.3);
+  border-radius:9px;
+  background:rgba(255,252,239,.78);
+  color:#382719;
+  font-size:clamp(18px,5vw,23px);
+  font-weight:700;
+  text-align:center;
+  box-shadow:0 3px 0 rgba(128,91,44,.18);
+}
+.polybius-task .polybius-code{
+  margin:16px 0 4px;
+  padding:20px 10px;
+  border:1px solid #c6ad7b;
+  border-radius:13px;
+  background:linear-gradient(135deg,#f7edcf,#ead6a8,#f5e8c5);
+  color:#493522;
+  box-shadow:inset 0 0 12px rgba(118,78,31,.1),0 4px 0 rgba(128,91,44,.16);
+  text-align:center;
+}
+.polybius-task .polybius-code strong{
+  font-family:"Segoe Print","Bradley Hand","Segoe Script","Comic Sans MS",cursive;
+  font-size:clamp(21px,5.4vw,27px);
+  font-weight:700;
+  letter-spacing:.08em;
+}
