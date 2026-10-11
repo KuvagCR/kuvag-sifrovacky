@@ -569,3 +569,82 @@ label.leaderboard-consent input[type="checkbox"]{
 @media(max-width:380px){
   .card:has(.station-photo),.card:has(.manuscript),.card.finish{padding:24px 16px}
 }
+
+
+/* Refined realistic parchment: handmade paper, irregular burned edges, restrained ink */
+.card:has(.station-photo) .letter.manuscript,
+.card:has(.manuscript) .letter.manuscript{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  margin:25px 0 28px;
+  padding:27px 20px 29px;
+  border:1px solid #9b713a;
+  border-radius:3px 5px 4px 6px;
+  border-left:1px solid #9b713a;
+  background-color:#e4c58b;
+  background-image:
+    radial-gradient(ellipse at 8% 7%,rgba(111,62,23,.24) 0,transparent 17%),
+    radial-gradient(ellipse at 92% 13%,rgba(255,250,222,.42) 0,transparent 20%),
+    radial-gradient(ellipse at 15% 94%,rgba(105,60,25,.20) 0,transparent 19%),
+    radial-gradient(ellipse at 96% 91%,rgba(105,60,25,.25) 0,transparent 21%),
+    repeating-linear-gradient(0deg,rgba(107,74,35,.035) 0,rgba(107,74,35,.035) 1px,transparent 1px,transparent 5px),
+    linear-gradient(112deg,#e8d09e 0%,#f1dfb4 24%,#e5c68c 57%,#d9b77a 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,244,210,.42),
+    inset 0 0 18px rgba(95,57,24,.17),
+    0 10px 18px rgba(48,34,18,.17);
+}
+.card:has(.station-photo) .letter.manuscript::before,
+.card:has(.manuscript) .letter.manuscript::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  opacity:.68;
+  background:
+    linear-gradient(90deg,rgba(99,55,22,.20),transparent 4%,transparent 96%,rgba(99,55,22,.16)),
+    linear-gradient(180deg,rgba(98,57,23,.18),transparent 7%,transparent 92%,rgba(98,57,23,.22));
+  mix-blend-mode:multiply;
+}
+.card:has(.station-photo) .letter.manuscript::after,
+.card:has(.manuscript) .letter.manuscript::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+  inset:9px;
+  border:1px solid rgba(122,79,35,.22);
+  box-shadow:inset 0 0 12px rgba(110,72,34,.07);
+}
+.card:has(.station-photo) .manuscript-label,
+.card:has(.manuscript) .manuscript-label{
+  position:relative;
+  z-index:1;
+  color:#76502b;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.13em;
+  line-height:1.4;
+}
+.card:has(.station-photo) .manuscript-text,
+.card:has(.manuscript) .manuscript-text{
+  position:relative;
+  z-index:1;
+  color:#3c2b1d;
+  font-family:"Segoe Print","Bradley Hand","Segoe Script","Comic Sans MS",cursive;
+  font-size:clamp(14px,3.7vw,18px);
+  font-style:italic;
+  font-weight:500;
+  line-height:1.68;
+  letter-spacing:0;
+  text-shadow:0 .25px rgba(49,32,18,.4);
+}
+@media(max-width:380px){
+  .card:has(.station-photo) .letter.manuscript,
+  .card:has(.manuscript) .letter.manuscript{padding:23px 16px 25px;margin:20px 0 23px}
+  .card:has(.station-photo) .manuscript-text,
+  .card:has(.manuscript) .manuscript-text{font-size:14px;line-height:1.62}
+}
