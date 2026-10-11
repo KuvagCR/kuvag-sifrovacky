@@ -613,3 +613,7 @@ label.leaderboard-consent input[type="checkbox"]{
   color:#f0cb7a!important;
   -webkit-text-fill-color:#f0cb7a!important;
 }
+
+/* Každý z pěti akrostichových veršů na jediném řádku i na mobilu. */
+.acrostic-lines{padding:10px 8px!important;overflow-x:auto;max-width:100%;box-sizing:border-box}
+.acrostic-lines p{white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;font-size:clamp(10px,2.75vw,15px)!important;line-height:1.5!important;letter-spacing:-.025em!important;padding:12px 6px!important;margin:8px 0!important}
