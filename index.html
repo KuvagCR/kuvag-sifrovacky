@@ -19,7 +19,18 @@
   </header>
   <section id="app" class="card"></section>
 </main>
-<script src="app.js?v=20261012-new-game-reset"></script>
+<script>
+if(new URLSearchParams(location.search).get("restart")==="1"){
+  try{
+    for(let i=localStorage.length-1;i>=0;i--){
+      const key=localStorage.key(i);
+      if(key&&key.startsWith("kuvag-progress-"))localStorage.removeItem(key);
+    }
+  }catch(e){console.warn("Restart hry:",e)}
+  history.replaceState(null,"",location.pathname+"?game=1");
+}
+</script>
+<script src="app.js?v=20261012-restart-link"></script>
 
 </body>
 </html>
