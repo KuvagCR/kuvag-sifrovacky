@@ -828,3 +828,19 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .finish-feedback .feedback-stars label:focus-within{outline:2px solid #e9bc69;outline-offset:4px}
 
 .finish-route-summary{margin:18px auto 16px;text-align:center;font-family:Georgia,serif;font-size:15px;line-height:1.7;color:#eacb91;max-width:650px}
+
+/* Uvodni obrazovka ve stejnem pergamenovem stylu jako sifry */
+.card.welcome-parchment{background:linear-gradient(145deg,rgba(250,239,212,.96),rgba(230,207,161,.96) 55%,rgba(244,225,184,.96));border:1px solid #c7a56c;box-shadow:0 12px 38px rgba(75,49,22,.18),inset 0 0 36px rgba(137,90,39,.12);color:#43301d}
+.card.welcome-parchment:after{display:none}
+.welcome-parchment .eyebrow{color:#8d5428;letter-spacing:.19em}
+.welcome-parchment h1{font-family:Georgia,serif;color:#3f2c1b;font-size:clamp(31px,7vw,42px);line-height:1.08;letter-spacing:-.025em;text-transform:none}
+.welcome-parchment .hero-photo{margin:18px 0 22px;height:215px;border-radius:12px;border:5px solid rgba(126,85,44,.35);box-shadow:0 5px 16px rgba(63,39,16,.22);overflow:hidden}
+.welcome-parchment .hero-photo span{font-family:Georgia,serif;font-size:clamp(20px,4.5vw,25px);font-weight:700;left:18px;bottom:16px}
+.welcome-parchment #welcomeDescription{font-family:Georgia,serif;color:#4c3824;font-size:18px;line-height:1.6}
+.welcome-parchment .intro-lines{margin:20px 0 12px;padding:12px 18px;background:rgba(255,250,234,.35);border:1px solid rgba(125,85,42,.32);border-radius:10px}
+.welcome-parchment .intro-lines div{font-family:Georgia,serif;color:#49321c;font-weight:600;padding:7px 0}
+.welcome-parchment .intro-lines b{color:#96602f}
+.welcome-parchment #welcomeTime{font-family:Georgia,serif;color:#654422;font-size:15px;font-weight:700;letter-spacing:.025em;margin:14px 0 20px}
+.welcome-parchment .player-type-title,.welcome-parchment .leaderboard-title{color:#4c311c}
+.welcome-parchment input:not([type=radio]):not([type=checkbox]),.welcome-parchment textarea{background:#fff9e9;border-color:#bfa47a;color:#3b2b1b}
+@media(max-width:480px){.card.welcome-parchment{padding:25px 18px}.welcome-parchment .hero-photo{height:190px}.welcome-parchment .intro-lines{padding:10px 12px}}
