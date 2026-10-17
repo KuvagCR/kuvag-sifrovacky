@@ -809,3 +809,12 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
  font-size:18px!important;line-height:1.65!important;color:#473626!important;
 }
 .card:has(#maryNext) #maryNext{margin-bottom:0!important}
+
+/* Final solved memory card: content-height parchment and consistent serif story text. */
+.card:has(#continue):has(.story-text):not(:has(.station-photo)){
+ min-height:0!important;height:auto!important;padding-bottom:28px!important;
+}
+.card:has(#continue):has(.story-text):not(:has(.station-photo)) .story-text{
+ font-family:Georgia,"Times New Roman",serif!important;font-size:18px!important;line-height:1.65!important;color:#473626!important;
+}
+.card:has(#continue):has(.story-text):not(:has(.station-photo)) #continue{margin-bottom:0!important}
