@@ -844,3 +844,11 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .welcome-parchment .player-type-title,.welcome-parchment .leaderboard-title{color:#4c311c}
 .welcome-parchment input:not([type=radio]):not([type=checkbox]),.welcome-parchment textarea{background:#fff9e9;border-color:#bfa47a;color:#3b2b1b}
 @media(max-width:480px){.card.welcome-parchment{padding:25px 18px}.welcome-parchment .hero-photo{height:190px}.welcome-parchment .intro-lines{padding:10px 12px}}
+
+/* Uvod musi pouzivat stejny skutecny pergamen jako stanoviště, ne bilou kartu. */
+.card.welcome-parchment{color:#35291c!important;background:radial-gradient(ellipse at 15% 10%,#fff9e9 0%,transparent 45%),linear-gradient(145deg,#f8eed8,#ead9b6 58%,#f7ead1)!important;border:1px solid #c5a778!important;border-radius:15px!important;box-shadow:0 12px 30px rgba(65,44,20,.17),inset 0 0 0 4px rgba(150,110,57,.07)!important}
+.card.welcome-parchment h1{font-family:Georgia,"Times New Roman",serif!important;color:#302416!important;font-size:clamp(29px,6vw,35px)!important;line-height:1.2!important;letter-spacing:0!important;font-weight:700!important;text-transform:none!important;margin:12px 0 18px!important}
+.card.welcome-parchment .hero-photo{border:1px solid #bca074!important;border-radius:10px!important;box-shadow:0 6px 18px rgba(65,44,20,.18)!important}
+.card.welcome-parchment #welcomeDescription,.card.welcome-parchment .intro-lines,.card.welcome-parchment #welcomeTime{font-family:Georgia,"Times New Roman",serif!important;color:#473626!important}
+.card.welcome-parchment .intro-lines{background:rgba(255,249,232,.68)!important;border:1px solid #cdb78f!important;border-left:4px solid #8c4b35!important;border-radius:8px!important}
+.card.welcome-parchment button{font-family:Georgia,"Times New Roman",serif!important}
