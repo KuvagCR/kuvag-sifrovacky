@@ -862,3 +862,11 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .card.intro-parchment p{font-family:Georgia,"Times New Roman",serif!important;font-size:18px!important;line-height:1.65!important;color:#473626!important}
 .card.intro-parchment .letter{background:rgba(255,249,232,.68)!important;border:1px solid #cdb78f!important;border-left:4px solid #8c4b35!important;border-radius:8px!important;color:#3e2d1c!important;box-shadow:none!important}
 .card.intro-parchment button{font-family:Georgia,"Times New Roman",serif!important}
+
+/* Mírně menší text na všech pergamenech, zachovat čitelnost. */
+.card .letter.manuscript .manuscript-text{font-size:clamp(17px,4vw,21px)!important;line-height:1.65!important}
+.card .letter.manuscript{font-size:clamp(16px,3.9vw,20px)!important}
+.card .letter.manuscript .manuscript-label{font-size:clamp(12px,2.9vw,14px)!important}
+.card:has(.station-photo) .story-text,.card:has(.manuscript) .story-text,.card.route-card .story-text,.card:has(#maryNext) .story-text,.card:has(#continue):has(.story-text):not(:has(.station-photo)) .story-text{font-size:17px!important;line-height:1.6!important}
+.card.intro-parchment p,.card.welcome-parchment #welcomeDescription{font-size:17px!important;line-height:1.6!important}
+.card.intro-parchment .letter{font-size:17px!important;line-height:1.65!important}
