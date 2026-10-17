@@ -852,3 +852,13 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .card.welcome-parchment #welcomeDescription,.card.welcome-parchment .intro-lines,.card.welcome-parchment #welcomeTime{font-family:Georgia,"Times New Roman",serif!important;color:#473626!important}
 .card.welcome-parchment .intro-lines{background:rgba(255,249,232,.68)!important;border:1px solid #cdb78f!important;border-left:4px solid #8c4b35!important;border-radius:8px!important}
 .card.welcome-parchment button{font-family:Georgia,"Times New Roman",serif!important}
+
+/* Prolog: stejny pergamen jako ostatni stanoviste */
+.card.intro-parchment{color:#35291c!important;background:radial-gradient(ellipse at 15% 10%,#fff9e9 0%,transparent 45%),linear-gradient(145deg,#f8eed8,#ead9b6 58%,#f7ead1)!important;border:1px solid #c5a778!important;border-radius:15px!important;box-shadow:0 12px 30px rgba(65,44,20,.17),inset 0 0 0 4px rgba(150,110,57,.07)!important}
+.card.intro-parchment:after{display:none!important}
+.card.intro-parchment .eyebrow{color:#79502e!important}
+.card.intro-parchment h1{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(28px,6vw,35px)!important;line-height:1.2!important;letter-spacing:0!important;text-transform:none!important;color:#302416!important}
+.card.intro-parchment h1 .orange{color:#8c4b35!important}
+.card.intro-parchment p{font-family:Georgia,"Times New Roman",serif!important;font-size:18px!important;line-height:1.65!important;color:#473626!important}
+.card.intro-parchment .letter{background:rgba(255,249,232,.68)!important;border:1px solid #cdb78f!important;border-left:4px solid #8c4b35!important;border-radius:8px!important;color:#3e2d1c!important;box-shadow:none!important}
+.card.intro-parchment button{font-family:Georgia,"Times New Roman",serif!important}
