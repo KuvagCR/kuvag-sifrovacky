@@ -818,3 +818,11 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
  font-family:Georgia,"Times New Roman",serif!important;font-size:18px!important;line-height:1.65!important;color:#473626!important;
 }
 .card:has(#continue):has(.story-text):not(:has(.station-photo)) #continue{margin-bottom:0!important}
+
+/* Hodnocení na konci hry: pět hvězdiček vedle sebe */
+.finish-feedback .feedback-stars{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:center!important;gap:10px!important;width:100%!important;margin:12px 0 20px!important}
+.finish-feedback .feedback-stars label{display:inline-flex!important;flex:0 0 auto!important;align-items:center!important;justify-content:center!important;position:relative!important;margin:0!important;padding:0!important;cursor:pointer!important}
+.finish-feedback .feedback-stars input[type="radio"]{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;pointer-events:none!important}
+.finish-feedback .feedback-stars label span[aria-hidden="true"]{display:inline-block!important;font-size:34px!important;line-height:1!important;color:#e9bc69!important}
+.finish-feedback .feedback-stars label:has(input:checked) span[aria-hidden="true"]{color:#ffcf68!important;text-shadow:0 0 7px rgba(255,205,90,.55)!important}
+.finish-feedback .feedback-stars label:focus-within{outline:2px solid #e9bc69;outline-offset:4px}
