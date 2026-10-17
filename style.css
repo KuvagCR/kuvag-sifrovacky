@@ -730,3 +730,14 @@ label.leaderboard-consent input[type="checkbox"]{
 .card .msg.bad{color:#9c3028!important;-webkit-text-fill-color:#9c3028!important}
 .card .cipher .msg.ok{color:#bdf1bf!important;-webkit-text-fill-color:#bdf1bf!important}
 .card .cipher .msg.bad{color:#ffd3ba!important;-webkit-text-fill-color:#ffd3ba!important}
+
+/* Readable Caesar instruction text inside the dark encoded-message panel. */
+.card .cipher p,
+.card .cipher p *,
+.card .cipher .small,
+.card .cipher .hint,
+.card .cipher .hint *{
+  color:#fff2dc!important;
+  -webkit-text-fill-color:#fff2dc!important;
+  opacity:1!important;
+}
