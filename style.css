@@ -782,3 +782,15 @@ label.leaderboard-consent input[type="checkbox"]{
 .card:has(.story-mark):not(.finish)::after{display:none!important}
 .card:has(.story-mark):not(.finish) h2{color:#302416!important;font-family:Georgia,"Times New Roman",serif!important}
 .card:has(.story-mark):not(.finish) .story-text{color:#473626!important;font-family:Georgia,"Times New Roman",serif!important}
+
+/* Compact historical interlude pages: content determines height, no empty bottom. */
+.card.route-card:has(#historyContinue),
+.card.route-card:has(#cemeteryContinue){
+  min-height:0!important;
+  height:auto!important;
+  padding-bottom:25px!important;
+}
+.card.route-card:has(#historyContinue) #historyContinue,
+.card.route-card:has(#cemeteryContinue) #cemeteryContinue{
+  margin-bottom:0!important;
+}
