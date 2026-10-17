@@ -946,3 +946,10 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
  linear-gradient(135deg,#e4c493 0%,#f3ddb3 12%,#f7e7c6 50%,#eed5a8 88%,#dbb982 100%)!important;
  box-shadow:inset 0 0 12px rgba(79,39,15,.13),0 8px 20px rgba(67,43,21,.17)!important;
 }
+
+/* Závěrečné hodnocení: přehledné hvězdy a vycentrovaná poznámka */
+.finish-feedback .feedback-stars{gap:clamp(8px,3vw,22px)!important;justify-content:center!important;flex-wrap:nowrap!important}
+.finish-feedback .feedback-stars label span[aria-hidden="true"]{font-size:clamp(30px,8vw,43px)!important}
+.finish-feedback label[for="gameComment"]{display:block!important;text-align:center!important;margin:18px auto 10px!important}
+.finish-feedback #gameComment{display:block!important;box-sizing:border-box!important;width:100%!important;max-width:570px!important;min-height:126px!important;margin:0 auto 18px!important;padding:16px 18px!important;border:1px solid #b99965!important;border-radius:12px!important;background:#fff7e7!important;color:#39291d!important;font:16px/1.5 Georgia,serif!important;resize:vertical!important;box-shadow:inset 0 2px 7px rgba(62,42,21,.1)!important}
+.finish-feedback #gameComment:focus{outline:2px solid #cfaa66!important;outline-offset:2px!important}
