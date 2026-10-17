@@ -794,3 +794,6 @@ label.leaderboard-consent input[type="checkbox"]{
 .card.route-card:has(#cemeteryContinue) #cemeteryContinue{
   margin-bottom:0!important;
 }
+
+/* Destination navigation link */
+a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:center;background:#fff3d9;color:#56351f!important;-webkit-text-fill-color:#56351f!important;border:1px solid #b99865;border-radius:10px;font-weight:800;text-decoration:none;letter-spacing:.025em}a.place-navigation:hover{background:#f7dfae}
