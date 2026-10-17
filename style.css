@@ -797,3 +797,6 @@ label.leaderboard-consent input[type="checkbox"]{
 
 /* Destination navigation link */
 a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:center;background:#fff3d9;color:#56351f!important;-webkit-text-fill-color:#56351f!important;border:1px solid #b99865;border-radius:10px;font-weight:800;text-decoration:none;letter-spacing:.025em}a.place-navigation:hover{background:#f7dfae}
+
+/* Decorative Joseph II wax seal at Zelenohorska posta */
+.imperial-seal-wrap{text-align:center;margin:18px auto 22px;max-width:440px}.imperial-seal{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:155px;height:155px;margin:0 auto 12px;border-radius:50%;color:#f7d7ac;background:radial-gradient(circle at 35% 25%,#c9584c 0%,#a62e29 55%,#741c1e 100%);border:8px double #812323;box-shadow:inset 0 0 0 3px #d67b66,inset 0 0 0 8px #912b27,0 7px 15px #5a332f44;transform:rotate(-8deg)}.seal-ring{position:absolute;top:22px;font-family:Georgia,serif;font-size:10px;letter-spacing:1px}.seal-center{font-family:Georgia,serif;font-size:25px;font-weight:bold;line-height:1.15;text-shadow:0 1px 2px #511}.imperial-seal-wrap .small{font-size:13px;line-height:1.5}
