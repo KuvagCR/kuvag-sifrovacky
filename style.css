@@ -696,3 +696,37 @@ label.leaderboard-consent input[type="checkbox"]{
 .card.finish .finish-photos label.photo-consent{display:flex!important;flex-direction:row!important;align-items:flex-start!important;justify-content:flex-start!important;gap:12px!important;width:100%;text-align:left!important;line-height:1.4!important}
 .card.finish .finish-photos label.photo-consent input[type="checkbox"]{display:block!important;flex:0 0 22px!important;width:22px!important;min-width:22px!important;height:22px!important;margin:5px 0 0!important;padding:0!important}
 .card.finish .finish-photos label.photo-consent span{display:block;flex:1;min-width:0}
+
+/* Consistent readable text across all game screens.
+   Inputs must override the legacy light-ink rule on dark cipher containers. */
+.card input:not([type="checkbox"]):not([type="radio"]),
+.card textarea,
+.card select,
+.card .cipher input:not([type="checkbox"]):not([type="radio"]),
+.card .cipher textarea,
+.card .cipher select,
+.card.route-card .cipher input:not([type="checkbox"]):not([type="radio"]),
+.card.route-card .cipher textarea,
+.card.route-card .cipher select,
+.card:has(.station-photo) .cipher input:not([type="checkbox"]):not([type="radio"]){
+  color:#2c2117!important;
+  -webkit-text-fill-color:#2c2117!important;
+  background-color:#fffaf0!important;
+  opacity:1!important;
+  text-shadow:none!important;
+  caret-color:#2c2117!important;
+}
+.card input::placeholder,.card textarea::placeholder,
+.card .cipher input::placeholder,.card .cipher textarea::placeholder{
+  color:#675744!important;
+  -webkit-text-fill-color:#675744!important;
+  opacity:1!important;
+}
+.card .cipher label,.card.route-card .cipher label{
+  color:#fff2d2!important;
+  -webkit-text-fill-color:#fff2d2!important;
+}
+.card .msg.ok{color:#24653a!important;-webkit-text-fill-color:#24653a!important}
+.card .msg.bad{color:#9c3028!important;-webkit-text-fill-color:#9c3028!important}
+.card .cipher .msg.ok{color:#bdf1bf!important;-webkit-text-fill-color:#bdf1bf!important}
+.card .cipher .msg.bad{color:#ffd3ba!important;-webkit-text-fill-color:#ffd3ba!important}
