@@ -766,3 +766,19 @@ label.leaderboard-consent input[type="checkbox"]{
 }
 .card:has(.story-text) p:not(.cipher p),
 .card:has(.voitech-fact) p:not(.cipher p){color:#473626}
+
+/* All gameplay cards share the parchment, including the solved/reveal screen.
+   Only the entry screen remains white. */
+.card:has(.story-mark),
+.card:has(.story-text),
+.card:has(.story-mark):not(.finish){
+  background-color:#f1e3c5!important;
+  background-image:radial-gradient(ellipse at 15% 10%,#fff9e9 0%,transparent 45%),linear-gradient(145deg,#f8eed8,#ead9b6 58%,#f7ead1)!important;
+  border:1px solid #c5a778!important;
+  border-radius:15px!important;
+  box-shadow:0 12px 30px rgba(65,44,20,.17),inset 0 0 0 4px rgba(150,110,57,.07)!important;
+  color:#35291c!important;
+}
+.card:has(.story-mark):not(.finish)::after{display:none!important}
+.card:has(.story-mark):not(.finish) h2{color:#302416!important;font-family:Georgia,"Times New Roman",serif!important}
+.card:has(.story-mark):not(.finish) .story-text{color:#473626!important;font-family:Georgia,"Times New Roman",serif!important}
