@@ -870,3 +870,12 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .card:has(.station-photo) .story-text,.card:has(.manuscript) .story-text,.card.route-card .story-text,.card:has(#maryNext) .story-text,.card:has(#continue):has(.story-text):not(:has(.station-photo)) .story-text{font-size:17px!important;line-height:1.6!important}
 .card.intro-parchment p,.card.welcome-parchment #welcomeDescription{font-size:17px!important;line-height:1.6!important}
 .card.intro-parchment .letter{font-size:17px!important;line-height:1.65!important}
+
+/* Jemnější sazba pergamenů: o něco menší písmo a kompaktnější řádky. */
+.card .letter.manuscript .manuscript-text{font-size:clamp(16px,3.7vw,19px)!important;line-height:1.48!important}
+.card .letter.manuscript{font-size:clamp(15px,3.6vw,18px)!important;line-height:1.5!important}
+.card .letter.manuscript .manuscript-label{font-size:clamp(12px,2.8vw,13px)!important;line-height:1.35!important}
+.card:has(.station-photo) .story-text,.card:has(.manuscript) .story-text,.card.route-card .story-text,.card:has(#maryNext) .story-text,.card:has(#continue):has(.story-text):not(:has(.station-photo)) .story-text{font-size:16px!important;line-height:1.48!important}
+.card.intro-parchment p,.card.welcome-parchment #welcomeDescription{font-size:16px!important;line-height:1.48!important}
+.card.intro-parchment .letter{font-size:16px!important;line-height:1.5!important}
+.card:has(.station-photo) p,.card:has(.manuscript) p,.card.route-card p{line-height:1.5!important}
