@@ -826,3 +826,5 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .finish-feedback .feedback-stars label span[aria-hidden="true"]{display:inline-block!important;font-size:34px!important;line-height:1!important;color:#e9bc69!important}
 .finish-feedback .feedback-stars label:has(input:checked) span[aria-hidden="true"]{color:#ffcf68!important;text-shadow:0 0 7px rgba(255,205,90,.55)!important}
 .finish-feedback .feedback-stars label:focus-within{outline:2px solid #e9bc69;outline-offset:4px}
+
+.finish-route-summary{margin:18px auto 16px;text-align:center;font-family:Georgia,serif;font-size:15px;line-height:1.7;color:#eacb91;max-width:650px}
