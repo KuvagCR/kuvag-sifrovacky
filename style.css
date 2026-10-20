@@ -1045,3 +1045,7 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .morse-task.parchment-puzzle .morse-inline{background:#f4e3be!important;border:2px solid #a78450!important;color:#352515!important;border-radius:8px}
 .morse-task.parchment-puzzle .morse-reference{box-shadow:inset 0 0 0 1px #f9edce}
 .cipher-words p{font-size:18px;letter-spacing:.1em;text-align:center;font-weight:bold}
+
+/* Consistent historical progress underline on all station and reveal screens */
+#app .progress{height:5px!important;background:#d4c5a6!important;border:1px solid rgba(123,87,42,.15)!important;border-radius:10px!important;overflow:hidden!important}
+#app .progress i{display:block!important;height:100%!important;background:linear-gradient(90deg,#7b3028,#b38a4c)!important;border-radius:inherit!important}
