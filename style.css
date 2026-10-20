@@ -1054,3 +1054,7 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 #app .cipher.parchment-puzzle,#app .cipher.parchment-puzzle .cipher-title,#app .cipher.parchment-puzzle p,#app .cipher.parchment-puzzle p strong,#app .cipher.parchment-puzzle strong,#app .cipher.parchment-puzzle b{color:#332211!important;-webkit-text-fill-color:#332211!important;text-shadow:none!important}
 #app .cipher.parchment-puzzle .cipher-title{color:#523518!important;-webkit-text-fill-color:#523518!important}
 #app .cipher-words p strong{font-weight:800!important}
+
+/* Matching historic seals for station, puzzle and score symbols on the welcome screen */
+#app .intro-lines div{display:flex;align-items:center;gap:10px}
+#app .intro-lines b.intro-seal{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 31px;width:31px;height:31px;border:1.5px solid #886339;border-radius:50%;box-shadow:inset 0 0 0 2px #ead4ab,inset 0 0 0 3px #ad8b58;color:#66401e!important;font:700 23px Georgia,serif;line-height:1;background:#f1dfbc}
