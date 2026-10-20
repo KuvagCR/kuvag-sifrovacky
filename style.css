@@ -990,3 +990,15 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .card .renaissance-cipher p,.card .renaissance-cipher strong,.card .renaissance-cipher label{color:#3b2818!important;font-family:Georgia,'Times New Roman',serif!important;line-height:1.55!important}
 .card .renaissance-cipher input{background:#fff9ec!important;color:#3b2818!important;-webkit-text-fill-color:#3b2818!important;border:1px solid #b99560!important;border-radius:7px!important;font-family:Georgia,serif!important}
 .card .renaissance-cipher button{background:#7d3f2e!important;color:#fff6e6!important;border:1px solid #683123!important;border-radius:6px!important;font-family:Georgia,serif!important;box-shadow:0 3px 0 #54291f!important}
+
+/* Legibility fix for parchment Caesar cipher and answer (override older white-on-dark rules) */
+.card .renaissance-cipher,
+.card .renaissance-cipher p,
+.card .renaissance-cipher p strong,
+.card .renaissance-cipher strong,
+.card .renaissance-cipher label,
+.card .renaissance-cipher .cipher-title,
+.card .renaissance-cipher div:not(.msg){color:#352315!important;-webkit-text-fill-color:#352315!important;text-shadow:none!important;opacity:1!important}
+.card .renaissance-cipher .msg.ok{color:#22502a!important;-webkit-text-fill-color:#22502a!important;font-weight:700!important;text-shadow:none!important}
+.card .renaissance-cipher .msg.bad{color:#872e25!important;-webkit-text-fill-color:#872e25!important;text-shadow:none!important}
+.card .renaissance-cipher button{color:#fff9ed!important;-webkit-text-fill-color:#fff9ed!important}
