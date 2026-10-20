@@ -970,3 +970,9 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 }
 .header-actions .map-button:hover {background:#f0dfb8;color:#432a15;}
 .navigation-station, #hint {font-family: Georgia, 'Times New Roman', serif;letter-spacing:.025em;}
+
+/* Unified introduction navigation — same Renaissance styling on all intro screens */
+.intro-step-actions{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.intro-step-actions button{display:block;box-sizing:border-box;width:100%;min-height:52px;margin:0!important;border-radius:13px;font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:.025em}
+.intro-step-actions button.secondary{background:#eee6d7!important;border:1px solid #b69a71!important;color:#593b20!important;box-shadow:none!important}
+.intro-step-actions button:not(.secondary){background:#ed654a!important;color:#fffaf0!important;border:1px solid #d35c40!important}
