@@ -248,26 +248,9 @@ function testNavigatePage(delta){
  window.scrollTo({top:0,behavior:"instant"});
 }
 function installTestPageNavigator(){
- const old=document.getElementById("testPageNavigator");
- if(state.playerType!=="test"||!state.start||app.querySelector(".intro-top-nav")){old?.remove();return}
- if(!app||!app.innerHTML.trim())return;
- if(testPagePosition===null)testPagePosition=detectTestPagePosition();
- if(old&&old.parentElement===app){const pos=testPagePosition;const prev=old.querySelector("button:first-child"),next=old.querySelector("button:nth-of-type(2)"),label=old.querySelector("#testPageNavigatorLabel");if(label){label.textContent=(pos+1)+" / "+TEST_PAGES.length+" · "+TEST_PAGES[pos][0];label.dataset.page=TEST_PAGES[pos][0]}if(prev)prev.disabled=pos===0;if(next)next.disabled=pos===TEST_PAGES.length-1;return}
- old?.remove();
- const nav=document.createElement("div");
- nav.id="testPageNavigator";
- nav.style.cssText="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 0;margin:0 0 18px;border-bottom:1px solid rgba(100,75,45,.25)";
- const prev=document.createElement("button"),next=document.createElement("button"),label=document.createElement("span");
- prev.type=next.type="button";prev.className=next.className="secondary";
- prev.textContent="← ZPĚT";next.textContent="VPŘED →";
- label.id="testPageNavigatorLabel";label.style.cssText="font-size:12px;text-align:center";
- label.textContent="Procházení hry";
- prev.onclick=()=>testNavigatePage(-1);next.onclick=()=>testNavigatePage(1);
- const pageIndex=testPagePosition===null?detectTestPagePosition():testPagePosition;
- prev.disabled=pageIndex===0;next.disabled=pageIndex===TEST_PAGES.length-1;
- label.textContent=(pageIndex+1)+" / "+TEST_PAGES.length+" · "+TEST_PAGES[pageIndex][0];label.dataset.page=TEST_PAGES[pageIndex][0]
- nav.append(prev,label,next);app.prepend(nav);
+ document.getElementById("testPageNavigator")?.remove();
 }
+
 const testPageObserver=new MutationObserver(()=>{if(!testPageNavigating)installTestPageNavigator()});
 testPageObserver.observe(app,{childList:true});
 installTestPageNavigator();
