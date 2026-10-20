@@ -1020,3 +1020,14 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .card button:not(.map-close):not(.feedback-star):not(.star):not(.photo-remove):hover{background:linear-gradient(180deg,#fff0d2,#e9d0a1)!important}
 .card button:disabled{opacity:.55!important;cursor:not-allowed!important}
 .card .renaissance-cipher button{background:linear-gradient(180deg,#f7e9cc,#e9d5ad)!important;color:#5b381c!important;-webkit-text-fill-color:#5b381c!important;border:1px solid #b69562!important;box-shadow:0 3px 0 rgba(115,78,37,.2)!important}
+
+/* Consistent station and transition eyebrow typography */
+.card .eyebrow, .card.route-card .eyebrow, .card:has(.manuscript) .eyebrow, .card.finish .eyebrow {
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  color: #654524 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+}
