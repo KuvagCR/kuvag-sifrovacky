@@ -976,3 +976,17 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .intro-step-actions button{display:block;box-sizing:border-box;width:100%;min-height:52px;margin:0!important;border-radius:13px;font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:.025em}
 .intro-step-actions button.secondary{background:#eee6d7!important;border:1px solid #b69a71!important;color:#593b20!important;box-shadow:none!important}
 .intro-step-actions button:not(.secondary){background:#ed654a!important;color:#fffaf0!important;border:1px solid #d35c40!important}
+
+/* Same parchment/manuscript appearance for the Jakub encrypted clue and answer */
+.card .renaissance-cipher{
+ background:linear-gradient(145deg,#f8e8c6,#ead3a6)!important;
+ color:#3b2818!important;
+ border:1px solid #b28b50!important;
+ border-radius:8px!important;
+ box-shadow:inset 0 0 0 3px rgba(255,249,231,.25),0 3px 9px rgba(65,39,18,.12)!important;
+ padding:17px!important;
+}
+.card .renaissance-cipher .cipher-title{color:#7e4626!important;font:700 13px Georgia,serif!important;letter-spacing:.11em!important}
+.card .renaissance-cipher p,.card .renaissance-cipher strong,.card .renaissance-cipher label{color:#3b2818!important;font-family:Georgia,'Times New Roman',serif!important;line-height:1.55!important}
+.card .renaissance-cipher input{background:#fff9ec!important;color:#3b2818!important;-webkit-text-fill-color:#3b2818!important;border:1px solid #b99560!important;border-radius:7px!important;font-family:Georgia,serif!important}
+.card .renaissance-cipher button{background:#7d3f2e!important;color:#fff6e6!important;border:1px solid #683123!important;border-radius:6px!important;font-family:Georgia,serif!important;box-shadow:0 3px 0 #54291f!important}
