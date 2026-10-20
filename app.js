@@ -62,6 +62,9 @@ function startPlace(){
  app.className="card intro-parchment";
  app.innerHTML='<div class="eyebrow">MÍSTO ZAČÁTKU</div><h1>Vaše cesta začíná na náměstí v Nepomuku</h1><p>Vydejte se na náměstí v Nepomuku. Právě zde začíná vaše putování za tajemstvím města a čeká vás první šifra.</p><p><strong>Časomíra se spustí až po kliknutí na tlačítko „POKRAČOVAT K PRVNÍMU STANOVIŠTI“.</strong> Do té doby máte čas se na místo v klidu dostavit.</p>';
  installIntroNavigator("place");
+ const startButton=document.createElement("button");
+ startButton.id="enter";startButton.type="button";startButton.textContent="POKRAČOVAT K PRVNÍMU STANOVIŠTI →";startButton.style.cssText="display:block;width:100%;margin-top:24px";
+ startButton.onclick=enterStory;app.append(startButton);
 }
 function storyIntro(){if(customIntro())return;app.className="card intro-parchment";app.innerHTML='<div class="eyebrow">PROLOG • NALEZENÝ VZKAZ</div><h1>Tajemství <span class="orange">Nepomuku</span></h1><p>Při vyklízení staré půdy se našla malá dřevěná schránka. Nebyly v ní šperky ani peníze. Jen zažloutlý list papíru, jehož autor se nepodepsal.</p><div class="letter">„Město si pamatuje víc než lidé. Svědkové minulosti stále čekají.<br><br><strong>Najdi jméno, které město ztratilo.<br>Najdi rok, který připomíná jeho dávnou minulost.<br>A nakonec odhal, co přetrvává, i když se lidé a město mění.</strong>“</div><p>Nikdo neví, kdo zprávu napsal ani jak dlouho ve schránce ležela. Teď je pátrání na tobě.</p><button id="enter">VSTOUPIT DO PŘÍBĚHU →</button>';document.querySelector("#enter").onclick=enterStory}
 function renderLetter(value,small=false){const raw=String(value||"");const match=raw.match(/„([\s\S]*?)“/);const quote=match?match[1]:raw;const before=match?raw.slice(0,match.index).trim():"";const after=match?raw.slice(match.index+match[0].length).trim():"";const intro=before&&!small?'<p class="letter-context">'+escapeHtml(before)+'</p>':"";const outro=after&&!small?'<p class="letter-context">'+escapeHtml(after)+'</p>':"";return intro+'<div class="letter manuscript'+(small?' small-letter':'')+'"><div class="manuscript-label">✦ ÚRYVEK NALEZENÉHO DOPISU</div><div class="manuscript-text">„'+escapeHtml(quote.trim())+'“</div></div>'+outro}
@@ -209,7 +212,7 @@ function testNavigatePage(delta){
 }
 function installTestPageNavigator(){
  const old=document.getElementById("testPageNavigator");
- if(state.playerType!=="test"||!state.start){old?.remove();return}
+ if(state.playerType!=="test"||!state.start||app.querySelector(".intro-top-nav")){old?.remove();return}
  if(!app||!app.innerHTML.trim())return;
  if(old&&old.parentElement===app)return;
  old?.remove();
