@@ -39,20 +39,8 @@ async function welcome(){app.className="card welcome-parchment";timer.textConten
 async function enterStory(){const btn=document.querySelector("#enter");if(!btn||btn.disabled)return;btn.disabled=true;btn.textContent="SPOUŠTÍM HRU…";let msg=document.querySelector("#enterError");if(!msg){msg=document.createElement("div");msg.id="enterError";msg.className="msg";btn.insertAdjacentElement("afterend",msg)}msg.textContent="";state.start=Date.now();let ok=false;try{ok=await createSession()}catch(e){sessionStartError=String(e.message||e)}if(!ok){state.start=null;btn.disabled=false;btn.textContent="POKRAČOVAT K PRVNÍMU STANOVIŠTI →";msg.className="msg bad";msg.textContent="Hru nelze spustit: "+(sessionStartError||"neznámá chyba.");return}state.timer=setInterval(tick,1000);state.phase="station";if(state.playerType==="test")testPagePosition=1;saveProgress();station()}
 function customIntro(){if(!gameInfo.intro_text)return false;app.className="card intro-parchment";app.innerHTML=`<div class="eyebrow">ÚVOD DO HRY</div><h1>${gameInfo.title}</h1>${renderLetter(gameInfo.intro_text)}<button id="enter">VSTOUPIT DO PŘÍBĚHU →</button>`;document.querySelector("#enter").onclick=enterStory;return true}
 function installIntroNavigator(page){
- const nav=document.createElement("div");
- nav.className="intro-top-nav";
- nav.style.cssText="display:flex;flex-direction:column;gap:12px;padding:0 0 10px;margin:0 0 18px;border-bottom:1px solid rgba(100,75,45,.25)";
- const back=document.createElement("button"),forward=document.createElement("button"),label=document.createElement("span");
- back.type=forward.type="button";
- back.className=forward.className="secondary";
- back.textContent="← ZPĚT";
- forward.textContent="VPŘED →";
- label.style.cssText="font-size:12px;text-align:left";
- label.textContent=page==="instructions"?"Úvodní informace":"Místo začátku";
- back.onclick=page==="instructions"?welcome:playerInstructions;
- forward.onclick=page==="instructions"?startPlace:enterStory;
- nav.append(back,label,forward);
- app.prepend(nav);
+ // Testovací šipky byly odstraněny; úvod používá běžná tlačítka pokračování.
+ document.querySelector(".intro-top-nav")?.remove();
 }
 function playerInstructions(){
  app.className="card intro-parchment";
