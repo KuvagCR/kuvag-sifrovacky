@@ -205,10 +205,30 @@ const TEST_PAGES=[
 ];
 let testPagePosition=null,testPageNavigating=false;
 function testGoStation(index){state.i=index;state.phase="station";state.secondStage=1;station(true)}
+function detectTestPagePosition(){
+ const phase=String(state.phase||"");
+ if(phase==="standard-route-1")return 4;
+ if(phase==="standard-route-0")return 2;
+ if(phase==="standard-route-reveal-0")return 2;
+ if(phase==="reveal-cemetery-history")return 6;
+ if(phase==="chapel-route")return 7;
+ if(phase==="chapel-stone-history")return 8;
+ if(phase==="knarovka-route")return 10;
+ if(phase==="post-route")return 12;
+ if(phase==="roses-route")return 14;
+ if(phase==="square-route")return 16;
+ if(phase==="fountain-mary-reveal")return 18;
+ if(phase==="fountain-memory")return 19;
+ if(phase==="station"){
+  const indices={0:1,1:3,2:5,4:9,5:11,6:13,7:15,8:17};
+  return indices[state.i]??1;
+ }
+ return testPagePosition??1;
+}
 function testNavigatePage(delta){
  if(state.playerType!=="test"||!state.start)return;
  let current=testPagePosition;
- if(current===null){current=TEST_PAGES.findIndex(p=>p[0]===(document.querySelector("#testPageNavigatorLabel")?.dataset.page||""));if(current<0)current=state.i===0?1:0}
+ if(current===null){current=TEST_PAGES.findIndex(p=>p[0]===(document.querySelector("#testPageNavigatorLabel")?.dataset.page||""));if(current<0)current=detectTestPagePosition()}
  const next=Math.max(0,Math.min(TEST_PAGES.length-1,current+delta));
  if(next===current)return;
  testPagePosition=next;testPageNavigating=true;
@@ -221,6 +241,7 @@ function installTestPageNavigator(){
  if(state.playerType!=="test"||!state.start||app.querySelector(".intro-top-nav")){old?.remove();return}
  if(!app||!app.innerHTML.trim())return;
  if(old&&old.parentElement===app)return;
+ if(!testPageNavigating)testPagePosition=detectTestPagePosition();
  old?.remove();
  const nav=document.createElement("div");
  nav.id="testPageNavigator";
@@ -231,7 +252,9 @@ function installTestPageNavigator(){
  label.id="testPageNavigatorLabel";label.style.cssText="font-size:12px;text-align:center";
  label.textContent="Procházení hry";
  prev.onclick=()=>testNavigatePage(-1);next.onclick=()=>testNavigatePage(1);
- if(testPagePosition!==null){prev.disabled=testPagePosition===0;next.disabled=testPagePosition===TEST_PAGES.length-1;label.textContent=(testPagePosition+1)+" / "+TEST_PAGES.length+" · "+TEST_PAGES[testPagePosition][0];label.dataset.page=TEST_PAGES[testPagePosition][0]}
+ const pageIndex=testPagePosition===null?detectTestPagePosition():testPagePosition;
+ prev.disabled=pageIndex===0;next.disabled=pageIndex===TEST_PAGES.length-1;
+ label.textContent=(pageIndex+1)+" / "+TEST_PAGES.length+" · "+TEST_PAGES[pageIndex][0];label.dataset.page=TEST_PAGES[pageIndex][0]
  nav.append(prev,label,next);app.prepend(nav);
 }
 const testPageObserver=new MutationObserver(()=>{if(!testPageNavigating)installTestPageNavigator()});
