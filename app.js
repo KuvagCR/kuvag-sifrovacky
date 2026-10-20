@@ -57,6 +57,12 @@ function playerInstructions(){
  app.className="card intro-parchment";
  app.innerHTML='<div class="eyebrow">NEŽ SE VYDÁTE NA CESTU</div><h1>Vítejte na cestě za tajemstvím Nepomuku!</h1><p>Děkujeme, že jste se rozhodli strávit svůj čas s námi a vydat se na cestu za poznáním města Nepomuk. Čekají vás zajímavosti z historie, místní pověsti, tajemné šifry i místa, kolem kterých možná běžně procházíte, aniž byste znali jejich příběh.</p><p>Než se vydáte na cestu, máme pro vás několik užitečných informací:</p><h3>✧ Nápovědy</h3><p>První nápověda vás bude stát <strong>10 bodů</strong>.<br>Druhá nápověda vás bude stát <strong>20 bodů</strong>.</p><h3>✥ Navigace</h3><p>Za využití navigace k dalšímu místu se odečte <strong>30 bodů</strong>.<br>Orientační mapu města můžete využívat <strong>zdarma po celou dobu hry</strong>.</p><h3>✒ Uložení postupu</h3><p>Nemusíte se obávat zavření nebo aktualizace stránky. Vaše rozehraná hra se průběžně ukládá a po návratu můžete pokračovat tam, kde jste skončili, na stejném zařízení a ve stejném prohlížeči.</p><h3>✶ Na konci vaší cesty</h3><p>Budeme moc rádi, když nám po dokončení hry zanecháte své hodnocení, podělíte se o dojmy nebo nám pošlete fotografii ze svého putování.</p><p><strong>Přejeme vám příjemnou zábavu, úspěšné luštění a spoustu zajímavých objevů!</strong></p><p><em>Tak vzhůru za tajemstvím Nepomuku!</em></p>';
  installIntroNavigator("instructions");
+ const continueButton=document.createElement("button");
+ continueButton.type="button";
+ continueButton.textContent="POKRAČOVAT →";
+ continueButton.style.cssText="display:block;width:100%;margin-top:24px";
+ continueButton.onclick=startPlace;
+ app.append(continueButton);
 }
 function startPlace(){
  app.className="card intro-parchment";
