@@ -9,7 +9,7 @@
     let gid=$("#gameSelect").value;if(!gid)return[];
     let type=$("#typeSelect").value,runType=$("#runTypeSelect")?.value||"live";
     let filter=(type==="all"?"":"&player_type=eq."+encodeURIComponent(type))+(runType==="test"?"&is_test_run=eq.true":runType==="live"?"&is_test_run=eq.false":"");
-    return req("/rest/v1/game_sessions?select=id,player_name,player_type,is_test_run,started_at,finished_at,hints_used,wrong_attempts,total_points,is_finished&game_id=eq."+encodeURIComponent(gid)+filter+"&is_finished=eq.true&order=started_at.desc");
+    return req("/rest/v1/game_sessions?select=id,player_name,player_type,is_test_run,started_at,finished_at,hints_used,wrong_attempts,total_points,is_finished&game_id=eq."+encodeURIComponent(gid)+filter+"&is_finished=eq.true&total_points=gt.300&order=started_at.desc");
   }
   async function bindPlayerRows(){
     let rows=[...document.querySelectorAll("#rows tr")];if(!rows.length)return;
