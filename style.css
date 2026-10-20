@@ -953,3 +953,20 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 .finish-feedback label[for="gameComment"]{display:block!important;text-align:center!important;margin:18px auto 10px!important}
 .finish-feedback #gameComment{display:block!important;box-sizing:border-box!important;width:100%!important;max-width:570px!important;min-height:126px!important;margin:0 auto 18px!important;padding:16px 18px!important;border:1px solid #b99965!important;border-radius:12px!important;background:#fff7e7!important;color:#39291d!important;font:16px/1.5 Georgia,serif!important;resize:vertical!important;box-shadow:inset 0 2px 7px rgba(62,42,21,.1)!important}
 .finish-feedback #gameComment:focus{outline:2px solid #cfaa66!important;outline-offset:2px!important}
+
+/* Renaissance manuscript icon treatment — unified across all game screens */
+.header-actions .map-button, .map-in-card, .navigation-station, #hint,
+.station-tools button, .leaderboard-title, .intro-lines, .eyebrow {
+  color: #654524;
+}
+.header-actions .map-button {
+  border: 1px solid #a58a5e;
+  background: linear-gradient(135deg,#f8edd3,#e9d5aa);
+  color: #56391f;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: .07em;
+  box-shadow: inset 0 0 0 2px rgba(255,250,230,.55), 0 1px 3px rgba(66,42,19,.15);
+}
+.header-actions .map-button:hover {background:#f0dfb8;color:#432a15;}
+.navigation-station, #hint {font-family: Georgia, 'Times New Roman', serif;letter-spacing:.025em;}
