@@ -1031,3 +1031,5 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
   letter-spacing: .16em !important;
   text-transform: uppercase !important;
 }
+
+.feedback-stars .sr-only{display:none!important}
