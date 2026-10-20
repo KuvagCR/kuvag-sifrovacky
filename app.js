@@ -144,6 +144,64 @@ function syncMapButton(){
   btn.style.display="inline-block";
 }
 function escHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+/* TEMPORARY TEST-ONLY PAGE NAVIGATION. Remove this block after testing. */
+const TEST_PAGES=[
+ ["Úvodní šifra",()=>testGoStation(0)],
+ ["Přechod ke sv. Janu",()=>standardRouteReveal()],
+ ["Kostel sv. Jana",()=>testGoStation(1)],
+ ["Přechod ke sv. Jakubovi",()=>standardTransition(1)],
+ ["Kostel sv. Jakuba",()=>testGoStation(2)],
+ ["Historie hřbitova",()=>revealCemeteryHistory()],
+ ["Šifrovací mezikrok ke kapličce",()=>chapelRiddle()],
+ ["Pověst o kameni",()=>chapelStoneHistory()],
+ ["Kaplička sv. Vojtěcha",()=>testGoStation(4)],
+ ["Přechod na Knárovku",()=>knarovkaTransition(true)],
+ ["Knárovka",()=>testGoStation(5)],
+ ["Přechod k poště",()=>postTransition(true)],
+ ["Zelenohorská pošta",()=>testGoStation(6)],
+ ["Přechod k domu U Růže",()=>rosesTransition(true)],
+ ["Dům U Růže",()=>testGoStation(7)],
+ ["Návrat na náměstí",()=>finalSquareTransition(true)],
+ ["Závěrečné stanoviště",()=>testGoStation(8)],
+ ["Odhalení sochy na kašně",()=>fountainMaryReveal()],
+ ["Poslední otázka",()=>fountainMemoryQuestion()]
+];
+let testPagePosition=null,testPageNavigating=false;
+function testGoStation(index){state.i=index;state.phase="station";state.secondStage=1;station(true)}
+function testNavigatePage(delta){
+ if(state.playerType!=="test"||!state.start)return;
+ let current=testPagePosition;
+ if(current===null){current=TEST_PAGES.findIndex(p=>p[0]===(document.querySelector("#testPageNavigatorLabel")?.dataset.page||""));if(current<0)current=0}
+ const next=Math.max(0,Math.min(TEST_PAGES.length-1,current+delta));
+ if(next===current)return;
+ testPagePosition=next;testPageNavigating=true;
+ try{closeCityMap();TEST_PAGES[next][1]();saveProgress()}finally{testPageNavigating=false}
+ installTestPageNavigator();
+ window.scrollTo({top:0,behavior:"instant"});
+}
+function installTestPageNavigator(){
+ const old=document.getElementById("testPageNavigator");
+ if(state.playerType!=="test"||!state.start){old?.remove();return}
+ if(!app||!app.innerHTML.trim())return;
+ if(old&&old.parentElement===app)return;
+ old?.remove();
+ const nav=document.createElement("div");
+ nav.id="testPageNavigator";
+ nav.style.cssText="display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:14px;margin:14px 0;border:1px dashed #9a7c50;border-radius:10px;background:#f4ead5;color:#46351f";
+ const prev=document.createElement("button"),next=document.createElement("button"),label=document.createElement("span");
+ prev.type=next.type="button";prev.className=next.className="secondary";
+ prev.textContent="← ZPĚT";next.textContent="VPŘED →";
+ label.id="testPageNavigatorLabel";label.style.cssText="font-size:12px;text-align:center";
+ label.textContent="TEST • PROCHÁZENÍ VŠECH STRÁNEK";
+ prev.onclick=()=>testNavigatePage(-1);next.onclick=()=>testNavigatePage(1);
+ if(testPagePosition!==null){prev.disabled=testPagePosition===0;next.disabled=testPagePosition===TEST_PAGES.length-1;label.textContent="TEST • "+(testPagePosition+1)+"/"+TEST_PAGES.length+" • "+TEST_PAGES[testPagePosition][0];label.dataset.page=TEST_PAGES[testPagePosition][0]}
+ nav.append(prev,label,next);app.prepend(nav);
+}
+const testPageObserver=new MutationObserver(()=>{if(!testPageNavigating)installTestPageNavigator()});
+testPageObserver.observe(app,{childList:true});
+installTestPageNavigator();
+
 document.querySelector("#newGameButton")?.addEventListener("click",()=>{if(!confirm("Opravdu chceš zahájit novou hru? Dosavadní rozehraná hra v tomto prohlížeči se opustí."))return;clearInterval(state.timer);clearProgress();state={name:"",playerType:"public",i:0,score:0,hints:0,wrong:0,start:null,timer:null,hintIndex:0,stationHints:0,stationWrong:0,showInLeaderboard:false,navigationUsed:{}};document.querySelector("#newGameButton").hidden=true;welcome()});
 document.querySelector("#cityMapButton")?.addEventListener("click",openCityMap);document.querySelector("#navigationButton")?.addEventListener("click",openNavigation);
 syncMapButton();
