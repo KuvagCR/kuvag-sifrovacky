@@ -247,8 +247,8 @@ function installTestPageNavigator(){
  const old=document.getElementById("testPageNavigator");
  if(state.playerType!=="test"||!state.start||app.querySelector(".intro-top-nav")){old?.remove();return}
  if(!app||!app.innerHTML.trim())return;
- if(old&&old.parentElement===app)return;
  if(!testPageNavigating)testPagePosition=detectTestPagePosition();
+ if(old&&old.parentElement===app){const pos=testPagePosition;const prev=old.querySelector("button:first-child"),next=old.querySelector("button:nth-of-type(2)"),label=old.querySelector("#testPageNavigatorLabel");if(label){label.textContent=(pos+1)+" / "+TEST_PAGES.length+" · "+TEST_PAGES[pos][0];label.dataset.page=TEST_PAGES[pos][0]}if(prev)prev.disabled=pos===0;if(next)next.disabled=pos===TEST_PAGES.length-1;return}
  old?.remove();
  const nav=document.createElement("div");
  nav.id="testPageNavigator";
