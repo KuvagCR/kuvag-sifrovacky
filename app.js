@@ -64,8 +64,8 @@ function startPlace(){
  directionsButton.textContent="✥ NAVIGOVAT NA NÁMĚSTÍ – ZDARMA";
  directionsButton.style.cssText="display:block;width:100%;margin-top:14px";
  directionsButton.onclick=()=>window.open("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("Masarykovo náměstí, Nepomuk, Česká republika"),"_blank","noopener");
- app.append(directionsButton);
  startButton.onclick=enterStory;app.append(startButton);
+ app.append(directionsButton);
 }
 function storyIntro(){if(customIntro())return;app.className="card intro-parchment";app.innerHTML='<div class="eyebrow">PROLOG • NALEZENÝ VZKAZ</div><h1>Tajemství <span class="orange">Nepomuku</span></h1><p>Při vyklízení staré půdy se našla malá dřevěná schránka. Nebyly v ní šperky ani peníze. Jen zažloutlý list papíru, jehož autor se nepodepsal.</p><div class="letter">„Město si pamatuje víc než lidé. Svědkové minulosti stále čekají.<br><br><strong>Najdi jméno, které město ztratilo.<br>Najdi rok, který připomíná jeho dávnou minulost.<br>A nakonec odhal, co přetrvává, i když se lidé a město mění.</strong>“</div><p>Nikdo neví, kdo zprávu napsal ani jak dlouho ve schránce ležela. Teď je pátrání na tobě.</p><button id="enter">VSTOUPIT DO PŘÍBĚHU →</button>';document.querySelector("#enter").onclick=enterStory}
 function renderLetter(value,small=false){const raw=String(value||"");const match=raw.match(/„([\s\S]*?)“/);const quote=match?match[1]:raw;const before=match?raw.slice(0,match.index).trim():"";const after=match?raw.slice(match.index+match[0].length).trim():"";const intro=before&&!small?'<p class="letter-context">'+escapeHtml(before)+'</p>':"";const outro=after&&!small?'<p class="letter-context">'+escapeHtml(after)+'</p>':"";return intro+'<div class="letter manuscript'+(small?' small-letter':'')+'"><div class="manuscript-label">✦ ÚRYVEK NALEZENÉHO DOPISU</div><div class="manuscript-text">„'+escapeHtml(quote.trim())+'“</div></div>'+outro}
