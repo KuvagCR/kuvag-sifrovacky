@@ -1062,3 +1062,58 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 /* Individuální zobrazení fotografií vybraných stanovišť */
 .station-photo-chapel{object-position:center 65%}
 .station-photo-fountain{object-fit:contain;background:#eee9df}
+
+
+/* Světlé závěrečné vyhodnocení v jednotném historickém stylu hry */
+#app.finish{
+  background:linear-gradient(155deg,#fffdf8 0%,#f4ead8 100%)!important;
+  color:#352719!important;
+  border:1px solid #ddc9a8!important;
+}
+#app.finish h1,#app.finish h2,#app.finish h3,
+#app.finish p,#app.finish .small,#app.finish .finish-route-summary,
+#app.finish .stats,#app.finish .stat,#app.finish .ranking,
+#app.finish .rank-number,#app.finish .completion-badge,
+#app.finish .final-legend,#app.finish .final-legend p,
+#app.finish .finish-feedback,#app.finish .finish-photos,
+#app.finish .finish-credits,#app.finish .finish-links{
+  color:#352719!important;
+  -webkit-text-fill-color:#352719!important;
+  text-shadow:none!important;
+}
+#app.finish .final-legend,
+#app.finish .finish-feedback,
+#app.finish .finish-photos,
+#app.finish .finish-credits,
+#app.finish .finish-links,
+#app.finish .ranking{
+  background:rgba(255,255,255,.72)!important;
+  border:1px solid #dfcfb3!important;
+  border-radius:12px!important;
+  padding:18px!important;
+  box-shadow:0 3px 12px rgba(83,58,29,.07)!important;
+}
+#app.finish .final-legend-heading,
+#app.finish .eyebrow{color:#754a27!important}
+#app.finish .final-legend-disclaimer,
+#app.finish .finish-route-summary,
+#app.finish .stats{
+  background:#f0e3cc!important;
+  border-color:#ddc9a8!important;
+}
+#app.finish .stats .stat{background:transparent!important}
+#app.finish .completion-badge{background:#f5e8d2!important;border-color:#b99562!important}
+#app.finish .lock{color:#8b633d!important}
+#app.finish .finish-links a{color:#8a4b2b!important}
+#app.finish .finish-feedback label,
+#app.finish .finish-photos label{color:#49331f!important}
+#app.finish textarea,
+#app.finish input[type="text"],
+#app.finish input[type="file"]{
+  background:#fffdf8!important;color:#352719!important;
+  -webkit-text-fill-color:#352719!important;border:1px solid #cdb894!important;
+}
+#app.finish .finish-save-warning{background:#fff1e9!important;color:#7c3025!important;border:1px solid #d99a84!important}
+#app.finish .finish-save-warning p{color:#7c3025!important;-webkit-text-fill-color:#7c3025!important}
+#app.finish .feedback-stars span{color:#a66b2f!important}
+#app.finish .photo-preview-grid{background:transparent!important}
