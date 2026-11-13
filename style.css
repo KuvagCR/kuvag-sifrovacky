@@ -1058,3 +1058,7 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 /* Matching historic seals for station, puzzle and score symbols on the welcome screen */
 #app .intro-lines div{display:flex;align-items:center;gap:10px}
 #app .intro-lines b.intro-seal{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 31px;width:31px;height:31px;border:1.5px solid #886339;border-radius:50%;box-shadow:inset 0 0 0 2px #ead4ab,inset 0 0 0 3px #ad8b58;color:#66401e!important;font:700 23px Georgia,serif;line-height:1;background:#f1dfbc}
+
+/* Individuální zobrazení fotografií vybraných stanovišť */
+.station-photo-chapel{object-position:center 65%}
+.station-photo-fountain{object-fit:contain;background:#eee9df}
