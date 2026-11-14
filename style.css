@@ -1161,3 +1161,11 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
   border:1px solid #b99560!important;
 }
 #app.finish .photo-preview-grid{background:transparent!important}
+
+/* Uvodni fotografie: oddaleni zaberu, aby byl videt cely kostel sv. Jana. */
+.card.welcome-parchment .hero-photo{
+  background-size:100% 100%, contain!important;
+  background-position:center center, center center!important;
+  background-repeat:no-repeat!important;
+  background-color:#514638!important;
+}
