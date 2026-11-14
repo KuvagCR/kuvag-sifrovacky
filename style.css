@@ -1162,10 +1162,9 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 }
 #app.finish .photo-preview-grid{background:transparent!important}
 
-/* Uvodni fotografie: oddaleni zaberu, aby byl videt cely kostel sv. Jana. */
+/* Uvodni fotografie: vyplni cele pole obrazkem kostela sv. Jana. */
 .card.welcome-parchment .hero-photo{
-  background-size:100% 100%, contain!important;
+  background-size:100% 100%, 100% 100%!important;
   background-position:center center, center center!important;
   background-repeat:no-repeat!important;
-  background-color:#514638!important;
 }
