@@ -17,7 +17,7 @@ async function loadLeaderboard(type){try{let r=await fetch(SUPABASE_URL+"/rest/v
 function formatLeaderboardTime(seconds){seconds=Number(seconds)||0;let m=Math.floor(seconds/60),s=seconds%60;return m+":"+String(s).padStart(2,"0")}
 async function renderLeaderboard(){let box=document.querySelector("#leaderboard");if(!box)return;let selected=document.querySelector('input[name="ptype"]:checked'),type=gameInfo.visibility==="kuvag"?"kuvag":(selected?selected.value:"public");box.innerHTML='<div class="leaderboard-empty">Načítám TOP 15…</div>';let data=await loadLeaderboard(type);if(!box.isConnected)return;box.innerHTML=data.length?'<div class="leaderboard-table"><div class="leaderboard-row leaderboard-head"><span>#</span><span>Hráč</span><span>Body</span><span>Čas</span></div>'+data.map(x=>'<div class="leaderboard-row"><span>'+x.player_rank+'.</span><span>'+escHtml(x.player_name)+'</span><span>'+x.total_points+'</span><span>'+formatLeaderboardTime(x.duration_seconds)+'</span></div>').join("")+'</div>':'<div class="leaderboard-empty">Zatím tu není žádný dokončený hráč.</div>'}
 
-const HERO="https://www.jenprocestovatele.cz/wp-content/uploads/fly-images/15977/nepomuk-mesto-1036x608-c.jpg";
+const HERO="https://raw.githubusercontent.com/KuvagCR/kuvag-sifrovacky/main/sv%20jan.jpeg";
 const SQUARE="https://i0.wp.com/myczechwalks.com/wp-content/uploads/2024/08/nepomuk-e1724778605497.jpeg?fit=1200%2C772&ssl=1";
 let stations=[];let gameInfo={title:"Šifrovací hra",description:"",intro_text:"",finish_text:"",estimated_minutes:null};
 function visibleStationCount(){return Math.max(0,stations.length-1)}
