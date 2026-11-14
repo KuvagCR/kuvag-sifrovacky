@@ -1164,10 +1164,10 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 
 
 
-/* Uvodni fotografie: puvodni jednoduche zobrazeni pres celou plochu. */
+/* Uvodni fotografie: stejny stredovy orez jako fotografie na strance stanoviště. */
 .card.welcome-parchment .hero-photo{
   background-size:cover!important;
-  background-position:center 35%!important;
+  background-position:center center!important;
   background-repeat:no-repeat!important;
   background-color:transparent!important;
 }
