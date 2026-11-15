@@ -1171,3 +1171,13 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
   background-repeat:no-repeat!important;
   background-color:transparent!important;
 }
+
+
+/* Ikonové odkazy na úplně závěrečné obrazovce. */
+#app.finish .finish-social-icons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0 8px;text-align:center}
+#app.finish .social-icon-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0;padding:14px 5px;border:1px solid #b99562;border-radius:14px;background:rgba(255,248,231,.65);color:#704a2b!important;text-decoration:none;font-size:12px;font-weight:800;line-height:1.2;transition:transform .18s ease,background .18s ease}
+#app.finish .social-icon-link:hover{transform:translateY(-3px);background:#fff5df}
+#app.finish .social-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#ead5b1;color:#704a2b}
+#app.finish .social-icon svg{display:block;width:27px;height:27px}
+#app.finish .social-facebook{background:#704a2b;color:#fff}
+@media(max-width:360px){#app.finish .finish-social-icons{gap:6px}#app.finish .social-icon-link{font-size:10px;padding:11px 2px}#app.finish .social-icon{width:36px;height:36px}}
