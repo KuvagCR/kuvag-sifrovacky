@@ -1277,3 +1277,26 @@ header button{
   border-radius:var(--game-radius-panel)!important;
   box-shadow:none!important;
 }
+.support-footer{
+  display:flex;
+  justify-content:center;
+  margin:16px auto 0;
+  padding:0 4px;
+}
+.support-footer a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  max-width:100%;
+  padding:10px 14px;
+  border:1px solid #b99562;
+  border-radius:var(--game-radius-panel);
+  background:linear-gradient(135deg,#e8d0a5,#f2dfbb);
+  color:#49331f;
+  text-decoration:none;
+}
+.support-footer a:hover{background:#f7e8ca}
+.support-whatsapp-icon{width:34px;height:34px;flex:0 0 34px;color:#25d366}
+.support-footer-copy{display:grid;gap:2px;text-align:left;line-height:1.35}
+.support-footer-copy strong{font-size:15px}
+.support-footer-copy span{font-size:12px}
