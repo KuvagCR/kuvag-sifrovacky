@@ -1264,3 +1264,16 @@ header button{
 @media(max-width:420px){
   #app.finish .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+#app.finish .ranking{
+  margin:18px auto 16px!important;
+  padding:10px 16px!important;
+  text-align:center!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:15px!important;
+  line-height:1.7!important;
+  background:linear-gradient(135deg,#e8d0a5,#f2dfbb)!important;
+  background-image:none!important;
+  border:1px solid #b99562!important;
+  border-radius:var(--game-radius-panel)!important;
+  box-shadow:none!important;
+}
