@@ -1181,3 +1181,86 @@ a.place-navigation{display:block;margin:14px 0;padding:13px 16px;text-align:cent
 #app.finish .social-icon svg{display:block;width:27px;height:27px}
 #app.finish .social-facebook{background:#704a2b;color:#fff}
 @media(max-width:360px){#app.finish .finish-social-icons{gap:6px}#app.finish .social-icon-link{font-size:10px;padding:11px 2px}#app.finish .social-icon{width:36px;height:36px}}
+
+/* Shared corner scale for the game card, content panels and controls. */
+:root{
+  --game-radius-card:16px;
+  --game-radius-panel:12px;
+  --game-radius-control:12px;
+  --game-radius-small:8px;
+}
+#app.card{border-radius:var(--game-radius-card)!important}
+#app .task,
+#app .letter:not(.manuscript),
+#app .cipher,
+#app .hint,
+#app .player-type,
+#app .leaderboard-box,
+#app .stat,
+#app .ranking,
+#app .finish-route-summary,
+#app .stats,
+#app .final-legend,
+#app .finish-feedback,
+#app .finish-photos,
+#app .finish-credits,
+#app .finish-links,
+#app .finish-save-warning{
+  border-radius:var(--game-radius-panel)!important;
+}
+#app.finish .finish-route-summary,
+#app.finish .stats,
+#app.finish .stat,
+#app.finish .ranking,
+#app.finish .final-legend,
+#app.finish .finish-feedback,
+#app.finish .finish-photos,
+#app.finish .finish-credits,
+#app.finish .finish-links,
+#app.finish .finish-save-warning{
+  border-radius:var(--game-radius-panel)!important;
+}
+#app .station-photo,
+#app .hero-photo{border-radius:var(--game-radius-panel)!important}
+#app button,
+#app input:not([type=radio]):not([type=checkbox]),
+#app textarea,
+#app .place-navigation,
+header .timer,
+header button{
+  border-radius:var(--game-radius-control)!important;
+}
+#app.finish button,
+#app.finish input:not([type=radio]):not([type=checkbox]),
+#app.finish textarea{
+  border-radius:var(--game-radius-control)!important;
+}
+#app .cipher-grid span,
+#app .morse-signal,
+#app .morse-inline,
+#app .polybius-task .polybius-table th,
+#app .polybius-task .polybius-table td,
+#app .first-station-code .code-number{
+  border-radius:var(--game-radius-small)!important;
+}
+#app.finish .finish-route-summary{padding:10px 16px}
+#app.finish .stats{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+  margin:14px 0;
+  padding:8px 6px;
+}
+#app.finish .stats .stat{
+  min-width:0;
+  padding:8px 2px;
+  font-size:12px;
+  line-height:1.25;
+}
+#app.finish .stats .stat strong{
+  font-size:clamp(16px,4vw,21px);
+  line-height:1.1;
+  white-space:nowrap;
+}
+@media(max-width:420px){
+  #app.finish .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
