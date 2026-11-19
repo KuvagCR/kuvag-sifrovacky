@@ -2,6 +2,12 @@
 BEGIN;
 ALTER TABLE public.station_progress ADD COLUMN IF NOT EXISTS navigation_used boolean NOT NULL DEFAULT false;
 ALTER TABLE public.station_progress ADD COLUMN IF NOT EXISTS answer_verified boolean NOT NULL DEFAULT false;
+UPDATE public.stations
+SET hint_1='Prohlédni si sochu stojící na vrcholu kašny.',
+    hint_2='Jde o Ježíšovu matku – Pannu Marii.'
+WHERE game_id=1 AND station_order=9;
+-- Game 1's fourth station row is rendered only as a story transition in the
+-- frontend, so it must not block the next playable station or game completion.
 CREATE OR REPLACE FUNCTION public.game_action_v2(p_session_token uuid,p_station_id bigint,p_action text,p_answer text DEFAULT NULL)
 RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'public' AS $$
 DECLARE ses public.game_sessions%ROWTYPE; st public.stations%ROWTYPE; pr public.station_progress%ROWTYPE; nxt bigint; correct boolean; h integer; w integer; used boolean; answer text;
@@ -10,8 +16,10 @@ SELECT * INTO ses FROM public.game_sessions WHERE session_token=p_session_token 
 IF NOT FOUND THEN RAISE EXCEPTION 'INVALID_SESSION'; END IF;
 SELECT * INTO st FROM public.stations WHERE id=p_station_id AND game_id=ses.game_id;
 IF NOT FOUND THEN RAISE EXCEPTION 'INVALID_STATION'; END IF;
+IF ses.game_id=1 AND st.station_order=4 THEN RAISE EXCEPTION 'INVALID_STATION'; END IF;
 SELECT s.id INTO nxt FROM public.stations s WHERE s.game_id=ses.game_id AND NOT EXISTS
  (SELECT 1 FROM public.station_progress p WHERE p.session_id=ses.id AND p.station_id=s.id AND p.answer_verified)
+ AND (s.game_id<>1 OR s.station_order<>4)
  ORDER BY s.station_order,s.id LIMIT 1;
 IF nxt IS DISTINCT FROM p_station_id THEN RAISE EXCEPTION 'WRONG_STATION_ORDER'; END IF;
 INSERT INTO public.station_progress(session_id,station_id,hints_used,wrong_attempts,answer_history,hints_history,started_at)
@@ -51,21 +59,29 @@ DECLARE ses public.game_sessions%ROWTYPE; total integer; completed integer;
 BEGIN
 SELECT * INTO ses FROM public.game_sessions WHERE session_token=p_session_token AND NOT is_finished FOR UPDATE;
 IF NOT FOUND THEN RETURN; END IF;
-SELECT count(*) INTO total FROM public.stations WHERE game_id=ses.game_id;
+SELECT count(*) INTO total FROM public.stations
+WHERE game_id=ses.game_id AND (game_id<>1 OR station_order<>4);
 SELECT count(*) INTO completed FROM public.station_progress p JOIN public.stations s ON s.id=p.station_id
- WHERE p.session_id=ses.id AND s.game_id=ses.game_id AND p.answer_verified;
+WHERE p.session_id=ses.id AND s.game_id=ses.game_id AND p.answer_verified
+AND (s.game_id<>1 OR s.station_order<>4);
 IF total=0 OR completed<>total THEN RAISE EXCEPTION 'GAME_NOT_COMPLETED'; END IF;
 UPDATE public.game_sessions SET finished_at=now(),current_station=total,is_finished=true,
- hints_used=(SELECT coalesce(sum(hints_used),0) FROM public.station_progress WHERE session_id=ses.id),
- wrong_attempts=(SELECT coalesce(sum(wrong_attempts),0) FROM public.station_progress WHERE session_id=ses.id),
+ hints_used=(SELECT coalesce(sum(p.hints_used),0) FROM public.station_progress p
+ JOIN public.stations s ON s.id=p.station_id WHERE p.session_id=ses.id
+ AND s.game_id=ses.game_id AND (s.game_id<>1 OR s.station_order<>4)),
+ wrong_attempts=(SELECT coalesce(sum(p.wrong_attempts),0) FROM public.station_progress p
+ JOIN public.stations s ON s.id=p.station_id WHERE p.session_id=ses.id
+ AND s.game_id=ses.game_id AND (s.game_id<>1 OR s.station_order<>4)),
  total_points=(SELECT coalesce(sum(greatest(0,100
  - CASE WHEN hints_used=0 THEN 0 WHEN hints_used=1 THEN 10 ELSE 30 END
  - greatest(wrong_attempts,0)*5 - CASE WHEN navigation_used THEN 30 ELSE 0 END)),0)
- FROM public.station_progress WHERE session_id=ses.id AND answer_verified)
+ FROM public.station_progress p JOIN public.stations s ON s.id=p.station_id
+ WHERE p.session_id=ses.id AND p.answer_verified AND s.game_id=ses.game_id
+ AND (s.game_id<>1 OR s.station_order<>4))
 WHERE id=ses.id;
 END;$$;
 CREATE OR REPLACE FUNCTION public.get_game_state_v2(p_session_token uuid)
-RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'public' AS $
+RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'public' AS $$
 DECLARE ses public.game_sessions%ROWTYPE; next_id bigint; next_order integer; progress jsonb; total_score integer;
 BEGIN
  SELECT * INTO ses FROM public.game_sessions WHERE session_token=p_session_token;
@@ -73,17 +89,21 @@ BEGIN
  SELECT s.id,s.station_order INTO next_id,next_order FROM public.stations s
  WHERE s.game_id=ses.game_id AND NOT EXISTS
  (SELECT 1 FROM public.station_progress sp WHERE sp.session_id=ses.id AND sp.station_id=s.id AND sp.answer_verified)
+ AND (s.game_id<>1 OR s.station_order<>4)
  ORDER BY s.station_order,s.id LIMIT 1;
  SELECT coalesce(jsonb_agg(jsonb_build_object('stationId',sp.station_id,'hints',sp.hints_used,'wrong',sp.wrong_attempts,
  'navigationUsed',sp.navigation_used,'completed',sp.answer_verified)),'[]'::jsonb)
  INTO progress FROM public.station_progress sp JOIN public.stations s ON s.id=sp.station_id
- WHERE sp.session_id=ses.id AND s.game_id=ses.game_id;
+ WHERE sp.session_id=ses.id AND s.game_id=ses.game_id
+ AND (s.game_id<>1 OR s.station_order<>4);
  SELECT coalesce(sum(greatest(0,100-CASE WHEN sp.hints_used=0 THEN 0 WHEN sp.hints_used=1 THEN 10 ELSE 30 END
  -greatest(sp.wrong_attempts,0)*5-CASE WHEN sp.navigation_used THEN 30 ELSE 0 END)),0)
- INTO total_score FROM public.station_progress sp WHERE sp.session_id=ses.id AND sp.answer_verified;
+ INTO total_score FROM public.station_progress sp JOIN public.stations s ON s.id=sp.station_id
+ WHERE sp.session_id=ses.id AND sp.answer_verified AND s.game_id=ses.game_id
+ AND (s.game_id<>1 OR s.station_order<>4);
  RETURN jsonb_build_object('gameId',ses.game_id,'isFinished',ses.is_finished,'startedAt',ses.started_at,
  'nextStationId',next_id,'nextStationOrder',next_order,'progress',progress,'earnedPoints',total_score);
-END;$;
+END;$$;
 GRANT EXECUTE ON FUNCTION public.get_game_state_v2(uuid) TO anon,authenticated;
 -- Block direct table writes from client roles (RLS policies should also be reviewed).
 REVOKE INSERT,UPDATE,DELETE ON public.station_progress FROM PUBLIC,anon,authenticated;
