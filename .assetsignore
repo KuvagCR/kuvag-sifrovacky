@@ -1,0 +1,9 @@
+.git/
+.github/
+docs/
+sql/
+supabase/
+PROJECT_HANDOFF.md
+README.md
+wrangler.jsonc
+.assetsignore
