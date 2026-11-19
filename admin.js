@@ -49,6 +49,9 @@ async function installNepomukScenario(){
  const btn=document.querySelector("#installNepomukStory");if(btn)btn.disabled=true;
  try{
   const data=NEPOMUK_SCENARIO.map(s=>({...s,game_id:1,correct_answer:s.correct_answer==="__OVERIT_LETOPOCET__"?year.trim():s.correct_answer}));
+  data.find(s=>s.station_order===6).title="Knárovka – Deset stop starého písaře";
+  data.find(s=>s.station_order===7).title="Zelenohorská pošta – Tři znamení";
+  data.find(s=>s.station_order===8).title="Tajemství domovního znamení";
   /* Existing station IDs are preserved where possible so player progress links stay stable. */
   for(let i=0;i<data.length;i++){
    const old=existing.find(s=>Number(s.station_order)===i+1);const payload={...data[i]};delete payload.game_id;

@@ -1,11 +1,33 @@
 const SUPABASE_URL="https://wpmodnqcrsmiokgqyiby.supabase.co";
 const SUPABASE_KEY="sb_publishable_rfGxGRufJFkGVB8WWQ3bjQ_CgYZrG7s";
 const GAME_ID=Math.max(1,Number(new URLSearchParams(location.search).get("game"))||1);
+const {stageHintPenalty,stationProgressPenalty}=KuvagGameScoring;
 async function db(path,method="POST",body){try{let r=await fetch(SUPABASE_URL+"/rest/v1/"+path,{method,headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},body:body?JSON.stringify(body):undefined});if(!r.ok)throw new Error(await r.text());return await r.json()}catch(e){console.error("Supabase:",e);return null}}
 async function loadGameInfo(){try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/get_game_info",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_game_id:GAME_ID})});if(!r.ok)throw new Error(await r.text());let d=await r.json();let g=Array.isArray(d)?d[0]:d;if(!g)return false;gameInfo=Object.assign(gameInfo,g);return true}catch(e){console.error("Načtení hry:",e);return false}}
 function gameIsPlayable(){let status=String(gameInfo.status||"").trim().toLowerCase(),publish=gameInfo.publish_at?Date.parse(gameInfo.publish_at):NaN,scheduledReady=status==="scheduled"&&Number.isFinite(publish)&&publish<=Date.now();if(status==="draft"||status==="archived")return false;if(status==="scheduled")return scheduledReady;if(gameInfo.is_active===false)return false;return true}
 async function loadGameStations(){try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/get_game_stations",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_game_id:GAME_ID})});if(!r.ok)throw new Error(await r.text());let data=await r.json();if(!Array.isArray(data)||!data.length)throw new Error("Žádná stanoviště");stations=data.slice(0,9).map((s,index)=>({type:index===0?"cipher":(s.type||""),id:s.id,title:index===5?"Knárovka – Deset stop starého písaře":index===6?"Zelenohorská pošta – Tři znamení":index===7?"Tajemství domovního znamení":(s.title||"Stanoviště"),image:s.image_url||HERO,story:(s.story_text||(index===5?"„Kdo hledá daleko, přehlédne to nejbližší. U hladiny před vstupem na Zelenou horu čeká další jméno. Písař zanechal deset řádků a každému připsal číslo. Najdi jejich smysl a přečti skrytou zprávu.“":index===6?"„Když po cestě zazněl dusot koňských kopyt, brána poštovního domu se otevřela i vzácným hostům. Podle místní historie zde nocoval císař Josef II. Kamenné znamení na průčelí přečkalo generace. Dokážeš rozluštit tři znamení na průčelí?“":index===7?"„Některé domy nesou své jméno vepsané do kamene. Nehledej nápis, ale znamení. Prohlédni si průčelí domu naproti staré poště a zjisti, co vypráví.“":"")),task:s.task_text||"",success:s.success_text||"",navigationTarget:s.navigation_target||"",hints:[s.hint_1||s.hint1||"",s.hint_2||s.hint2||""]}));return true}catch(e){console.error("Načtení stanovišť:",e);return false}}
-async function gameAction(action,stationId,answer=null){const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),12000);try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/game_action_v2",{method:"POST",signal:controller.signal,headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_session_token:state.sessionToken,p_station_id:stationId,p_action:action,p_answer:answer})});if(!r.ok){let detail=await r.text();console.error("Herní akce:",r.status,detail);return {error:true,status:r.status,detail}}return await r.json()}catch(e){console.error("Herní akce:",e);return {error:true,detail:e.name==="AbortError"?"Databáze neodpověděla do 12 sekund.":String(e)}}finally{clearTimeout(timeout)}}
+async function gameAction(action,stationId,answer=null){const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),12000);try{let answerInput=action==="answer"?document.querySelector("#answer"):null,countInput=action==="answer"?document.querySelector("#answerCount"):null,submittedAnswer=answerInput?[answerInput.value.trim(),countInput?.value.trim()].filter(Boolean).join(" | "):null;let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/game_action_v2",{method:"POST",signal:controller.signal,headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_session_token:state.sessionToken,p_station_id:stationId,p_action:action,p_answer:answer,p_submitted_answer:submittedAnswer})});if(!r.ok){let detail=await r.text();console.error("Herní akce:",r.status,detail);return {error:true,status:r.status,detail}}return await r.json()}catch(e){console.error("Herní akce:",e);return {error:true,detail:e.name==="AbortError"?"Databáze neodpověděla do 12 sekund.":String(e)}}finally{clearTimeout(timeout)}}
+async function recordMultistageAction(action,stationId,stage,targetCount,sessionToken=state.sessionToken,answer=null){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),12000);try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/record_multistage_action",{method:"POST",signal:controller.signal,headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_session_token:sessionToken,p_station_id:stationId,p_action:action,p_stage:stage,p_target_count:targetCount,p_answer:answer})});if(!r.ok){let detail=await r.text();console.error("Uložení vícestupňového postupu:",r.status,detail);return{error:true,detail}}return await r.json()}catch(e){console.error("Uložení vícestupňového postupu:",e);return{error:true,detail:e.name==="AbortError"?"Databáze neodpověděla do 12 sekund.":String(e.message||e)}}finally{clearTimeout(timeout)}}
+function applyMultistageProgress(result){let previousHints=Array.isArray(state.secondHintCounts)?state.secondHintCounts:[0,0,0],previousWrongs=Array.isArray(state.secondWrongCounts)?state.secondWrongCounts:[0,0,0],nextHints=Array.isArray(result.stageHints)?result.stageHints:[0,0,0],nextWrongs=Array.isArray(result.stageWrongCounts)?result.stageWrongCounts:[0,0,0],hintDelta=nextHints.reduce((sum,count)=>sum+(Number(count)||0),0)-previousHints.reduce((sum,count)=>sum+(Number(count)||0),0),wrongDelta=nextWrongs.reduce((sum,count)=>sum+(Number(count)||0),0)-previousWrongs.reduce((sum,count)=>sum+(Number(count)||0),0);state.hints=Math.max(0,state.hints+hintDelta);state.wrong=Math.max(0,state.wrong+wrongDelta);state.score=Math.max(0,state.score-stageHintPenalty(nextHints)+stageHintPenalty(previousHints)-wrongDelta*5);state.secondHintCounts=nextHints;state.secondWrongCounts=nextWrongs;state.secondWrong=Number(nextWrongs[0])||0;state.stationHints=Number(result.hints)||0;state.stationWrong=Number(result.wrong)||0;saveProgress()}
+async function syncMultistageProgress(sessionToken,stationId,current,savedHints,savedWrongs){let latest={...current,stageHints:Array.isArray(current.stageHints)?current.stageHints:[0,0,0],stageWrongCounts:Array.isArray(current.stageWrongCounts)?current.stageWrongCounts:[0,0,0]};for(let index=0;index<3;index++){let hints=Math.min(2,Math.max(0,Number(savedHints[index])||0));if(hints>Number(latest.stageHints[index]||0)){let result=await recordMultistageAction("hint",stationId,index+1,hints,sessionToken);if(!result||result.error)return null;latest={...latest,...result}}let wrongs=Math.min(1000,Math.max(0,Number(savedWrongs[index])||0));if(wrongs>Number(latest.stageWrongCounts[index]||0)){let result=await recordMultistageAction("wrong",stationId,index+1,wrongs,sessionToken);if(!result||result.error)return null;latest={...latest,...result}}}return latest}
+const checkBeforeMultistageTracking=check;
+check=async function(){
+ let input=document.querySelector("#answer"),button=document.querySelector("#check"),stage=Math.max(1,Math.min(3,Number(state.secondStage)||1));
+ if(state.playerType==="test"||state.i!==1||stage>2||!input||!input.value.trim()||!button||button.disabled)return checkBeforeMultistageTracking();
+ let normalized=normalizePlayerAnswer(input.value),plain=normalized.replace(stage===1? /[^A-Z0-9]/g : /[^A-Z]/g,""),valid=stage===1?plain==="BERANEK":plain==="UPROSTRED",msg=document.querySelector("#msg");
+ button.disabled=true;
+ if(valid){
+  let result=await recordMultistageAction("correct",stations[state.i].id,stage,1,undefined,input.value.trim());
+  button.disabled=false;
+  if(!result||result.error){msg.className="msg bad";msg.textContent="Odpověď se nepodařilo uložit do výsledků. Zkus to prosím znovu.";return}
+  return checkBeforeMultistageTracking();
+ }
+ let counts=Array.isArray(state.secondWrongCounts)?state.secondWrongCounts:[0,0,0],result=await recordMultistageAction("wrong",stations[state.i].id,stage,(Number(counts[stage-1])||0)+1,undefined,input.value.trim());
+ button.disabled=false;
+ if(!result||result.error){msg.className="msg bad";msg.textContent="Chybný pokus se nepodařilo uložit. Zkus to prosím znovu.";return}
+ applyMultistageProgress(result);
+ msg.className="msg bad";msg.textContent=stage===1?"Šifra zatím není správně. Zkus to znovu. (−5 bodů)":"Zkus určit polohu sochy znovu. (−5 bodů)"
+}
 async function verifyEmployeeCode(code){try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/verify_employee_code",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_code:code})});if(!r.ok)return false;return await r.json()===true}catch(e){return false}}
 async function verifySchoolCode(code){try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/verify_school_code",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_code:code})});if(!r.ok)return false;return await r.json()===true}catch(e){return false}}
 let sessionStartError="";
@@ -23,13 +45,88 @@ let stations=[];let gameInfo={title:"Šifrovací hra",description:"",intro_text:
 function visibleStationCount(){return Math.max(0,stations.length-1)}
 function stationNumber(index){return index>=4?index:index+1}
 const POINTS_PER_STATION=100;function maxScore(){return Math.max(POINTS_PER_STATION,visibleStationCount()*POINTS_PER_STATION)}
-let state={name:"",playerType:"public",i:0,score:0,hints:0,wrong:0,start:null,timer:null,hintIndex:0,stationHints:0,stationWrong:0,showInLeaderboard:false,navigationUsed:{}};
+let state={name:"",playerType:"public",i:0,score:0,hints:0,wrong:0,start:null,timer:null,hintIndex:0,stationHints:0,stationWrong:0,secondHintCounts:[0,0,0],secondWrongCounts:[0,0,0],showInLeaderboard:false,navigationUsed:{}};
 const app=document.querySelector("#app"),timer=document.querySelector("#timer");
 const SAVE_KEY="kuvag-progress-"+GAME_ID;
-function saveProgress(){updateScoreDisplay();if(!state.sessionToken||!state.start)return;try{localStorage.setItem(SAVE_KEY,JSON.stringify({gameId:GAME_ID,sessionToken:state.sessionToken,name:state.name,playerType:state.playerType,i:state.i,score:state.score,hints:state.hints,wrong:state.wrong,start:state.start,hintIndex:state.hintIndex,stationHints:state.stationHints,stationWrong:state.stationWrong,showInLeaderboard:state.showInLeaderboard,navigationUsed:state.navigationUsed,phase:state.phase||"station",secondStage:state.secondStage||1,secondWrong:state.secondWrong||0,secondHintCounts:state.secondHintCounts||[0,0,0],testPreview:state.testPreview||null}))}catch(e){console.warn("Uložení hry:",e)}}
+function saveProgress(){updateScoreDisplay();if(!state.sessionToken||!state.start)return;try{localStorage.setItem(SAVE_KEY,JSON.stringify({gameId:GAME_ID,sessionToken:state.sessionToken,name:state.name,playerType:state.playerType,i:state.i,score:state.score,hints:state.hints,wrong:state.wrong,start:state.start,hintIndex:state.hintIndex,stationHints:state.stationHints,stationWrong:state.stationWrong,showInLeaderboard:state.showInLeaderboard,navigationUsed:state.navigationUsed,phase:state.phase||"station",secondStage:state.secondStage||1,secondWrong:state.secondWrong||0,secondHintCounts:state.secondHintCounts||[0,0,0],secondWrongCounts:state.secondWrongCounts||[0,0,0],testPreview:state.testPreview||null}))}catch(e){console.warn("Uložení hry:",e)}}
 function updateScoreDisplay(){let reset=document.querySelector("#newGameButton");if(reset)reset.hidden=!state.start;let el=document.querySelector("#liveScore");if(!el)return;el.textContent="✶ "+Math.max(0,Number(state.score)||0)+" / "+maxScore()+" bodů";el.hidden=!state.start}
 function clearProgress(){try{localStorage.removeItem(SAVE_KEY)}catch(e){}}
-async function restoreProgress(){let p;try{p=JSON.parse(localStorage.getItem(SAVE_KEY)||"null")}catch(e){clearProgress();return false}if(!p||p.gameId!==GAME_ID||!p.sessionToken)return false;if(p.playerType==="test"){if(!await loadGameInfo()||!await loadGameStations())return false;Object.assign(state,p,{i:Math.max(0,Math.min(stations.length-1,Number(p.i)||0)),start:Number(p.start)||Date.now(),phase:p.phase||"station"});state.timer=setInterval(tick,1000);tick();if(["reveal","reveal-history","reveal-riddle","reveal-cemetery-history","reveal-cemetery-next"].includes(state.phase))reveal();else if(state.phase==="chapel-route")chapelRiddle();else if(state.phase==="chapel-stone-history")chapelStoneHistory();else if(state.phase==="knarovka-route")knarovkaTransition();else if(state.phase==="post-route")postTransition();else if(state.phase==="roses-route")rosesTransition();else if(state.phase==="square-route")finalSquareTransition();else if(state.phase==="fountain-memory")fountainMemoryQuestion();else if(state.phase==="fountain-mary-reveal")fountainMaryReveal();else if(state.phase==="standard-route-reveal-0")standardRouteReveal();else if(state.phase?.startsWith("standard-route-"))standardTransition(Number(state.phase.slice(-1)));else station(true);saveProgress();return true}if(!await loadGameInfo()||!gameIsPlayable()||!await loadGameStations())return false;let server;try{let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/get_game_state_v2",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_session_token:p.sessionToken})});if(!r.ok)throw new Error(await r.text());server=await r.json()}catch(e){console.error("Obnovení serverového stavu:",e);return false}if(!server||Number(server.gameId)!==GAME_ID||server.isFinished){clearProgress();return false}let index=stations.findIndex(st=>String(st.id)===String(server.nextStationId));if(index<0){Object.assign(state,p,{i:stations.length-1,start:Date.parse(server.startedAt),phase:"reveal"});state.timer=setInterval(tick,1000);tick();reveal();return true}let rows=server.progress||[],current=rows.find(x=>String(x.stationId)===String(server.nextStationId))||{};let completed=rows.filter(x=>x.completed),penalty=rows.reduce((n,x)=>n+(x.hints===1?10:x.hints>=2?30:0)+Number(x.wrong||0)*5+(x.navigationUsed?30:0),0);Object.assign(state,p,{i:index,start:Date.parse(server.startedAt),score:Math.max(0,maxScore()-penalty),hints:rows.reduce((n,x)=>n+Number(x.hints||0),0),wrong:rows.reduce((n,x)=>n+Number(x.wrong||0),0),hintIndex:Number(current.hints||0),stationHints:Number(current.hints||0),stationWrong:Number(current.wrong||0),navigationUsed:Object.fromEntries(rows.filter(x=>x.navigationUsed).map(x=>[stations.findIndex(st=>String(st.id)===String(x.stationId)),true])),phase:"station",secondStage:index===1?Math.max(1,Math.min(3,Number(p.secondStage)||1)):1,secondWrong:index===1?Number(p.secondWrong)||0:0,secondHintCounts:index===1&&Array.isArray(p.secondHintCounts)?p.secondHintCounts:[0,0,0]});state.score=Math.max(0,state.score-state.secondWrong*5);state.timer=setInterval(tick,1000);tick();if(index>0&&p.phase==="standard-route-"+(index-1)){state.i=index-1;standardTransition(index-1)}else if((index===3||index===4)&&p.phase==="chapel-route"){state.i=3;chapelRiddle()}else if(index===7&&p.phase==="roses-route"){state.i=6;rosesTransition()}else if(index===8&&p.phase==="fountain-memory"){state.i=8;fountainMemoryQuestion()}else if(index===8&&p.phase==="fountain-mary-reveal"){state.i=8;fountainMaryReveal()}else if(index>0&&completed.some(x=>String(x.stationId)===String(stations[index-1].id))&&Number(p.i)===index-1&&p.phase==="reveal"){state.i=index-1;reveal()}else station(true);saveProgress();return true}
+async function restoreProgress(){
+ let p;
+ try{p=JSON.parse(localStorage.getItem(SAVE_KEY)||"null")}catch(e){clearProgress();return false}
+ if(!p||p.gameId!==GAME_ID||!p.sessionToken)return false;
+ if(p.playerType==="test"){
+  if(!await loadGameInfo()||!await loadGameStations())return false;
+  Object.assign(state,p,{i:Math.max(0,Math.min(stations.length-1,Number(p.i)||0)),start:Number(p.start)||Date.now(),phase:p.phase||"station"});
+  state.timer=setInterval(tick,1000);tick();
+  if(["reveal","reveal-history","reveal-riddle","reveal-cemetery-history","reveal-cemetery-next"].includes(state.phase))reveal();
+  else if(state.phase==="chapel-route")chapelRiddle();
+  else if(state.phase==="chapel-stone-history")chapelStoneHistory();
+  else if(state.phase==="knarovka-route")knarovkaTransition();
+  else if(state.phase==="post-route")postTransition();
+  else if(state.phase==="roses-route")rosesTransition();
+  else if(state.phase==="square-route")finalSquareTransition();
+  else if(state.phase==="fountain-memory")fountainMemoryQuestion();
+  else if(state.phase==="fountain-mary-reveal")fountainMaryReveal();
+  else if(state.phase==="standard-route-reveal-0")standardRouteReveal();
+  else if(state.phase?.startsWith("standard-route-"))standardTransition(Number(state.phase.slice(-1)));
+  else station(true);
+  saveProgress();return true;
+ }
+ if(!await loadGameInfo()||!gameIsPlayable()||!await loadGameStations())return false;
+ let server;
+ try{
+  let r=await fetch(SUPABASE_URL+"/rest/v1/rpc/get_game_state_v2",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_session_token:p.sessionToken})});
+  if(!r.ok)throw new Error(await r.text());
+  server=await r.json();
+ }catch(e){console.error("Obnovení serverového stavu:",e);return false}
+ if(!server||Number(server.gameId)!==GAME_ID||server.isFinished){clearProgress();return false}
+ let index=stations.findIndex(st=>String(st.id)===String(server.nextStationId));
+ if(index<0){
+  Object.assign(state,p,{i:stations.length-1,start:Date.parse(server.startedAt),phase:"reveal"});
+  state.timer=setInterval(tick,1000);tick();reveal();return true;
+ }
+ let rows=server.progress||[],current=rows.find(x=>String(x.stationId)===String(server.nextStationId))||{};
+ if(index===1){
+  let serverWrong=rows.reduce((sum,row)=>sum+Number(row.wrong||0),0),legacyStageOneWrong=Number(p.secondWrong)||0;
+  let savedWrongCounts=Array.isArray(p.secondWrongCounts)?p.secondWrongCounts:[
+   legacyStageOneWrong,
+   Math.max(0,Number(p.wrong||0)-serverWrong-legacyStageOneWrong),
+   0
+  ];
+  let synced=await syncMultistageProgress(p.sessionToken,server.nextStationId,current,
+   Array.isArray(p.secondHintCounts)?p.secondHintCounts:[0,0,0],savedWrongCounts);
+  if(!synced){console.error("Obnovení vícestupňového skóre se nepodařilo.");return false}
+  current={...current,...synced};
+  if(rows.some(row=>String(row.stationId)===String(server.nextStationId))){
+   rows=rows.map(row=>String(row.stationId)===String(server.nextStationId)?current:row);
+  }else if(Number(current.hints)||Number(current.wrong)){
+   rows=[...rows,{...current,stationId:server.nextStationId,stationOrder:2}];
+  }
+ }
+ let completed=rows.filter(row=>row.completed),penalty=rows.reduce((sum,row)=>sum+stationProgressPenalty(row),0);
+ let stageHints=Array.isArray(current.stageHints)?current.stageHints:[0,0,0];
+ let stageWrongs=Array.isArray(current.stageWrongCounts)?current.stageWrongCounts:[0,0,0];
+ Object.assign(state,p,{
+  i:index,start:Date.parse(server.startedAt),score:Math.max(0,maxScore()-penalty),
+  hints:rows.reduce((sum,row)=>sum+Number(row.hints||0),0),
+  wrong:rows.reduce((sum,row)=>sum+Number(row.wrong||0),0),
+  hintIndex:Number(current.hints||0),stationHints:Number(current.hints||0),stationWrong:Number(current.wrong||0),
+  navigationUsed:Object.fromEntries(rows.filter(row=>row.navigationUsed).map(row=>[stations.findIndex(st=>String(st.id)===String(row.stationId)),true])),
+  phase:"station",secondStage:index===1?Math.max(1,Math.min(3,Number(p.secondStage)||1)):1,
+  secondHintCounts:index===1?stageHints:[0,0,0],secondWrongCounts:index===1?stageWrongs:[0,0,0],
+  secondWrong:index===1?Number(stageWrongs[0])||0:0
+ });
+ state.timer=setInterval(tick,1000);tick();
+ if(index>0&&p.phase==="standard-route-"+(index-1)){state.i=index-1;standardTransition(index-1)}
+ else if((index===3||index===4)&&p.phase==="chapel-route"){state.i=3;chapelRiddle()}
+ else if(index===7&&p.phase==="roses-route"){state.i=6;rosesTransition()}
+ else if(index===8&&p.phase==="fountain-memory"){state.i=8;fountainMemoryQuestion()}
+ else if(index===8&&p.phase==="fountain-mary-reveal"){state.i=8;fountainMaryReveal()}
+ else if(index>0&&completed.some(row=>String(row.stationId)===String(stations[index-1].id))&&Number(p.i)===index-1&&p.phase==="reveal"){state.i=index-1;reveal()}
+ else station(true);
+ saveProgress();return true;
+}
 
 async function recoverAfterUncertainAction(previousIndex){const oldTimer=state.timer;if(oldTimer)clearInterval(oldTimer);const restored=await restoreProgress();if(!restored){if(oldTimer)state.timer=setInterval(tick,1000);return false}return state.i>previousIndex}
 
@@ -114,11 +211,19 @@ async function hint(){
   const previous=Math.min(2,Number(counts[stage-1])||0);
   if(previous>=2){btn.disabled=true;return}
   const next=previous+1;
-  counts[stage-1]=next;state.secondHintCounts=counts;
-  state.hints++;state.score=Math.max(0,state.score-(next===1?10:20));
+  if(state.playerType==="test"){
+   counts[stage-1]=next;state.secondHintCounts=counts;
+   state.hints++;state.score=Math.max(0,state.score-(next===1?10:20));
+  }else{
+   btn.disabled=true;btn.textContent="UKLÁDÁM…";
+   const result=await recordMultistageAction("hint",st.id,stage,next);
+   if(!result||result.error){box.textContent="Nápovědu se nepodařilo uložit. Zkus to prosím znovu.";btn.disabled=false;btn.textContent="✧ DALŠÍ NÁPOVĚDA (−20 BODŮ)";return}
+   applyMultistageProgress(result);
+  }
+  const actual=Number(state.secondHintCounts[stage-1])||next;
   box.textContent="✧ "+SECOND_STAGE_HINTS[stage-1][previous];
-  btn.textContent=next>=2?"✧ NÁPOVĚDY VYČERPÁNY":"✧ DALŠÍ NÁPOVĚDA (−20 BODŮ)";
-  btn.disabled=next>=2;updateScoreDisplay();saveProgress();return;
+  btn.textContent=actual>=2?"✧ NÁPOVĚDY VYČERPÁNY":"✧ DALŠÍ NÁPOVĚDA (−20 BODŮ)";
+  btn.disabled=actual>=2;updateScoreDisplay();saveProgress();return;
  }
  const previous=Number(state.hintIndex)||0;
  if(previous>=2){btn.disabled=true;return}
