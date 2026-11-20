@@ -43,6 +43,10 @@ if(new URLSearchParams(location.search).get("restart")==="1"){
   history.replaceState(null,"",location.pathname+"?game=1");
 }
 </script>
+<script>
+// Anonymní souhrnné počítání otevření stránky; neukládá IP ani identifikátory návštěvníků.
+fetch("https://wpmodnqcrsmiokgqyiby.supabase.co/rest/v1/rpc/record_game_page_view",{method:"POST",headers:{"apikey":"sb_publishable_rfGxGRufJFkGVB8WWQ3bjQ_CgYZrG7s","Content-Type":"application/json"},body:"{}",keepalive:true}).catch(()=>{});
+</script>
 <script src="scoring.js?v=20261119-result-answers-v1"></script>
 <script src="app.js?v=20261119-result-answers-v1"></script>
 
