@@ -798,6 +798,7 @@ label.leaderboard-consent input[type="checkbox"]{
 
 /* Destination navigation link */
 button.place-navigation{display:block;width:100%;margin:14px 0;padding:13px 16px;text-align:center;background:#fff3d9;color:#56351f!important;-webkit-text-fill-color:#56351f!important;border:1px solid #b99865;border-radius:10px;font-weight:800;letter-spacing:.025em;cursor:pointer}button.place-navigation:hover{background:#f7dfae}
+button.place-navigation .navigation-notice,button.navigation-station .navigation-notice{display:block;margin-top:5px;font-size:.78rem;font-weight:500;line-height:1.35;letter-spacing:0}
 
 
 /* Compact fountain result and final memory question; same typography as other parchment stories. */
