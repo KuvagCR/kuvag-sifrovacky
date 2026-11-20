@@ -1,4 +1,5 @@
 .git/
+.wrangler/
 .github/
 docs/
 sql/
